@@ -75,7 +75,7 @@ int _printf(const char *format, ...)
 	unsigned int nochar = 0;
 	char c;
 
-	if (!format)
+	if (!format || !*format)
 	{
 		return (-1);
 	}
@@ -99,6 +99,8 @@ int _printf(const char *format, ...)
 			case 'd':
 				nochar += caseInt(va_arg(args, int));
 				break;
+			case '\0':
+				return (-1);
 			default:
 			  nochar +=  _putchar(*format);
 			}
