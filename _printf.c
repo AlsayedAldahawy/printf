@@ -23,11 +23,12 @@ int caseStr(char *s)
 {
 	int i = 0;
 	char *str = s;
+
 	if (!str)
 	{
 		str = "(null)";
 	}
-	
+
 	while (str[i])
 	{
 		write(1, &str[i], 1);
