@@ -22,10 +22,15 @@ int _putchar(char c)
 int caseStr(char *s)
 {
 	int i = 0;
-
-	while (s[i])
+	char *str = s;
+	if (!str)
 	{
-		write(1, &s[i], 1);
+		str = "(null)";
+	}
+	
+	while (str[i])
+	{
+		write(1, &str[i], 1);
 		i++;
 	}
 	return (i);
@@ -77,8 +82,6 @@ int _printf(const char *format, ...)
 
 	if (!format)
 		return (-1);
-	if (!*format)
-		return (0);
 
 	va_start(args, format);
 	while (*format)

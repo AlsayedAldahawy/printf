@@ -16,10 +16,10 @@ int main(void)
     char c0 = '\n';
     char *s = "";*/
 
-    len2 = printf("");
-    len = _printf("");
-    _printf("Length:[%d, %i]\n", len, len2);
-    printf("Length:[%d, %i]\n", len, len2);
+    len2 = printf("1");
+    len = _printf("1");
+   _printf("Length%s:[%d, %i]\n",NULL, len, len2);
+    printf("Length%s:[%d, %i]\n",NULL, len, len2);
 
     return (0);
 }
