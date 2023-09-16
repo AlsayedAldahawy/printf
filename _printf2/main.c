@@ -17,9 +17,9 @@ int main(void)
     char *s = "";*/
 
     int x = 0;
-    len2 = printf("h%h\n");
-    len = _printf("h%h\n");
-    while(x < 0)
+    len2 = printf("h%[\n");
+    len = _printf("h%[\n");
+    while(x < 1)
     {
         _printf("Length%c:[%d, %i]\n",x, len, len2);
         printf("Length%c:[%d, %i]\n",x, len, len2);

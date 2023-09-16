@@ -106,7 +106,7 @@ int _printf(const char *format, ...)
 			case '\0':
 				return (-1);
 			default:
-			  nochar +=  _putchar(*(format - 1));
+			  nochar +=  _putchar(*(--format));
 			}
 		}
 		else
