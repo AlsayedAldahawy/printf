@@ -16,8 +16,8 @@ int main(void)
     char c0 = '\n';
     char *s = "";
 
-    len2 = printf("sLet's try top%c printf%c a s%sim%cpl%se se%ddnten%%%%%i%ice.\n%", c, c2, c3, c0,s, n1,5,-5);
-    len = _printf("sLet's try top%c printf%c a s%sim%cpl%se se%ddnten%%%%%i%ice.\n%", c, c2, c3, c0,s, n1,5,-5);
+    len2 = _printf("sLet's try top%c printf%c a s%%sim%cpl%se se%ddnten%%%%%i%ice.\n%", c, c2, c3, c0,s, n1,5,-5);
+    len = _printf("sLet's try top%c printf%c a s%%sim%cpl%se se%ddnten%%%%%i%ice.\n%", c, c2, c3, c0,s, n1,5,-5);
     _printf("Length:[%d, %i]\n", len, len2);
     printf("Length:[%d, %i]\n", len, len2);
 
