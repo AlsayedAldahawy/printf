@@ -4,6 +4,7 @@
  * print_number - function that prints an integer.
  *
  * @n: number to be printed
+ * Return: number of charachters.
  *
 */
 
