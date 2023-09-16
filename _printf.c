@@ -105,8 +105,11 @@ int _printf(const char *format, ...)
 				break;
 			case '\0':
 				return (-1);
+			case '%':
+				nochar += _putchar(*(format));
+				break;
 			default:
-			  nochar +=  _putchar(*(format));
+				nochar +=  _putchar(*(format - 1));
 			}
 		}
 		else
