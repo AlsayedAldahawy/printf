@@ -7,6 +7,8 @@
 #include <stdarg.h>
 #include <unistd.h>
 
+#define BUFFER 1024
+
 int _putchar(char c);
 int _puts(char *str);
 int _printf(const char *format, ...);

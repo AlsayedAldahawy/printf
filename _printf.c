@@ -16,7 +16,7 @@ int _printf(const char *format, ...)
 	unsigned int i = 0, per = 0, n = 0;
 	va_list args;
 
-	if (!format || !format[0])
+	if (!format)
 		return (-1);
 	va_start(args, format);
 
@@ -38,8 +38,6 @@ int _printf(const char *format, ...)
 			case 'i':
 				n += case_int(format[i], &per, args);
 				break;
-			case 'b':
-
 			default:
 				per = 0;
 				n += _putchar(format[i]);
