@@ -1,49 +1,112 @@
 #include "main.h"
+#define BUFFER_SIZE 1024
 
 /**
- * _printf - a function that produces output according to a format.
+ * _putchar - prints a character to stdout.
+ * @c: charachter to be printed.
+ * Return: 1.
  *
- * @format: string format to be printed.
+*/
+int _putchar(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
+
+/**
+ * caseStr - prints a string to stdout.
+ * @s: string to be printed.
+ * Return: length of printed string.
  *
- * Return: the number of characters printed
- * (excluding the null byte used to end output to strings)
+*/
+int caseStr(char *s)
+{
+	int i = 0;
+
+	while (s[i])
+	{
+		write(1, &s[i], 1);
+		i++;
+	}
+	return (i);
+}
+
+/**
+ * caseInt - prints a number to stdout.
+ * @num: number to be printed.
+ * Return: length of printed int.
  *
- *
- *
+*/
+int caseInt(int num)
+{
+	unsigned int i, nOfChar = 0;
+	int digit;
+	int start_digit = 0;
+
+	if (num < 0)
+	{
+		_putchar('-');
+		nOfChar++;
+		num *= -1;
+	}
+
+	for (i = 1000000000; i >= 1 ; i = i / 10)
+	{
+
+		if ((num / i == 0) && (start_digit == 0) && (i != 1))
+			continue;
+
+		digit = (num / i) % 10;
+		_putchar(digit + '0');
+		nOfChar++;
+		start_digit = 1;
+	}
+	return (nOfChar);
+}
+
+/**
+ * _printf - prints a formated text to stdout.
+ * @format: format to be followed.
+ * Return: length of printed text.
 */
 int _printf(const char *format, ...)
 {
-	unsigned int i = 0, per = 0, n = 0;
 	va_list args;
+	unsigned int nochar = 0;
+	char c;
 
 	if (!format)
-		return (-1);
-	va_start(args, format);
-
-	while (format[i])
 	{
-		switch (format[i])
+		return (-1);
+	}
+
+	va_start(args, format);
+	while (*format)
+	{
+		if (*format == '%')
 		{
-			case '%':
-				per++;
-				n += case_per(format[i], format[i + 1], &per);
-				break;
+			format++;
+			switch (*format)
+			{
 			case 'c':
-				n += case_char(format[i], &per, args);
+				c = va_arg(args, int);
+				nochar += _putchar(c);
 				break;
 			case 's':
-				n += case_str(format[i], &per, args);
+				nochar += caseStr(va_arg(args, char *));
 				break;
-			case 'd':
 			case 'i':
-				n += case_int(format[i], &per, args);
+			case 'd':
+				nochar += caseInt(va_arg(args, int));
 				break;
 			default:
-				per = 0;
-				n += _putchar(format[i]);
+			  nochar +=  _putchar(*format);
+			}
 		}
-		i++;
+		else
+			nochar +=  _putchar(*format);
+		format++;
 	}
 	va_end(args);
-	return (n);
+	return (nochar);
 }

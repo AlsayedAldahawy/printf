@@ -10,7 +10,7 @@
  *
  */
 
-int case_per(char f, char fn, unsigned int *per)
+int case_per(char f, char fn)
 {
 	char *str = "idsc";
 	int j = 0, next = 0, n = 0;
@@ -38,18 +38,10 @@ int case_per(char f, char fn, unsigned int *per)
  * Return: the number of characters printed
  *
  */
-int case_char(char f, unsigned int *per, va_list args)
+int case_char(char f, *buffer)
 {
-	int n = 0;
-
-	if (*per % 2)
-	{
-		n += _putchar(va_arg(args, int));
-	}
-	else
-		n += _putchar(f);
-	*per = 0;
-	return (n);
+	*buffer = f;
+	return (1);
 }
 
 /**
@@ -61,7 +53,7 @@ int case_char(char f, unsigned int *per, va_list args)
  * Return: the number of characters printed
  *
  */
-int case_str(char f, unsigned int *per, va_list args)
+int case_str(char f, va_list args)
 {
 	int n = 0;
 
@@ -83,7 +75,7 @@ int case_str(char f, unsigned int *per, va_list args)
  * Return: the number of characters printed
  *
  */
-int case_int(char f, unsigned int *per, va_list args)
+int case_int(char f, va_list args)
 {
 	int n = 0;
 
