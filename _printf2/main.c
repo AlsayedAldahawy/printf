@@ -11,13 +11,13 @@
 int main(void)
 {
     int len;
-    int len2, n1 = -700;
+    int len2;/* n1 = -700;
     char c = 'x', c2 = 'y', *c3 = "asbd";
     char c0 = '\n';
-    char *s = "";
+    char *s = "";*/
 
-    len2 = _printf("sLet's try top%c printf%c a s%%sim%cpl%se se%ddnten%%%%%i%ice.\n%", c, c2, c3, c0,s, n1,5,-5);
-    len = _printf("sLet's try top%c printf%c a s%%sim%cpl%se se%ddnten%%%%%i%ice.\n%", c, c2, c3, c0,s, n1,5,-5);
+    len2 = printf("");
+    len = _printf("");
     _printf("Length:[%d, %i]\n", len, len2);
     printf("Length:[%d, %i]\n", len, len2);
 
