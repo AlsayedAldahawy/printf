@@ -17,7 +17,7 @@ int _printf(const char *format, ...)
 	va_list args;
 
 	if (!format || !format[0])
-		return (0);
+		return (-1);
 	va_start(args, format);
 
 	while (format[i])
@@ -38,6 +38,8 @@ int _printf(const char *format, ...)
 			case 'i':
 				n += case_int(format[i], &per, args);
 				break;
+			case 'b':
+
 			default:
 				per = 0;
 				n += _putchar(format[i]);
