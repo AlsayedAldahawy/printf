@@ -11,18 +11,17 @@
  *
  *
 */
-void cases_int(unsigned int *i,const char *format, int num, unsigned int per);
-void cases_str(unsigned int *i,const char *format, char *s, unsigned int per);
-void cases_char(unsigned int *i,const char *format, char c, unsigned int per);
-void case_per(unsigned int *i,const char *format, unsigned int per);
+int cases_int(unsigned int *i,const char *format, int num, unsigned int per);
+int cases_str(unsigned int *i,const char *format, char *s, unsigned int per);
+int cases_char(unsigned int *i,const char *format, char c, unsigned int per);
+int case_per(unsigned int *i,const char *format, unsigned int per);
 
-int n = 0;
 int _printf(const char *format, ...)
 {
 	unsigned int i = 0, per = 0;
 	va_list args;
 	char c;
-	int num;
+	int num, n = 0;
 
 	if (!format || !format[0])
 		return (0);
@@ -65,10 +64,10 @@ int _printf(const char *format, ...)
 	return (n);
 }
 
-void case_per(unsigned int *i,const char *format, unsigned int per)
+int case_per(unsigned int *i,const char *format, unsigned int per)
 {
 	char *str = "idsc";
-	int j = 0, next = 0;
+	int j = 0, next = 0, n = 0;
 	unsigned int k = *i;
 
 	while (str[j])
@@ -78,40 +77,42 @@ void case_per(unsigned int *i,const char *format, unsigned int per)
 		j++;
 	}
 	
-
 	if (per % 2 && next == 0)
 	{
 		n += _putchar(format[*i]);
-		return;
 	}
-
-	if ((per % 2 && next == 1) || !(per % 2))
-	{
-		return;
-	}
-	
+	return (n);	
 }
 
-void cases_int(unsigned int *i,const char *format, int num, unsigned int per)
+int cases_int(unsigned int *i,const char *format, int num, unsigned int per)
 {
+	int n = 0;
+
 	if (per % 2)
 		n += print_number(num);
 	else
 		n += _putchar(format[*i]);
+	return (n);
 }
 
-void cases_str(unsigned int *i,const char *format, char *str, unsigned int per)
+int cases_str(unsigned int *i,const char *format, char *str, unsigned int per)
 {
+	int n = 0;
+
 	if (per % 2)
 		n += _puts(str);
 	else
 		n += _putchar(format[*i]);
+	return (n);
 }
 
-void cases_char(unsigned int *i,const char *format, char c, unsigned int per)
+int cases_char(unsigned int *i,const char *format, char c, unsigned int per)
 {
+	int n = 0;
+
 	if (per % 2)
 		n += _putchar(c);
 	else
 		n += _putchar(format[*i]);
+	return (n);
 }
