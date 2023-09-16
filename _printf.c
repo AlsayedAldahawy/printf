@@ -1,5 +1,10 @@
 #include "main.h"
 
+int case_char(char f, unsigned int *per, va_list args);
+int case_str(char f, unsigned int *per, va_list args);
+int case_per(char f, char fn, unsigned int *per);
+int case_int(char f, unsigned int *per, va_list args);
+
 /**
  * _printf - a function that produces output according to a format.
  *
@@ -11,20 +16,13 @@
  *
  *
 */
-int cases_int(unsigned int i,const char *format, int num, unsigned int per);
-int cases_str(unsigned int i,const char *format, char *s, unsigned int per);
-int cases_char(unsigned int i,const char *format, char c, unsigned int per);
-int case_per(unsigned int i,const char *format, unsigned int per);
-
 int _printf(const char *format, ...)
 {
-	unsigned int i = 0, per = 0;
+	unsigned int i = 0, per = 0, n = 0;
 	va_list args;
-	char c = '?';
-	int num, n = 0;
 
-	if (!format)
-		return (-1);
+	if (!format || !format[0])
+		return (0);
 	va_start(args, format);
 
 	while (format[i])
@@ -33,32 +31,21 @@ int _printf(const char *format, ...)
 		{
 			case '%':
 				per++;
-				n += case_per(i, format, per);
+				n += case_per(format[i], format[i + 1], &per);
 				break;
-
 			case 'c':
-				c = (va_arg(args, int));
-				write(1, &c, 1);
-				_putchar(c);
-				n += cases_char(i, format, c, per);
-				per = 0;
+				n += case_char(format[i], &per, args);
 				break;
-
 			case 's':
-				n += cases_str(i, format, va_arg(args, char *), per);
-				per = 0;
+				n += case_str(format[i], &per, args);
 				break;
-
-			case 'i':
 			case 'd':
-				num = va_arg(args, int);
-				n += cases_int(i, format, num, per);
-				per = 0;
+			case 'i':
+				n += case_int(format[i], &per, args);
 				break;
-
 			default:
-				n += _putchar(format[i]);
 				per = 0;
+				n += _putchar(format[i]);
 		}
 		i++;
 	}
@@ -66,58 +53,99 @@ int _printf(const char *format, ...)
 	return (n);
 }
 
-int case_per(unsigned int i,const char *format, unsigned int per)
+/**
+ * case_per - case if the character was "%".
+ *
+ * @f: current character.
+ * @fn: next character.
+ * @per: number of consequence '%'
+ * Return: the number of characters printed
+ *
+ */
+
+int case_per(char f, char fn, unsigned int *per)
 {
 	char *str = "idsc";
 	int j = 0, next = 0, n = 0;
-	unsigned int k = i;
 
 	while (str[j])
 	{
-		if (format[k + 1] == str[j])
+		if (fn == str[j])
 			next = 1;
 		j++;
 	}
-	
-	if (per % 2 && next == 0)
+
+	if (*per % 2 && next == 0)
 	{
-		n += _putchar(format[i]);
+		n += _putchar(f);
 	}
-	return (n);	
-}
-
-int cases_int(unsigned int i,const char *format, int num, unsigned int per)
-{
-	int n = 0;
-
-	if (per % 2)
-		n += print_number(num);
-	else
-		n += _putchar(format[i]);
 	return (n);
 }
 
-int cases_str(unsigned int i,const char *format, char *str, unsigned int per)
+/**
+ * case_char - case if the character was "c".
+ *
+ * @f: the character.
+ * @per: number of consequence '%'
+ * @args: va list.
+ * Return: the number of characters printed
+ *
+ */
+int case_char(char f, unsigned int *per, va_list args)
 {
 	int n = 0;
 
-	if (per % 2)
-		n += _puts(str);
+	if (*per % 2)
+	{
+		n += _putchar(va_arg(args, int));
+	}
 	else
-		n += _putchar(format[i]);
+		n += _putchar(f);
+	*per = 0;
 	return (n);
 }
 
-int cases_char(unsigned int i,const char *format, char c, unsigned int per)
+/**
+ * case_str - case if the character was "s".
+ *
+ * @f: the character.
+ * @per: number of consequence '%'
+ * @args: va list.
+ * Return: the number of characters printed
+ *
+ */
+int case_str(char f, unsigned int *per, va_list args)
 {
 	int n = 0;
 
-	if (per % 2)
+	if (*per % 2)
 	{
-		n += printf("%c",c);
-		_putchar('?');
+		n += _puts(va_arg(args, char *));
 	}
 	else
-		n += _putchar(format[i]);
+		n += _putchar(f);
+	*per = 0;
+	return (n);
+}
+/**
+ * case_int - case if the character was "i or d".
+ *
+ * @f: the character.
+ * @per: number of consequence '%'
+ * @args: va list.
+ * Return: the number of characters printed
+ *
+ */
+int case_int(char f, unsigned int *per, va_list args)
+{
+	int n = 0;
+
+	if (*per % 2)
+	{
+		n += print_number(va_arg(args, int));
+	}
+	else
+		n += _putchar(f);
+	*per = 0;
 	return (n);
 }
