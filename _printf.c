@@ -83,7 +83,6 @@ int _printf(const char *format, ...)
 
 	if (!format)
 		return (-1);
-
 	va_start(args, format);
 	while (*format)
 	{
@@ -109,7 +108,7 @@ int _printf(const char *format, ...)
 				nochar += _putchar(*(format));
 				break;
 			default:
-				nochar +=  _putchar(*(format - 1));
+				nochar +=  _putchar(*(--format));
 			}
 		}
 		else
