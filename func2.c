@@ -1,8 +1,7 @@
 #include "main.h"
 
-
 /**
- * case_per - case if the character was "%".
+ * case_per - case if the character was %.
  *
  * @f: current character.
  * @fn: next character.
