@@ -99,8 +99,6 @@ int _printf(const char *format, ...)
 			case 'd':
 				nochar += caseInt(va_arg(args, int));
 				break;
-			case '\0':
-				return (-1);
 			default:
 			  nochar +=  _putchar(*format);
 			}
