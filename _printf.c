@@ -11,17 +11,18 @@
  *
  *
 */
-int cases_int(unsigned int *i,const char *format, int num);
-int cases_str(unsigned int *i,const char *format, char *s);
-int cases_char(unsigned int *i,const char *format, char c);
-int case_per(unsigned int *i,const char *format);
+void cases_int(unsigned int *i,const char *format, int num, unsigned int per);
+void cases_str(unsigned int *i,const char *format, char *s, unsigned int per);
+void cases_char(unsigned int *i,const char *format, char c, unsigned int per);
+void case_per(unsigned int *i,const char *format, unsigned int per);
 
-int n = 0, per = 0;
+int n = 0;
 int _printf(const char *format, ...)
 {
-	unsigned int i = 0;
+	unsigned int i = 0, per = 0;
 	va_list args;
 	char c;
+	int num;
 
 	if (!format || !format[0])
 		return (0);
@@ -32,26 +33,31 @@ int _printf(const char *format, ...)
 		switch (format[i])
 		{
 			case '%':
-				case_per(&i, format);
-				continue;
+				per++;
+				case_per(&i, format, per);
+				break;
 
 			case 'c':
 				c = va_arg(args, int);
-				cases_char(&i, format, c);
-				continue;
+				cases_char(&i, format, c, per);
+				per = 0;
+				break;
 
 			case 's':
-				cases_str(&i, format, va_arg(args, char *));
-				continue;
+				cases_str(&i, format, va_arg(args, char *), per);
+				per = 0;
+				break;
 
 			case 'i':
 			case 'd':
-				cases_int(&i, format, va_arg(args, int));
-				continue;
+				num = va_arg(args, int);
+				cases_int(&i, format, num, per);
+				per = 0;
+				break;
 
 			default:
-				per = 0;
 				n += _putchar(format[i]);
+				per = 0;
 		}
 		i++;
 	}
@@ -59,64 +65,53 @@ int _printf(const char *format, ...)
 	return (n);
 }
 
-int case_per(unsigned int *i,const char *format)
+void case_per(unsigned int *i,const char *format, unsigned int per)
 {
-	per++;
-	if (per % 2)
+	char *str = "idsc";
+	int j = 0, next = 0;
+	unsigned int k = *i;
+
+	while (str[j])
 	{
-		(*i)++;
-		return (0);
+		if (format[k + 1] == str[j])
+			next = 1;
+		j++;
 	}
-	if (!(per % 2))
+	
+
+	if (per % 2 && next == 0)
 	{
 		n += _putchar(format[*i]);
-		(*i)++;
-		per = 0;
+		return;
 	}
-	return (1);
+
+	if ((per % 2 && next == 1) || !(per % 2))
+	{
+		return;
+	}
+	
 }
 
-int cases_int(unsigned int *i,const char *format, int num)
+void cases_int(unsigned int *i,const char *format, int num, unsigned int per)
 {
 	if (per % 2)
-	{
-		per = 0;
-		(*i)++;
 		n += print_number(num);
-		return (0);
-	}
 	else
 		n += _putchar(format[*i]);
-	(*i)++;
-	per = 0;
-	return (1);
 }
 
-int cases_str(unsigned int *i,const char *format, char *str)
+void cases_str(unsigned int *i,const char *format, char *str, unsigned int per)
 {
 	if (per % 2)
-	{
-		(*i)++;
 		n += _puts(str);
-		return (0);
-	}
-	n += _putchar(format[*i]);
-	(*i)++;
-	per = 0;
-	return (1);
+	else
+		n += _putchar(format[*i]);
 }
 
-int cases_char(unsigned int *i,const char *format, char c)
+void cases_char(unsigned int *i,const char *format, char c, unsigned int per)
 {
 	if (per % 2)
-	{
-		per = 0;
-		(*i)++;
 		n += _putchar(c);
-		return (0);
-	}
-	n += _putchar(format[*i]);
-	(*i)++;
-	per = 0;
-	return (1);
+	else
+		n += _putchar(format[*i]);
 }
