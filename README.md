@@ -8,6 +8,7 @@ Write a function that produces output according to a format.
 t                                                                                   
 Handle the following conversion specifiers:
 
+2. With a face like mine, I do better in print                                      Handle the following custom conversion specifiers:
 
 ## this repo contains the following files
 
