@@ -54,7 +54,7 @@ int caseaddr(va_list args)
 }
 
 /**
- * caseaddr - prints a ptr address number to stdout.
+ * caseSTR - prints the non printaable characters as a hexadecimal value.
  * @args: list of variadic function arguments.
  * Return: length of printed address number.
  *
@@ -80,7 +80,7 @@ int caseSTR(va_list args)
 			{
 				len += _putchar('0');
 			}
-			
+
 			len += intoHEX(s[i]);
 		}
 		else
