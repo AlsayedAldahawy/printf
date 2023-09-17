@@ -22,25 +22,107 @@ int intobin(unsigned int x)
 {
 	int len = 0;
 
-	if (x == 0)
+	if (x / 2 == 0)
 	{
-		len += _putchar('0');
-	}
-	else if (x == 1)
-	{
-		len += _putchar('1');
+		len += _putchar((x % 2) + '0');
 	}
 	else
 	{
-		if (x % 2)
+		len += intobin(x / 2);
+		len += _putchar((x % 2) + '0');
+	}
+	return (len);
+}
+
+/**
+ * intoct - converts an unsigned int to octal and prints it.
+ * @x: int to be converted and printed.
+ * Return: length of octal number.
+ *
+*/
+int intoct(unsigned int x)
+{
+	int len = 0;
+
+	if (x / 8 == 0)
+	{
+		len += _putchar((x % 8) + '0');
+	}
+	else
+	{
+		len += intoct(x / 8);
+		len += _putchar((x % 8) + '0');
+	}
+	return (len);
+}
+
+/**
+ * intohex - converts an unsigned int to hexadecimal and prints it.
+ * @x: int to be converted and printed.
+ * Return: length of hexadecimal number.
+ *
+*/
+int intohex(unsigned int x)
+{
+	int len = 0;
+
+	if (x / 16 == 0)
+	{
+		if (x % 16 <= 9)
 		{
-			len += intobin(x / 2);
-			len += _putchar('1');
+			len += _putchar((x % 16) + '0');
 		}
 		else
 		{
-			len += intobin(x / 2);
-			len += _putchar('0');
+			len += _putchar((x % 16) + 87);
+		}
+	}
+	else
+	{
+		len += intohex(x / 16);
+		if (x % 16 <= 9)
+		{
+			len += _putchar((x % 16) + '0');
+		}
+		else
+		{
+			len += _putchar((x % 16) + 87);
+		}
+	}
+	return (len);
+}
+
+/**
+ * intoHEX - converts an unsigned int to HEXADECIMAL and prints it.
+ * @x: int to be converted and printed.
+ * Return: length of HEXADECIMAL number.
+ *
+*/
+int intoHEX(unsigned int x)
+{
+	int len = 0;
+
+	if (x / 16 == 0)
+	{
+		if (x % 16 <= 9)
+		{
+			len += _putchar((x % 16) + '0');
+		}
+		else
+		{
+			len += _putchar((x % 16) + 55);
+		}
+	}
+	else
+	{
+		len += intoHEX(x / 16);
+		if (x % 16 <= 9)
+		{
+			len += _putchar((x % 16) + '0');
+		}
+		else
+		{
+			len += _putchar((x % 16) + 55);
 		}
 	}
 	return (len);

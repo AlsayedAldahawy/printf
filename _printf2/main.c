@@ -17,12 +17,18 @@ int main(void)
     char *s = "";*/
 
     int x = 0;
-    len2 = printf("h[\n%");
-    len = _printf("h[\n%");
+    len2 = printf("h[\n");
+    len = _printf("h[\n");
     while(x < 1)
     {
-        _printf("Length:[%d, %i]\n", len2, len);
-        printf("Length:[%d, %i]\n", len2, len);
+        _printf("bin:[%u, %i]\n", 89596, len2);
+        printf("bin:[%u, %i]\n", 89596, len);
+        _printf("oct:[%o, %o]\n", 89596, len2);
+        printf("oct:[%o, %o]\n", 89596, len);
+        _printf("hex:[%x, %x]\n", 89596, len2);
+        printf("hex:[%x, %x]\n", 89596, len);
+        _printf("HEX:[%X, %X]\n", 89596, len2);
+        printf("HEX:[%X, %X]\n", 89596, len);
         
         x++;
     }

@@ -1,6 +1,5 @@
 #include "main.h"
 #define BUFFER_SIZE 1024
-
 /**
  * _printf - prints a formated text to stdout.
  * @format: format to be followed.
@@ -12,10 +11,10 @@ int _printf(const char *format, ...)
 	unsigned int nochar = 0, i = 0, skip = 0;
 	specifier_t spec[] = {
 	{'b', caseBin},
-	{'s', caseStr},
-	{'i', caseInt},
-	{'d', caseInt},
-	{'c', caseChar}
+	{'s', caseStr}, {'X', caseHEXA},
+	{'i', caseInt}, {'x', casehexa},
+	{'d', caseInt}, {'o', caseOctal},
+	{'c', caseChar}, {'u', caseUnsigned}
 	};
 
 	if (!format)
@@ -29,7 +28,7 @@ int _printf(const char *format, ...)
 			if (*format == '\0')
 				return (-1);
 			skip = 0;
-			for (i = 0; i < 5; i++)
+			for (i = 0; i < 7; i++)
 			{
 				if (*format == spec[i].s)
 				{

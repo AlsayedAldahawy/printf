@@ -14,6 +14,13 @@ int caseInt(va_list args);
 int caseChar(va_list args);
 int intobin(unsigned int x);
 int caseBin(va_list args);
+int caseUnsigned(va_list args);
+int intoct(unsigned int x);
+int caseOctal(va_list args);
+int casehexa(va_list args);
+int intohex(unsigned int x);
+int caseHEXA(va_list args);
+int intoHEX(unsigned int x);
 
 /**
  * struct specifiers - used to define the function corresponding to

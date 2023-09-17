@@ -84,3 +84,30 @@ int caseBin(va_list args)
 
 	return (intobin(x));
 }
+
+/**
+ * caseUnsigned - prints an unsigned number to stdout.
+ * @args: list of variadic function arguments.
+ * Return: length of printed unsigned int.
+ *
+*/
+int caseUnsigned(va_list args)
+{
+	unsigned int num = va_arg(args, unsigned int);
+	unsigned int i, nOfChar = 0;
+	int digit;
+	int start_digit = 0;
+
+	for (i = 1000000000; i >= 1 ; i = i / 10)
+	{
+
+		if ((num / i == 0) && (start_digit == 0) && (i != 1))
+			continue;
+
+		digit = (num / i) % 10;
+		_putchar(digit + '0');
+		nOfChar++;
+		start_digit = 1;
+	}
+	return (nOfChar);
+}
