@@ -17,12 +17,12 @@ int main(void)
     char *s = "";*/
 
     int x = 1;
-    len2 = printf("%]\n");
-    len = _printf("%]\n");
-    while(x < 32)
+    len2 = printf("%S\n", "\t\n");
+    len = _printf("%S\n", "\t\n");
+    while(x < 2)
     {
-        _printf("HEX:[%S, %X]\n", x, len2);
-        printf("HEX:[%S, %X]\n", x, len);
+        _printf("HEX:[%S, %X]\n","\t" , len);
+        printf("HEX:[%S, %X]\n", "\t", len2);
         
         x++;
     }

@@ -86,9 +86,10 @@ int caseSTR(va_list args)
 		else
 		{
 			write(1, &str[i], 1);
+			len++;
 		}
 		i++;
 	}
-	return (i + len);
+	return (len);
 }
 
