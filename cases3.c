@@ -51,5 +51,5 @@ int caseROT(va_list args)
 			_putchar(str[len]);
 		len++;
 	}
-	return (--len);
+	return (len);
 }
