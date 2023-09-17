@@ -17,8 +17,8 @@ int main(void)
     char *s = "";*/
 
     int x = 0;
-    len2 = printf("h[\n");
-    len = _printf("h[\n");
+    len2 = printf("%]\n");
+    len = _printf("%]\n");
     while(x < 1)
     {
         _printf("bin:[%u, %i]\n", 89596, len2);
