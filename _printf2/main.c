@@ -10,19 +10,20 @@
  */
 int main(void)
 {
-    int len;
-    int len2;/* n1 = -700;
+    long int len = 0xffffffffff;
+    long int len2 = 0xffffffffff;/* n1 = -700;
     char c = 'x', c2 = 'y', *c3 = "asbd";
     char c0 = '\n';
     char *s = "";*/
 
     int x = 1;
-    len2 = printf("%S\n", "\t\n");
-    len = _printf("%S\n", "\t\n");
+    /*len2 = printf("%S\n", "\t\n");
+    len = _printf("%S\n", "\t\n");*/
     while(x < 2)
     {
-        _printf("HEX:[%S, %X]\n","\t" , len);
-        printf("HEX:[%S, %X]\n", "\t", len2);
+         printf("HEX:[%s, %p]\n", "\t", len);
+        _printf("HEX:[%s, %p]\n", "\t", len2);
+       
         
         x++;
     }

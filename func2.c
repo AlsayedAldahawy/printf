@@ -62,7 +62,7 @@ int intoct(unsigned int x)
  * Return: length of hexadecimal number.
  *
 */
-int intohex(unsigned int x)
+int intohex(unsigned long int x)
 {
 	int len = 0;
 
@@ -98,7 +98,7 @@ int intohex(unsigned int x)
  * Return: length of HEXADECIMAL number.
  *
 */
-int intoHEX(unsigned int x)
+int intoHEX(unsigned long int x)
 {
 	int len = 0;
 

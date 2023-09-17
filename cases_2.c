@@ -22,7 +22,7 @@ int caseOctal(va_list args)
 */
 int casehexa(va_list args)
 {
-	unsigned int x = va_arg(args, unsigned int);
+	unsigned long int x = va_arg(args, unsigned int);
 
 	return (intohex(x));
 }
@@ -35,7 +35,7 @@ int casehexa(va_list args)
 */
 int caseHEXA(va_list args)
 {
-	unsigned int x = va_arg(args, unsigned int);
+	unsigned long int x = va_arg(args, unsigned int);
 
 	return (intoHEX(x));
 }
@@ -48,9 +48,26 @@ int caseHEXA(va_list args)
 */
 int caseaddr(va_list args)
 {
-	unsigned int x = va_arg(args, int);
+	void *x = va_arg(args, void *);
+	unsigned int len = 0;
+	char *s = "(nill)";
+	unsigned long int ptr;
 
-	return (intoHEX(x));
+	if (x == NULL)
+	{
+		for (len = 0; s[len]; len++)
+		{
+			_putchar(s[len]);
+			return (len);
+		}
+
+	}
+	ptr = (unsigned long int) x;
+
+	len += _putchar('0');
+	len += _putchar('x');
+
+	return (intohex(ptr) + len);
 }
 
 /**

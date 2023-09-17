@@ -18,10 +18,11 @@ int caseUnsigned(va_list args);
 int intoct(unsigned int x);
 int caseOctal(va_list args);
 int casehexa(va_list args);
-int intohex(unsigned int x);
+int intohex(unsigned long int x);
 int caseHEXA(va_list args);
-int intoHEX(unsigned int x);
+int intoHEX(unsigned long int x);
 int caseSTR(va_list args);
+int caseaddr(va_list args);
 /**
  * struct specifiers - used to define the function corresponding to
  * the specifier.
