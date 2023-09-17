@@ -9,7 +9,7 @@
 int caseRev(va_list args)
 {
 	char *str = va_arg(args, char *);
-	long int len = 0, j = 0;
+	int len = 0, j = 0;
 
 	for (len = 0; str[len]; len++)
 		;
