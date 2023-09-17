@@ -71,6 +71,40 @@ int caseInt(int num)
 }
 
 /**
+ * caseBin - prints a binary number to stdout.
+ * @x: number to be converted and printed.
+ * Return: length of printed binary number.
+ *
+*/
+
+int caseBin(unsigned int x)
+{
+	int len = 0;
+
+	if (x == 0)
+	{
+		len += _putchar('0');
+	}
+	else if (x == 1)
+	{
+		len += _putchar('1');
+	}
+	else
+	{
+		if (x % 2)
+		{
+			len += caseBin(x / 2);
+			len += _putchar('1');
+		}
+		else
+		{
+			len += caseBin(x / 2);
+			len += _putchar('0');
+		}
+	}
+	return (len);
+}
+/**
  * _printf - prints a formated text to stdout.
  * @format: format to be followed.
  * Return: length of printed text.
@@ -79,7 +113,6 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	unsigned int nochar = 0;
-	char c;
 
 	if (!format)
 		return (-1);
@@ -92,8 +125,7 @@ int _printf(const char *format, ...)
 			switch (*format)
 			{
 			case 'c':
-				c = va_arg(args, int);
-				nochar += _putchar(c);
+				nochar += _putchar(va_arg(args, int));
 				break;
 			case 's':
 				nochar += caseStr(va_arg(args, char *));
@@ -106,6 +138,9 @@ int _printf(const char *format, ...)
 				return (-1);
 			case '%':
 				nochar += _putchar(*(format));
+				break;
+			case 'b':
+				nochar += caseBin(va_arg(args, unsigned int));
 				break;
 			default:
 				nochar +=  _putchar(*(--format));
