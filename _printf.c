@@ -10,7 +10,7 @@ int _printf(const char *format, ...)
 	va_list args;
 	unsigned int nochar = 0, i = 0, skip = 0;
 	specifier_t spec[] = {
-	{'b', caseBin},
+	{'b', caseBin}, {'S', caseSTR},
 	{'s', caseStr}, {'X', caseHEXA},
 	{'i', caseInt}, {'x', casehexa},
 	{'d', caseInt}, {'o', caseOctal},
@@ -28,7 +28,7 @@ int _printf(const char *format, ...)
 			if (*format == '\0')
 				return (-1);
 			skip = 0;
-			for (i = 0; i < 9; i++)
+			for (i = 0; i < 10; i++)
 			{
 				if (*format == spec[i].s)
 				{

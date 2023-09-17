@@ -29,6 +29,8 @@ int main(void)
         printf("hex:[%x, %x]\n", 89596, len);
         _printf("HEX:[%X, %X]\n", 89596, len2);
         printf("HEX:[%X, %X]\n", 89596, len);
+        _printf("HEX:[%S, %X]\n", "hama\nda\t", len2);
+        printf("HEX:[%S, %X]\n", "hama\nda\t", len);
         
         x++;
     }
