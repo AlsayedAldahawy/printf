@@ -13,7 +13,7 @@ int caseRev(va_list args)
 
 	for (len = 0; str[len]; len++)
 		;
-	j = --len;
+	j = len - 1;
 	while (j >= 0)
 	{
 		_putchar(str[j]);
