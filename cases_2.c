@@ -108,4 +108,3 @@ int caseSTR(va_list args)
 	}
 	return (len);
 }
-

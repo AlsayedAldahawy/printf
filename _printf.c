@@ -1,6 +1,6 @@
 #include "main.h"
 #define BUFFER_SIZE 1024
-#define CASES 11
+#define CASES 12
 /**
  * _printf - prints a formated text to stdout.
  * @format: format to be followed.
@@ -14,7 +14,7 @@ int _printf(const char *format, ...)
 	{'b', caseBin}, {'S', caseSTR},
 	{'s', caseStr}, {'X', caseHEXA},
 	{'i', caseInt}, {'x', casehexa},
-	{'d', caseInt}, {'o', caseOctal},
+	{'d', caseInt}, {'o', caseOctal}, {'r', caseRev},
 	{'c', caseChar}, {'u', caseUnsigned}, {'p', caseaddr},
 	};
 

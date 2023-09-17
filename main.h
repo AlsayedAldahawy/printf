@@ -23,6 +23,7 @@ int caseHEXA(va_list args);
 int intoHEX(unsigned long int x);
 int caseSTR(va_list args);
 int caseaddr(va_list args);
+int caseRev(va_list args);
 /**
  * struct specifiers - used to define the function corresponding to
  * the specifier.
