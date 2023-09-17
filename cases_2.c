@@ -48,9 +48,9 @@ int caseHEXA(va_list args)
 */
 int caseaddr(va_list args)
 {
-	void *x = va_arg(args, void *);
+	void *x = va_arg(args, void*);
 	unsigned int len = 0;
-	char *s = "(nill)";
+	char *s = "(nil)";
 	unsigned long int ptr;
 
 	if (x == NULL)
@@ -58,9 +58,8 @@ int caseaddr(va_list args)
 		for (len = 0; s[len]; len++)
 		{
 			_putchar(s[len]);
-			return (len);
 		}
-
+		return (len);
 	}
 	ptr = (unsigned long int) x;
 

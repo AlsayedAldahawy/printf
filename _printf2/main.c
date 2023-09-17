@@ -10,8 +10,8 @@
  */
 int main(void)
 {
-    long int len = 0xffffffffff;
-    long int len2 = 0xffffffffff;/* n1 = -700;
+    long int len = 0;
+    long int len2 = 0;/* n1 = -700;
     char c = 'x', c2 = 'y', *c3 = "asbd";
     char c0 = '\n';
     char *s = "";*/
