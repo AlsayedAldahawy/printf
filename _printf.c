@@ -13,7 +13,7 @@ int _printf(const char *format, ...)
 	specifier_t spec[] = {
 	{'b', caseBin}, {'S', caseSTR},
 	{'s', caseStr}, {'X', caseHEXA},
-	{'i', caseInt}, {'x', casehexa},
+	{'i', caseInt}, {'x', casehexa}, {'R', caseROT},
 	{'d', caseInt}, {'o', caseOctal}, {'r', caseRev},
 	{'c', caseChar}, {'u', caseUnsigned}, {'p', caseaddr},
 	};
