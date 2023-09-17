@@ -30,10 +30,10 @@ int main(void)
     printf("%  -  d\n", 0);
     while(x < 2)
     {
-        len = _printf("%r\n", "sab");
-        len2 =printf("%i\n", len);
+        len = printf("%R", "Guvf fragrapr vf ergevrirq sebz in_netf!\n"); 
+        len2 = _printf("%R", "Guvf fragrapr vf ergevrirq sebz in_netf!\n"); 
        
-        printf("%i", len2);
+        printf("%i, %d", len2, len);
         x++;
     }
     return (0);

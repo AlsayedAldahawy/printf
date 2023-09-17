@@ -1,6 +1,6 @@
 #include "main.h"
 #define BUFFER_SIZE 1024
-#define CASES 12
+#define CASES 13
 /**
  * _printf - prints a formated text to stdout.
  * @format: format to be followed.

@@ -31,20 +31,24 @@ int caseRev(va_list args)
 int caseROT(va_list args)
 {
 	char *str = va_arg(args, char *);
-	int len = 0, j = 0;
+	int len = 0, j = 0, skip = 0;
 	char rot_1[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	char rot_2[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
-	while (len)
+	while (str[len])
 	{
+		skip = 0;
 		for (j = 0; rot_1[j]; j++)
 		{
 			if (str[len] == rot_1[j])
 			{
-				str[len] = rot_2[j];
+				_putchar(rot_2[j]);
+				skip = 1;
 				break;
 			}
 		}
+		if (!skip)
+			_putchar(str[len]);
 		len++;
 	}
 	return (--len);
