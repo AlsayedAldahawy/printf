@@ -96,9 +96,9 @@ int lhflags(int *nochar, va_list args, const char *format, int *skip)
 		return (1);
 	}
 	if (*format == '%')
-		nochar += _putchar(*(format));
-	else if (!skip)
-		nochar +=  _putchar(*(--format));
+		*nochar += _putchar(*(format));
+	else if (!*skip)
+		*nochar +=  _putchar(*(--format));
 	return (0);
 }
 
