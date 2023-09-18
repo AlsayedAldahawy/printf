@@ -88,6 +88,8 @@ int lhflags(int *nochar, va_list args, const char *f)
 {
 	int c = 0;
 
+	if ((*(f + 1)) == 'X')
+		c = -32;
 	if ((*f == 'l' || *f == 'h') && ((*(f + 1)) == 'd' || (*(f + 1)) == 'i'))
 	{
 		if (*f == 'l')
@@ -98,19 +100,11 @@ int lhflags(int *nochar, va_list args, const char *f)
 	}
 	if (*f == 'l' && ((*(f + 1)) == 'x' || (*(f + 1)) == 'X'))
 	{
-		if ((*(f + 1)) == 'x')
-			c = 0;
-		else if ((*(f + 1)) == 'X')
-			c = -32;
 		*nochar += printlongHex(args, c);
 		return (1);
 	}
 	if (*f == 'h' && ((*(f + 1)) == 'x' || (*(f + 1)) == 'X'))
 	{
-		if ((*(f + 1)) == 'x')
-			c = 0;
-		else if ((*(f + 1)) == 'X')
-			c = -32;
 		*nochar += printshortHex(args, c);
 		return (1);
 	}
@@ -122,14 +116,12 @@ int lhflags(int *nochar, va_list args, const char *f)
 			*nochar += printlongoct(args);
 		return (1);
 	}
-	if (*f == 'l' && ((*(f + 1)) == 'u'))
+	if ((*f == 'h' || *f == 'l') && ((*(f + 1)) == 'u'))
 	{
-		*nochar += printlongunsi(args);
-		return (1);
-	}
-	if (*f == 'h' && ((*(f + 1)) == 'u'))
-	{
-		*nochar += printshrtunsi(args);
+		if (*f == 'h')
+			*nochar += printshrtunsi(args);
+		else
+			*nochar += printlongunsi(args);
 		return (1);
 	}
 	return (0);
