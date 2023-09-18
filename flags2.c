@@ -76,3 +76,48 @@ int printshortHex(va_list args, int c)
 	return (len);
 }
 
+/**
+ * printshortoct - prints long hex.
+ * @args: va_list
+ * Return: no of characters printed.
+*/
+
+int printshortoct(va_list args)
+{
+	short int x = va_arg(args, int);
+	int len = 0;
+
+	if (x / 8 == 0)
+	{
+		len += _putchar((x % 8) + '0');
+	}
+	else
+	{
+		len += intoct(x / 8);
+		len += _putchar((x % 8) + '0');
+	}
+	return (len);
+}
+
+/**
+ * printlongoct - prints long hex.
+ * @args: va_list
+ * Return: no of characters printed.
+*/
+
+int printlongoct(va_list args)
+{
+	long int x = va_arg(args, long int);
+	int len = 0;
+
+	if (x / 8 == 0)
+	{
+		len += _putchar((x % 8) + '0');
+	}
+	else
+	{
+		len += intoct(x / 8);
+		len += _putchar((x % 8) + '0');
+	}
+	return (len);
+}

@@ -32,8 +32,8 @@ int main(void)
     printf("m:%d\no:%d\n", len, len2);
 
 
-    len = _printf("lx:%lX[].\n", 15);
-    len2 = printf("lx:%lX[].\n", 15);
+    len = _printf("lo:%lo[].\n", 15);
+    len2 = printf("lo:%lo[].\n", 15);
 
     _printf("m:%d\no:%d\n", len, len2);
     printf("m:%d\no:%d\n", len, len2);

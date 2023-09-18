@@ -121,6 +121,16 @@ int lhflags(int *nochar, va_list args, const char *format)
 		*nochar += printshortHex(args, c);
 		return (1);
 	}
+	if (*format == 'h' && ((*(format + 1)) == 'o'))
+	{
+		*nochar += printshortoct(args);
+		return (1);
+	}
+	if (*format == 'l' && ((*(format + 1)) == 'o'))
+	{
+		*nochar += printlongoct(args);
+		return (1);
+	}
 	
 	return (0);
 }
