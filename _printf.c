@@ -80,10 +80,9 @@ int flagselector(const char *format, int *flg_indx, char flag[], int *nochar)
  * @format: format string
  * @nochar: number of characters.
  * @args: va_list
- * @skip: skip variable
  * Return: go_to: define which label should go to.
 */
-int lhflags(int *nochar, va_list args, const char *format, int *skip)
+int lhflags(int *nochar, va_list args, const char *format)
 {
 	if (*format == 'l' && ((*(format + 1)) == 'd' || (*(format + 1)) == 'i'))
 	{
@@ -95,10 +94,6 @@ int lhflags(int *nochar, va_list args, const char *format, int *skip)
 		*nochar += printshort(args);
 		return (1);
 	}
-	if (*format == '%')
-		*nochar += _putchar(*(format));
-	else if (!*skip)
-		*nochar +=  _putchar(*(--format));
 	return (0);
 }
 
@@ -145,11 +140,13 @@ FLAGLOOP:
 				format++;
 				goto MAINLOOP;
 			}
-			if (lhflags(&nochar, args, format, &skip))
+			if (lhflags(&nochar, args, format))
 			{
 				format += 2;
 				goto MAINLOOP;
 			}
+			(*format == '%') ? (nochar += _putchar(*(format))) :
+				((!skip)) ? (nochar +=  _putchar(*(--format))) : (nochar *= 1);
 		}
 		else
 			nochar +=  _putchar(*format);
