@@ -40,6 +40,11 @@ int printshortoct(va_list args);
 int printlongoct(va_list args);
 int printshrtunsi(va_list args);
 int printlongunsi(va_list args);
+int caseselector(va_list args, char sp, int *flg_indx, int *n, char flag[]);
+int flagselector(const char *format, int *flg_indx, char flag[], int *nochar);
+int lhflags(int *nochar, va_list args, const char *format);
+void setvariables(int *skip, int *go_to);
+
 /*int flagspace(char const *format);*/
 /**
  * struct specifiers - used to define the function corresponding to

@@ -123,9 +123,8 @@ int printlongoct(va_list args)
 }
 
 /**
- * caseUnsigned - prints an unsigned number to stdout.
+ * printlongunsi - prints an unsigned number to stdout.
  * @args: list of variadic function arguments.
- * @flag: flags
  * Return: length of printed unsigned int.
  *
 */
@@ -137,34 +136,6 @@ int printlongunsi(va_list args)
 	int start_digit = 0;
 
 	for (i = 1000000000000000000; i >= 1 ; i = i / 10)
-	{
-
-		if ((num / i == 0) && (start_digit == 0) && (i != 1))
-			continue;
-
-		digit = (num / i) % 10;
-		_putchar(digit + '0');
-		nOfChar++;
-		start_digit = 1;
-	}
-	return (nOfChar);
-}
-
-/**
- * caseUnsigned - prints an unsigned number to stdout.
- * @args: list of variadic function arguments.
- * @flag: flags
- * Return: length of printed unsigned int.
- *
-*/
-int printshrtunsi(va_list args)
-{
-	unsigned short int num = va_arg(args, unsigned int);
-	unsigned short int i, nOfChar = 0;
-	int digit;
-	int start_digit = 0;
-
-	for (i = 10000; i >= 1 ; i = i / 10)
 	{
 
 		if ((num / i == 0) && (start_digit == 0) && (i != 1))
