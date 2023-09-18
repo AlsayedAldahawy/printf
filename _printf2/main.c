@@ -13,7 +13,25 @@ int main(void)
     int len;
     int len2;
 
-    len = _printf("Let's try to printf a simple sentence.\n");
+    len = _printf("%+%d.\n", 5);
+    len2 = printf("%+%d.\n", 5);
+
+    _printf("m:%d\no:%d\n", len, len2);
+    printf("m:%d\no:%d\n", len, len2);
+
+    len = _printf("%++d.\n", 5);
+    len2 = printf("%++d.\n", 5);
+
+    _printf("m:%d\no:%d\n", len, len2);
+    printf("m:%d\no:%d\n", len, len2);
+
+    len = _printf("%++[].\n", 5);
+    len2 = printf("%++[].\n", 5);
+
+    _printf("m:%d\no:%d\n", len, len2);
+    printf("m:%d\no:%d\n", len, len2);
+
+    /*len = _printf("Let's try to printf a simple sentence.\n");
     len2 = printf("Let's try to printf a simple sentence.\n");
 
     _printf("m:%d\no:%d\n", len, len2);
@@ -77,7 +95,7 @@ int main(void)
    len = _printf("String:[%s %s]\n", "I am a string !", "second string !");
     len2 = printf("String:[%s %s]\n", "I am a string !", "second string !");
     _printf("m:%d\no:%d\n", len, len2);
-    printf("m:%d\no:%d\n", len, len2);
+    printf("m:%d\no:%d\n", len, len2);*/
 
     return (0);
 }

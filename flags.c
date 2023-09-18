@@ -25,7 +25,7 @@ int flagplus(char const *format)
 		}
 		if (*(format + 1) == '%')
 		{
-			return (1);
+			return (0);
 		}
 	}
 	nochar += _putchar('%');
