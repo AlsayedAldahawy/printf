@@ -32,6 +32,8 @@ int flag_finder(char f, char flag[]);
 void flag_eraser(char flag[]);
 int flaghash(char const *format);
 int flagplus(char const *format);
+int printlong(va_list args);
+int printshort(va_list args);
 /*int flagspace(char const *format);*/
 /**
  * struct specifiers - used to define the function corresponding to

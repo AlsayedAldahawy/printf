@@ -17,7 +17,7 @@ int main(void)
     char c = 'x', c2 = 'y', *c3 = "asbd";
     char c0 = '\n';
     char *s = "";*/
-
+    short int shrt = 8595;
     unsigned int x = 145;
     len2 = printf("%[] \n");
     len = _printf("%[] \n");
@@ -33,10 +33,10 @@ int main(void)
             printf("ori: %d\n", len); 
         _printf("mine: %d\n", len2); 
     printf("--------------------------------------------\n");
-    len = printf("o: %++++++");
+    len = printf("oerror: %++++++");
      printf("\n");
 
-    len2 = _printf("m: %++++++");
+    len2 = _printf("merror: %++++++");
     printf("\n");
          printf("orig: %   ++#+   +d\n", 17); 
         _printf("mine: %   ++#+   +d\n", 17); 
@@ -55,9 +55,17 @@ int main(void)
         _printf("mine Hex: %#x\n", 18); 
       len =  printf("ori oct: %#o\n", 18); 
        len2 =  _printf("mine oct: %#o\n", 18); 
-       printf("%+% d, %+u\n", 8, 7);
-       _printf("%+% d, %+u\n", 8, 7);
+       printf("% i, %+u\n", -8, 7);
+       _printf("% i, %+u\n", -8, 7);
       printf("%d, %d\n", len, len2);
+      printf("%ld\n", 1024); 
+    printf("%ld\n", -1024555555555555L); 
+      _printf("%ld\n", 1024L); 
+    _printf("%ld\n", -1024555555555555L); 
+    printf("shrt: %hd\n", shrt); 
+    printf("%hd\n", -1024555555555555L); 
+      _printf("shrt: %hd\n", shrt); 
+    _printf("%hd\n", -1024555555555555L); 
         x++;
     }
     _printf("m: %b", 99);

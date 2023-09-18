@@ -42,12 +42,12 @@ int caseselector(va_list args, char sp, int *flg_indx, int *n, char flag[])
  * @flag: flag array contains the flags the occured.
  * Return: go_to: define which label should go to.
 */
-int flagselector(const char *format, int *flg_indx, char flag[])
+int flagselector(const char *format, int *flg_indx, char flag[], int *nochar)
 {
 	flags_t fgs[] = {
 	{'#', flaghash},
 	{'+', flagplus},
-	{' ', flagplus}
+	{' ', flagplus},
 	};
 	int i = 0, go_to = 0;
 
@@ -55,20 +55,58 @@ int flagselector(const char *format, int *flg_indx, char flag[])
 	{
 		if (*format == fgs[i].s)
 		{
-			flag[*flg_indx++] = *format;
-			if (!fgs[i].f(format) || fgs[i].f(format) == 1)
+			flag[*flg_indx] = *format;
+			(*flg_indx)++;
+			if (!fgs[i].f(format))
 			{
 				go_to = 1;
 				break;
 			}
 			else
 			{
+				*flg_indx = 0;
+				*nochar += 2;
 				go_to = 2;
 				break;
 			}
 		}
 	}
 	return (go_to);
+}
+
+/**
+ * lhflags - handles the l and h flags.
+ * @format: format string
+ * @nochar: number of characters.
+ * @args: va_list
+ * Return: go_to: define which label should go to.
+*/
+int lhflags(int *nochar, va_list args, const char *format)
+{
+	if (*format == 'l' && ((*(format + 1)) == 'd' || (*(format + 1)) == 'i'))
+	{
+		*nochar += printlong(args);
+		return (1);
+	}
+	if (*format == 'h' && ((*(format + 1)) == 'd' || (*(format + 1)) == 'i'))
+	{
+		*nochar += printshort(args);
+		return (1);
+	}
+	if (*format == '%')
+		nochar += _putchar(*(format));
+	return (0);
+}
+
+/**
+ * setvariables - set variables to 0.
+ * @skip: to be set
+ * @go_to: to be set
+*/
+void setvariables(int *skip, int *go_to)
+{
+	*skip = 0;
+	*go_to = 0;
 }
 /**
  * _printf - prints a formated text to stdout.
@@ -93,20 +131,21 @@ FLAGLOOP:
 			format++;
 			if (*format == '\0')
 				return (-1);
-			skip = 0;
+			setvariables(&skip, &go_to);
 			skip = caseselector(args, *format, &flg_indx, &nochar, flag);
-			go_to = flagselector(format, &flg_indx, flag);
+			go_to = flagselector(format, &flg_indx, flag, &nochar);
 			if (go_to == 1)
 				goto FLAGLOOP;
 			else if (go_to == 2)
 			{
-				flg_indx = 0;
 				format++;
-				nochar += 2;
 				goto MAINLOOP;
 			}
-			if (*format == '%')
-				nochar += _putchar(*(format));
+			if (lhflags(&nochar, args, format))
+			{
+				format += 2;
+				goto MAINLOOP;
+			}
 			else if (!skip)
 				nochar +=  _putchar(*(--format));
 		}

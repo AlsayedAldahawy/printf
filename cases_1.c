@@ -36,7 +36,8 @@ int caseStr(va_list args, __attribute__ ((unused)) char flag[])
 int caseInt(va_list args, char flag[])
 {
 	unsigned int i, nOfChar = 0;
-	int digit, num = va_arg(args, int);
+	int digit;
+	int num = va_arg(args, int);
 	int start_digit = 0;
 
 	if (num < 0)

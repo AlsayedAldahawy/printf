@@ -38,3 +38,4 @@ void flag_eraser(char flag[])
 		i++;
 	}
 }
+
