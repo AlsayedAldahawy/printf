@@ -108,25 +108,13 @@ int caseBin(va_list args, __attribute__ ((unused)) char flag[])
  * Return: length of printed unsigned int.
  *
 */
-int caseUnsigned(va_list args, char flag[])
+int caseUnsigned(va_list args, __attribute__ ((unused)) char flag[])
 {
 	unsigned int num = va_arg(args, unsigned int);
 	unsigned int i, nOfChar = 0;
 	int digit;
 	int start_digit = 0;
 
-	if (flag_finder('+', flag))
-	{
-		_putchar('+');
-		nOfChar++;
-	}
-	else if (flag_finder(' ', flag))
-	{
-		_putchar(' ');
-		nOfChar++;
-	}
-
-	flag_eraser(flag);
 	for (i = 1000000000; i >= 1 ; i = i / 10)
 	{
 

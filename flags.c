@@ -42,7 +42,7 @@ int flagplus(char const *format)
  */
 int flaghash(char const *format)
 {
-	char fnext[8] = {'X', 'o', 'x', 'c', ' ', '+', '#', '\0'};
+	char fnext[9] = {'X', 'o', 'x', 'u', 'c', ' ', '+', '#', '\0'};
 	int i, nochar = 0;
 
 	for (i = 0; i < 7; i++)
