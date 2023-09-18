@@ -147,7 +147,7 @@ FLAGLOOP:
 				format += 2;
 				goto MAINLOOP;
 			}
-			else if (!skip)
+			if (!skip)
 				nochar +=  _putchar(*(--format));
 		}
 		else
