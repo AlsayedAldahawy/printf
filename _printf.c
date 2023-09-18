@@ -87,6 +87,7 @@ int flagselector(const char *format, int *flg_indx, char flag[], int *nochar)
 */
 int lhflags(int *nochar, va_list args, const char *format)
 {
+	int c = 0;
 	if (*format == 'l' && ((*(format + 1)) == 'd' || (*(format + 1)) == 'i'))
 	{
 		*nochar += printlong(args);
@@ -95,6 +96,17 @@ int lhflags(int *nochar, va_list args, const char *format)
 	if (*format == 'h' && ((*(format + 1)) == 'd' || (*(format + 1)) == 'i'))
 	{
 		*nochar += printshort(args);
+		return (1);
+	}
+	if (*format == 'l' && ((*(format + 1)) == 'x' || (*(format + 1)) == 'X'))
+	{	
+		if ((*(format + 1)) == 'x')
+			c = 0;
+		else if ((*(format + 1)) == 'X')
+		{
+			c = -32;
+		}
+		*nochar += printlongHex(args, c);
 		return (1);
 	}
 	return (0);

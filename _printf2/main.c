@@ -31,6 +31,13 @@ int main(void)
     _printf("m:%d\no:%d\n", len, len2);
     printf("m:%d\no:%d\n", len, len2);
 
+
+    len = _printf("lx:%lX[].\n", 15);
+    len2 = printf("lx:%lX[].\n", 15);
+
+    _printf("m:%d\no:%d\n", len, len2);
+    printf("m:%d\no:%d\n", len, len2);
+
     /*len = _printf("Let's try to printf a simple sentence.\n");
     len2 = printf("Let's try to printf a simple sentence.\n");
 
