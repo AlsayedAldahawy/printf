@@ -38,6 +38,7 @@ int caseselector(va_list args, char sp, int *flg_indx, int *n, char flag[])
 /**
  * flagselector - select the flag case according to the format character.
  * @format: format string
+ * @nochar: number of characters.
  * @flg_indx: index of the flag array, passed by reference to be reset to 0.
  * @flag: flag array contains the flags the occured.
  * Return: go_to: define which label should go to.
