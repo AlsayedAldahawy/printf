@@ -43,7 +43,8 @@ int intobin(unsigned int x)
 int intoct(unsigned int x)
 {
 	int len = 0;
-
+	if (x == 0)
+		return (0);
 	if (x / 8 == 0)
 	{
 		len += _putchar((x % 8) + '0');

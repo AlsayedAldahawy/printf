@@ -38,277 +38,266 @@ int main(void)
     _printf("m:%d\no:%d\n", len, len2);
     printf("m:%d\no:%d\n", len, len2);
 
-    /*len = _printf("Let's try to printf a simple sentence.\n");
+    len = _printf("Let's try to printf a simple sentence.\n");
     len2 = printf("Let's try to printf a simple sentence.\n");
-  ///////////////////////////////////////////////////////////////
-  Files: main_0.c
+  _printf("Let's try to printf a simple sentence.\n\n\n");
 
-Correct output - case: _printf("%+d", 1024);
+ _printf("%+d", 1024);
+ printf("\n");
+ printf("%+d", 1024);
+ printf("\n\n");
 
-Score: 1 out of 1 points
+_printf("%+d", -1024);
+printf("\n");
+printf("%+d", -1024);
+printf("\n\n");
+_printf("%+d", 0);
+printf("\n");
+printf("%+d", 0);
+printf("\n\n");
 
-Files: main_0.c
+ _printf("%+d", INT_MAX);
+ printf("\n");
+ _printf("%+d", INT_MAX);
+ printf("\n\n");
 
-Correct output - case: _printf("%+d", -1024);
+_printf("%+d", INT_MIN);
+printf("\n");
+printf("%+d", INT_MIN);
+printf("\n\n");
 
-Score: 2 out of 2 points
+/*
+printf("%+d", INT_MAX + 1024);
+printf("\n");
+_printf("%+d", INT_MAX + 1024);
+printf("\n\n");
 
-Files: main_1.c
+printf("%+d", INT_MIN - 1024);
+printf("\n");
+_printf("%+d", INT_MIN - 1024);
+printf("\n\n");*/
 
-Correct output - case: _printf("%+d", 0);
+len = printf("There is %+d bytes in %+d KB\n", 1024, 1);
+printf("\n");
+ len2 = _printf("There is %+d bytes in %+d KB\n", 1024, 1);
+ printf("\n");
 
-Score: 2 out of 2 points
+printf("len1:%d \n", len);
+printf("len2:%d \n", len2);
+printf("\n");
+printf("\n");
 
-Files: main_2.c
+_printf("%+d - %+d = %+d\n", 1024, 2048, -1024);
+printf("\n");
+printf("%+d - %+d = %+d\n", 1024, 2048, -1024);
+printf("\n");
+printf("\n");
 
-Correct output - case: _printf("%+d", INT_MAX);
+_printf("%+d + %+d = %+d\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
+printf("\n");
+printf("%+d + %+d = %+d\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
+printf("\n");
+printf("\n");
 
-Score: 2 out of 2 points
+_printf("%+i", 1024);
+printf("\n");
+printf("%+i", 1024);
+printf("\n");
+printf("\n");
 
-Files: main_3.c
+_printf("%+i", -1024);
+printf("\n");
 
-Correct output - case: _printf("%+d", INT_MIN);
+printf("%+i", -1024);
+printf("\n");
+printf("\n");
 
-Score: 2 out of 2 points
+_printf("%+i", 0);
+printf("\n");
 
-Files: main_4.c
+printf("%+i", 0);
+printf("\n");
+printf("\n");
 
-Correct output - case: _printf("%+d", l); where l is a long int equals to INT_MAX + 1024
 
-Score: 2 out of 2 points
 
-Files: main_5.c
+_printf("%+i", INT_MAX);
+printf("\n");
 
-Correct output - case: _printf("%+d", l); where l is a long int equals to INT_MIN - 1024
+_printf("%+i", INT_MAX);
+printf("\n");
+printf("\n");
 
-Score: 2 out of 2 points
 
-Files: main_6.c
+_printf("%+i", INT_MIN);
+printf("\n");
 
-Correct output - case: _printf("There is %+d bytes in %+d KB\n", 1024, 1);
+_printf("%+i", INT_MIN);
+printf("\n");
+printf("\n");
 
-Score: 2 out of 2 points
 
-Files: main_7.c
 
-Correct output - case: _printf("%+d - %+d = %+d\n", 1024, 2048, -1024);
 
-Score: 2 out of 2 points
 
-Files: main_8.c
+_printf("There is %+i bytes in %+i KB\n", 1024, 1);
+printf("\n");
 
-Correct output - case: _printf("%+d + %+d = %+d\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
+printf("There is %+i bytes in %+i KB\n", 1024, 1);
+printf("\n");
+printf("\n");
 
-Score: 2 out of 2 points
+_printf("%+i - %+i = %+i\n", 1024, 2048, -1024);
+printf("\n");
 
-Files: main_9.c
+printf("%+i - %+i = %+i\n", 1024, 2048, -1024);
+printf("\n");
+printf("\n");
 
-Correct output - case: _printf("%+i", 1024);
+_printf("%+i + %+i = %+i\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
+printf("\n");
 
-Score: 2 out of 2 points
+printf("%+i + %+i = %+i\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
+printf("\n");
+printf("\n");
 
-Files: main_10.c
+_printf("% d", 1024);
+printf("\n");
 
-Correct output - case: _printf("%+i", -1024);
+printf("% d", 1024);
+printf("\n");
+printf("\n");
 
-Score: 2 out of 2 points
-
-Files: main_11.c
-
-Correct output - case: _printf("%+i", 0);
-
-Score: 2 out of 2 points
-
-Files: main_12.c
-
-Correct output - case: _printf("%+i", INT_MAX);
-
-Score: 2 out of 2 points
-
-Files: main_13.c
-
-Correct output - case: _printf("%+i", INT_MIN);
-
-Score: 2 out of 2 points
-
-Files: main_14.c
-
-Correct output - case: _printf("%+i", l); where l is a long int equals to INT_MAX + 1024
-
-Score: 2 out of 2 points
-
-Files: main_15.c
-
-Correct output - case: _printf("%+i", l); where l is a long int equals to INT_MIN - 1024
-
-Score: 2 out of 2 points
-
-Files: main_16.c
-
-Correct output - case: _printf("There is %+i bytes in %+i KB\n", 1024, 1);
-
-Score: 2 out of 2 points
-
-Files: main_17.c
-
-Correct output - case: _printf("%+i - %+i = %+i\n", 1024, 2048, -1024);
-
-Score: 2 out of 2 points
-
-Files: main_18.c
-
-Correct output - case: _printf("%+i + %+i = %+i\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
-
-Score: 2 out of 2 points
-
-Files: main_19.c
-
-Correct output - case: _printf("% d", 1024);
-
-Score: 2 out of 2 points
-
-Files: main_20.c
-
-Correct output - case: _printf("% d", -1024);
-
-Score: 2 out of 2 points
-
-Files: main_21.c
-
-Correct output - case: _printf("% d", 0);
-
-Score: 2 out of 2 points
-
-Files: main_22.c
-
-Correct output - case: _printf("% d", INT_MAX);
-
-Score: 1 out of 1 points
-
-Files: main_23.c
-
-Correct output - case: _printf("% d", INT_MIN);
-
-Score: 1 out of 1 points
-
-Files: main_24.c
-
-Correct output - case: _printf("% d", l); where l is a long int equals to INT_MAX + 1024
-
-Score: 1 out of 1 points
-
-Files: main_25.c
-
-Correct output - case: _printf("% d", l); where l is a long int equals to INT_MIN - 1024
-
-Score: 1 out of 1 points
-
-Files: main_26.c
-
-Correct output - case: _printf("There is % d bytes in % d KB\n", 1024, 1);
-
-Score: 1 out of 1 points
-
-Files: main_27.c
-
-Correct output - case: _printf("% d - % d = % d\n", 1024, 2048, -1024);
-
-Score: 1 out of 1 points
-
-Files: main_28.c
-
-Correct output - case: _printf("% d + % d = % d\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
-
-Score: 1 out of 1 points
-
-Files: main_29.c
-
-Correct output - case: _printf("% i", 1024);
-
-Score: 1 out of 1 points
-
-Files: main_30.c
-
-Correct output - case: _printf("% i", -1024);
-
-Score: 1 out of 1 points
-
-Files: main_31.c
-
-Correct output - case: _printf("% i", 0);
-
-Score: 1 out of 1 points
-
-Files: main_32.c
-
-Correct output - case: _printf("% i", INT_MAX);
-
-Score: 1 out of 1 points
-
-Files: main_33.c
-
-Correct output - case: _printf("% i", INT_MIN);
-
-Score: 1 out of 1 points
-
-Files: main_34.c
-
-Correct output - case: _printf("% i", l); where l is a long int equals to INT_MAX + 1024
-
-Score: 1 out of 1 points
-
-Files: main_35.c
-
-Correct output - case: _printf("% i", l); where l is a long int equals to INT_MIN - 1024
-
-Score: 1 out of 1 points
-
-Files: main_36.c
-
-Correct output - case: _printf("There is % i bytes in % i KB\n", 1024, 1);
-
-Score: 1 out of 1 points
-
-Files: main_37.c
-
-Correct output - case: _printf("% i - % i = % i\n", 1024, 2048, -1024);
-
-Score: 1 out of 1 points
-
-Files: main_38.c
-
-Correct output - case: _printf("% i + % i = % i\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
-
-Score: 1 out of 1 points
-
-Files: main_39.c
-
-Correct output - case: _printf("% +i + %+ i = % +d\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
-
-Score: 1 out of 1 points
-
-Files: main_40.c
-
-Correct output - case: _printf("% +d + %+ d = % +i\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
-
-Score: 1 out of 1 points
-
-Files: main_41.c
-
-Correct output - case: _printf("%#o", 1024);
-
-Score: 1 out of 1 points
-
-Files: main_42.c
-
-Correct output - case: _printf("%#o", 0);
-
-Score: 1 out of 1 points
-
-Files: main_43.c
-
-Correct output - case: _printf("%#o", UINT_MAX);
-
+_printf("% d", -1024);
+printf("\n");
+
+printf("% d", -1024);
+printf("\n");
+printf("\n");
+
+_printf("% d", 0);
+printf("\n");
+
+printf("% d", 0);
+printf("\n");
+printf("\n");
+
+_printf("% d", INT_MAX);
+printf("\n");
+
+printf("% d", INT_MAX);
+printf("\n");
+printf("\n");
+
+_printf("% d", INT_MIN);
+printf("\n");
+printf("% d", INT_MIN);
+printf("\n");
+printf("\n");
+
+
+
+
+
+_printf("There is % d bytes in % d KB\n", 1024, 1);
+printf("\n");
+printf("There is % d bytes in % d KB\n", 1024, 1);
+printf("\n");
+printf("\n");
+
+_printf("% d - % d = % d\n", 1024, 2048, -1024);
+printf("\n");
+printf("% d - % d = % d\n", 1024, 2048, -1024);
+printf("\n");
+printf("\n");
+
+
+_printf("% d + % d = % d\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
+printf("\n");
+printf("% d + % d = % d\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
+printf("\n");
+printf("\n");
+
+_printf("% i", 1024);
+printf("\n");
+printf("% i", 1024);
+printf("\n");
+printf("\n");
+
+_printf("% i", -1024);
+printf("\n");
+printf("% i", -1024);
+printf("\n");
+printf("\n");
+
+_printf("% i", 0);
+printf("\n");
+printf("% i", 0);
+printf("\n");
+printf("\n");
+
+_printf("% i", INT_MAX);
+printf("\n");
+printf("% i", INT_MAX);
+printf("\n");
+printf("\n");
+
+
+_printf("% i", INT_MIN);
+printf("\n");
+printf("% i", INT_MIN);
+printf("\n");
+printf("\n");
+
+_printf("There is % i bytes in % i KB\n", 1024, 1);
+printf("\n");
+printf("There is % i bytes in % i KB\n", 1024, 1);
+printf("\n");
+printf("\n");
+
+ _printf("% i - % i = % i\n", 1024, 2048, -1024);
+printf("\n");
+printf("% i - % i = % i\n", 1024, 2048, -1024);
+printf("\n");
+printf("\n");
+
+_printf("% i + % i = % i\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
+printf("\n");
+printf("% i + % i = % i\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
+printf("\n");
+printf("\n");
+
+_printf("% +i + %+ i = % +d\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
+printf("\n");
+printf("% +i + %+ i = % +d\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
+printf("\n");
+printf("\n");
+
+_printf("% +d + %+ d = % +i\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
+printf("\n");
+printf("% +d + %+ d = % +i\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
+printf("\n");
+printf("\n");
+
+_printf("%#o", 1024);
+printf("\n");
+printf("%#o", 1024);
+printf("\n");
+printf("\n");
+
+_printf("%#o", 0);
+printf("\n");
+printf("%#o", 0);
+printf("\n");
+printf("\n");
+
+_printf("%#o", UINT_MAX);
+printf("\n");
+printf("%#o", UINT_MAX);
+printf("\n");
+printf("\n");
+
+/*
 Score: 1 out of 1 points
 
 Files: main_44.c
