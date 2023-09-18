@@ -297,56 +297,25 @@ printf("%#o", UINT_MAX);
 printf("\n");
 printf("\n");
 
+_printf("%#x", 1024);printf("\n");
+ _printf("%#x", 0);printf("\n");
+_printf("%#x", UINT_MAX);printf("\n");
+_printf("%#X", 1024);printf("\n");
+_printf("%#X", 0);printf("\n");
+_printf("%#X", UINT_MAX);printf("\n");
+_printf("% "); printf("\n");
+_printf("% % % % ");
+printf("\n");printf("\n");
+printf("%#x", 1024);printf("\n");
+printf("%#x", 0);printf("\n");
+printf("%#x", UINT_MAX);printf("\n");
+printf("%#X", 1024);printf("\n");
+printf("%#X", 0);printf("\n");
+printf("%#X", UINT_MAX);printf("\n");
+printf("% "); printf("\n");
+printf("% % % % ");printf("\n");
+
 /*
-Score: 1 out of 1 points
-
-Files: main_44.c
-
-Correct output - case: _printf("%#x", 1024);
-
-Score: 1 out of 1 points
-
-Files: main_45.c
-
-Correct output - case: _printf("%#x", 0);
-
-Score: 1 out of 1 points
-
-Files: main_46.c
-
-Correct output - case: _printf("%#x", UINT_MAX);
-
-Score: 1 out of 1 points
-
-Files: main_47.c
-
-Correct output - case: _printf("%#X", 1024);
-
-Score: 1 out of 1 points
-
-Files: main_48.c
-
-Correct output - case: _printf("%#X", 0);
-
-Score: 2 out of 2 points
-
-Files: main_49.c
-
-Correct output - case: _printf("%#X", UINT_MAX);
-
-Score: 2 out of 2 points
-
-Files: main_50.c
-
-Correct output - case: _printf("% "); _printf("% % % % ");
-
-Score: 2 out of 2 points
-
-Files: main_51.c
-
-Handled malloc return
-
-Return SUCCESS
 ///////////////////////////////////////////////
     _printf("m:%d\no:%d\n", len, len2);
     printf("m:%d\no:%d\n", len, len2);
