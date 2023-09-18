@@ -78,7 +78,7 @@ int flagselector(const char *format, int *flg_indx, char flag[])
 int _printf(const char *format, ...)
 {
 	va_list args;
-	char flag[20] = "00000000000000000000";
+	char flag[40] = "0000000000000000000000000000000000000000";
 	int flg_indx = 0, nochar = 0, skip = 0, go_to;
 
 	if (!format)
