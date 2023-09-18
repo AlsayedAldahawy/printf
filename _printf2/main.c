@@ -53,10 +53,11 @@ int main(void)
     {
         printf("ori Hex: %#x\n", 18); 
         _printf("mine Hex: %#x\n", 18); 
-       printf("ori oct: %#o\n", 18); 
-        _printf("mine oct: %#o\n", 18); 
-        printf("%#u, % u\n", len2, len);
-        _printf("%#u, % u\n", len2, len);
+      len =  printf("ori oct: %#o\n", 18); 
+       len2 =  _printf("mine oct: %#o\n", 18); 
+       printf("%+% d, %+u\n", 8, 7);
+       _printf("%+% d, %+u\n", 8, 7);
+      printf("%d, %d\n", len, len2);
         x++;
     }
     _printf("m: %b", 99);

@@ -23,6 +23,10 @@ int flagplus(char const *format)
 		{
 			return (0);
 		}
+		if (*(format + 1) == '%')
+		{
+			return (1);
+		}
 	}
 	nochar += _putchar('%');
 	nochar += _putchar(*(format));
@@ -50,6 +54,10 @@ int flaghash(char const *format)
 		if (*(format + 1) == fnext[i])
 		{
 			return (0);
+		}
+		if (*(format + 1) == '%')
+		{
+			return (1);
 		}
 	}
 	nochar += _putchar('%');

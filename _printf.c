@@ -56,7 +56,7 @@ int flagselector(const char *format, int *flg_indx, char flag[])
 		if (*format == fgs[i].s)
 		{
 			flag[*flg_indx++] = *format;
-			if (!fgs[i].f(format))
+			if (!fgs[i].f(format) || fgs[i].f(format) == 1)
 			{
 				go_to = 1;
 				break;
