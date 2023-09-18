@@ -3,10 +3,11 @@
 /**
  * caseStr - prints a string to stdout.
  * @args: list of variadic function arguments.
+ * @flag: flags
  * Return: length of printed string.
  *
 */
-int caseStr(va_list args)
+int caseStr(va_list args, __attribute__ ((unused)) char flag[])
 {
 	char *s = va_arg(args, char *);
 	int i = 0;
@@ -28,10 +29,11 @@ int caseStr(va_list args)
 /**
  * caseInt - prints a number to stdout.
  * @args: list of variadic function arguments.
+ * @flag: flags
  * Return: length of printed int.
  *
 */
-int caseInt(va_list args)
+int caseInt(va_list args, char flag[])
 {
 	unsigned int i, nOfChar = 0;
 	int digit, num = va_arg(args, int);
@@ -43,6 +45,18 @@ int caseInt(va_list args)
 		nOfChar++;
 		num *= -1;
 	}
+	else if (flag_finder('+', flag))
+	{
+		_putchar('+');
+		nOfChar++;
+	}
+	else if (flag_finder(' ', flag))
+	{
+		_putchar(' ');
+		nOfChar++;
+	}
+
+	flag_eraser(flag);
 
 	for (i = 1000000000; i >= 1 ; i = i / 10)
 	{
@@ -61,10 +75,11 @@ int caseInt(va_list args)
 /**
  * caseChar - handles character specifiers.
  * @args: list of variadic function arguments.
+ * @flag: flags
  * Return: 1.
  *
 */
-int caseChar(va_list args)
+int caseChar(va_list args, __attribute__ ((unused)) char flag[])
 {
 	char c = va_arg(args, int);
 
@@ -74,11 +89,12 @@ int caseChar(va_list args)
 /**
  * caseBin - prints a binary number to stdout.
  * @args: list of variadic function arguments.
+ * @flag: flags
  * Return: length of printed binary number.
  *
 */
 
-int caseBin(va_list args)
+int caseBin(va_list args, __attribute__ ((unused)) char flag[])
 {
 	unsigned int x = va_arg(args, unsigned int);
 
@@ -88,10 +104,11 @@ int caseBin(va_list args)
 /**
  * caseUnsigned - prints an unsigned number to stdout.
  * @args: list of variadic function arguments.
+ * @flag: flags
  * Return: length of printed unsigned int.
  *
 */
-int caseUnsigned(va_list args)
+int caseUnsigned(va_list args, __attribute__ ((unused)) char flag[])
 {
 	unsigned int num = va_arg(args, unsigned int);
 	unsigned int i, nOfChar = 0;

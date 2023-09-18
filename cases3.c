@@ -3,10 +3,11 @@
 /**
  * caseRev - prints string reversed.
  * @args: list of variadic function arguments.
+ * @flag: flags
  * Return: length of printed string.
  *
 */
-int caseRev(va_list args)
+int caseRev(va_list args, __attribute__ ((unused)) char flag[])
 {
 	char *str = va_arg(args, char *);
 	int len = 0, j = 0;
@@ -25,10 +26,11 @@ int caseRev(va_list args)
 /**
  * caseROT - prints the rot13'ed string.
  * @args: list of variadic function arguments.
+ * @flag: flags
  * Return: length of printed string.
  *
 */
-int caseROT(va_list args)
+int caseROT(va_list args, __attribute__ ((unused)) char flag[])
 {
 	char *str = va_arg(args, char *);
 	int len = 0, j = 0, skip = 0;

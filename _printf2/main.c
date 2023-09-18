@@ -18,23 +18,46 @@ int main(void)
     char c0 = '\n';
     char *s = "";*/
 
-    int x = 1;
+    unsigned int x = 145;
     len2 = printf("%[] \n");
     len = _printf("%[] \n");
     /*_printf("%d\n", 1024);
     _printf("%d\n", -1024);
     _printf("%d\n", 0);*/
 
-    printf("%--d\n", 1024);
-    printf("%--d\n", -1024);
-    printf("%  -  d\n", 0);
+    printf("--------------------------------------------\n");
+    len = printf("o: %++++++d", x);
+     printf("\n");
+    len2 = _printf("m: %++++++d", x);
+    printf("\n");
+            printf("ori: %d\n", len); 
+        _printf("mine: %d\n", len2); 
+    printf("--------------------------------------------\n");
+    len = printf("o: %++++++");
+     printf("\n");
+
+    len2 = _printf("m: %++++++");
+    printf("\n");
+         printf("orig: %   ++#+   +d\n", 17); 
+        _printf("mine: %   ++#+   +d\n", 17); 
+    printf("--------------------------------------------\n");
+    len = printf("o: %++++++[]");
+     printf("\n");
+
+    len2 = _printf("m: %++++++[]");
+    printf("\n");
+
+
+    x = 1;
     while(x < 2)
     {
-        len = printf("%s", "Guvf fragrapr vf ergevrirq sebz in_netf!\n"); 
-        len2 = _printf("%R", "Guvf fragrapr vf ergevrirq sebz in_netf!\n"); 
-       
+        printf("ori Hex: %#x\n", 18); 
+        _printf("mine Hex: %#x\n", 18); 
+       printf("ori oct: %#o\n", 18); 
+        _printf("mine oct: %#o\n", 18); 
         printf("%i, %d\n", len2, len);
         x++;
     }
+    _printf("m: %b", 99);
     return (0);
 }

@@ -3,13 +3,22 @@
 /**
  * caseOctal - prints a octal number to stdout.
  * @args: list of variadic function arguments.
+ * @flag: flags
  * Return: length of printed octal number.
  *
 */
 
-int caseOctal(va_list args)
+int caseOctal(va_list args, char flag[])
 {
 	unsigned int x = va_arg(args, unsigned int);
+	int isFlag = 0;
+
+	if (flag_finder('#', flag))
+	{
+		isFlag += _putchar('0');
+	}
+
+	flag_eraser(flag);
 
 	return (intoct(x));
 }
@@ -17,36 +26,56 @@ int caseOctal(va_list args)
 /**
  * casehexa - prints a hexadecimal number to stdout.
  * @args: list of variadic function arguments.
+ * @flag: flags
  * Return: length of printed hexadecimal number.
  *
 */
-int casehexa(va_list args)
+int casehexa(va_list args, char flag[])
 {
 	unsigned long int x = va_arg(args, unsigned int);
 
+	int isFlag = 0;
+
+	if (flag_finder('#', flag))
+	{
+		isFlag += _putchar('0');
+		isFlag += _putchar('x');
+
+	}
+	flag_eraser(flag);
 	return (intohex(x));
 }
 
 /**
  * caseHEXA - prints a HEXADECIMAL number to stdout.
  * @args: list of variadic function arguments.
+ * @flag: flags
  * Return: length of printed HEXADECIMAL number.
  *
 */
-int caseHEXA(va_list args)
+int caseHEXA(va_list args, char flag[])
 {
 	unsigned long int x = va_arg(args, unsigned int);
+	int isFlag = 0;
 
-	return (intoHEX(x));
+	if (flag_finder('#', flag))
+	{
+		isFlag += _putchar('0');
+		isFlag += _putchar('x');
+
+	}
+	flag_eraser(flag);
+	return (intoHEX(x) + isFlag);
 }
 
 /**
  * caseaddr - prints a ptr address number to stdout.
  * @args: list of variadic function arguments.
+ * @flag: flags
  * Return: length of printed address number.
  *
 */
-int caseaddr(va_list args)
+int caseaddr(va_list args, __attribute__ ((unused)) char flag[])
 {
 	void *x = va_arg(args, void*);
 	unsigned int len = 0;
@@ -70,12 +99,13 @@ int caseaddr(va_list args)
 }
 
 /**
- * caseSTR - prints the non printaable characters as a hexadecimal value.
+ * caseSTR - prints the non printable characters as a hexadecimal value.
  * @args: list of variadic function arguments.
+ * @flag: flags
  * Return: length of printed address number.
  *
 */
-int caseSTR(va_list args)
+int caseSTR(va_list args, __attribute__ ((unused)) char flag[])
 {
 	char *s = va_arg(args, char *);
 	int i = 0, len = 0;
