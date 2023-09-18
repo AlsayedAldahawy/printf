@@ -134,7 +134,6 @@ int printshort(va_list args)
 /**
  * printshrtunsi - prints an unsigned number to stdout.
  * @args: list of variadic function arguments.
- * @flag: flags
  * Return: length of printed unsigned int.
  *
 */

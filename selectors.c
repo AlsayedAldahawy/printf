@@ -79,59 +79,55 @@ int flagselector(const char *format, int *flg_indx, char flag[], int *nochar)
 
 /**
  * lhflags - handles the l and h flags.
- * @format: format string
+ * @f: format string
  * @nochar: number of characters.
  * @args: va_list
  * Return: go_to: define which label should go to.
 */
-int lhflags(int *nochar, va_list args, const char *format)
+int lhflags(int *nochar, va_list args, const char *f)
 {
 	int c = 0;
 
-	if (*format == 'l' && ((*(format + 1)) == 'd' || (*(format + 1)) == 'i'))
+	if ((*f == 'l' || *f == 'h') && ((*(f + 1)) == 'd' || (*(f + 1)) == 'i'))
 	{
-		*nochar += printlong(args);
+		if (*f == 'l')
+			*nochar += printlong(args);
+		else
+			*nochar += printshort(args);
 		return (1);
 	}
-	if (*format == 'h' && ((*(format + 1)) == 'd' || (*(format + 1)) == 'i'))
+	if (*f == 'l' && ((*(f + 1)) == 'x' || (*(f + 1)) == 'X'))
 	{
-		*nochar += printshort(args);
-		return (1);
-	}
-	if (*format == 'l' && ((*(format + 1)) == 'x' || (*(format + 1)) == 'X'))
-	{
-		if ((*(format + 1)) == 'x')
+		if ((*(f + 1)) == 'x')
 			c = 0;
-		else if ((*(format + 1)) == 'X')
+		else if ((*(f + 1)) == 'X')
 			c = -32;
 		*nochar += printlongHex(args, c);
 		return (1);
 	}
-	if (*format == 'h' && ((*(format + 1)) == 'x' || (*(format + 1)) == 'X'))
+	if (*f == 'h' && ((*(f + 1)) == 'x' || (*(f + 1)) == 'X'))
 	{
-		if ((*(format + 1)) == 'x')
+		if ((*(f + 1)) == 'x')
 			c = 0;
-		else if ((*(format + 1)) == 'X')
+		else if ((*(f + 1)) == 'X')
 			c = -32;
 		*nochar += printshortHex(args, c);
 		return (1);
 	}
-	if (*format == 'h' && ((*(format + 1)) == 'o'))
+	if ((*f == 'h' || *f == 'l') && ((*(f + 1)) == 'o'))
 	{
-		*nochar += printshortoct(args);
+		if (*f == 'h')
+			*nochar += printshortoct(args);
+		else
+			*nochar += printlongoct(args);
 		return (1);
 	}
-	if (*format == 'l' && ((*(format + 1)) == 'o'))
-	{
-		*nochar += printlongoct(args);
-		return (1);
-	}
-	if (*format == 'l' && ((*(format + 1)) == 'u'))
+	if (*f == 'l' && ((*(f + 1)) == 'u'))
 	{
 		*nochar += printlongunsi(args);
 		return (1);
 	}
-	if (*format == 'h' && ((*(format + 1)) == 'u'))
+	if (*f == 'h' && ((*(f + 1)) == 'u'))
 	{
 		*nochar += printshrtunsi(args);
 		return (1);
