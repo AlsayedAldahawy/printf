@@ -43,7 +43,7 @@ int casehexa(va_list args, char flag[])
 
 	}
 	flag_eraser(flag);
-	return (intohex(x));
+	return (intohex(x) + isFlag);
 }
 
 /**
