@@ -20,7 +20,7 @@ int caseOctal(va_list args, char flag[])
 
 	flag_eraser(flag);
 
-	return (intoct(x));
+	return (intoct(x) + isFlag);
 }
 
 /**

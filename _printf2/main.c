@@ -314,6 +314,15 @@ printf("%#X", 0);printf("\n");
 printf("%#X", UINT_MAX);printf("\n");
 printf("% "); printf("\n");
 printf("% % % % ");printf("\n");
+printf("\n");
+len =printf("%#o", 0);
+printf("\n");
+len2 = _printf("%#o", 0);
+printf("\n");
+
+printf("%d\n%d\n", len, len2);
+
+
 
 /*
 ///////////////////////////////////////////////
