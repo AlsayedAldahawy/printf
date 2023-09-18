@@ -14,7 +14,7 @@
 
 int flagplus(char const *format)
 {
-	char fnext[7] = {'i', 'd', 'c', ' ', '+', '-', '#', '\0'};
+	char fnext[8] = {'i', 'd', 'c', ' ', '+', '-', '#', '\0'};
 	int i, nochar = 0;
 
 	for (i = 0; i < 7; i++)
