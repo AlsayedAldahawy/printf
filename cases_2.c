@@ -62,7 +62,6 @@ int caseHEXA(va_list args, char flag[])
 	{
 		isFlag += _putchar('0');
 		isFlag += _putchar('x');
-
 	}
 	flag_eraser(flag);
 	return (intoHEX(x) + isFlag);
