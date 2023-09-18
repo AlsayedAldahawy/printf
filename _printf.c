@@ -131,6 +131,16 @@ int lhflags(int *nochar, va_list args, const char *format)
 		*nochar += printlongoct(args);
 		return (1);
 	}
+	if (*format == 'l' && ((*(format + 1)) == 'u'))
+	{
+		*nochar += printlongunsi(args);
+		return (1);
+	}
+	if (*format == 'h' && ((*(format + 1)) == 'u'))
+	{
+		*nochar += printshrtunsi(args);
+		return (1);
+	}
 	
 	return (0);
 }

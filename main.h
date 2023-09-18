@@ -38,6 +38,8 @@ int printlongHex(va_list args, int c);
 int printshortHex(va_list args, int c);
 int printshortoct(va_list args);
 int printlongoct(va_list args);
+int printshrtunsi(va_list args);
+int printlongunsi(va_list args);
 /*int flagspace(char const *format);*/
 /**
  * struct specifiers - used to define the function corresponding to
