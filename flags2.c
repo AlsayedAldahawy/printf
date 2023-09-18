@@ -38,3 +38,41 @@ int printlongHex(va_list args, int c)
 	return (len);
 }
 
+/**
+ * printshortHex - prints long hex.
+ * @args: va_list
+ * @c: variable to chose ABCDEF or abcdef
+ * Return: no of characters printed.
+*/
+
+int printshortHex(va_list args, int c)
+{
+	short int x = va_arg(args, int);
+	int len = 0;
+
+	if (x / 16 == 0)
+	{
+		if (x % 16 <= 9)
+		{
+			len += _putchar((x % 16) + '0' + c);
+		}
+		else
+		{
+			len += _putchar((x % 16) + 87 + c);
+		}
+	}
+	else
+	{
+		len += intohex(x / 16);
+		if (x % 16 <= 9)
+		{
+			len += _putchar((x % 16) + '0' + c);
+		}
+		else
+		{
+			len += _putchar((x % 16) + 87 + c);
+		}
+	}
+	return (len);
+}
+

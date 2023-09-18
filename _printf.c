@@ -110,6 +110,18 @@ int lhflags(int *nochar, va_list args, const char *format)
 		*nochar += printlongHex(args, c);
 		return (1);
 	}
+	if (*format == 'h' && ((*(format + 1)) == 'x' || (*(format + 1)) == 'X'))
+	{
+		if ((*(format + 1)) == 'x')
+			c = 0;
+		else if ((*(format + 1)) == 'X')
+		{
+			c = -32;
+		}
+		*nochar += printshortHex(args, c);
+		return (1);
+	}
+	
 	return (0);
 }
 

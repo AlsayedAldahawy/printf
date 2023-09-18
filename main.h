@@ -35,6 +35,7 @@ int flagplus(char const *format);
 int printlong(va_list args);
 int printshort(va_list args);
 int printlongHex(va_list args, int c);
+int printshortHex(va_list args, int c);
 /*int flagspace(char const *format);*/
 /**
  * struct specifiers - used to define the function corresponding to
