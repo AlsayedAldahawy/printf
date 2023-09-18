@@ -10,64 +10,74 @@
  */
 int main(void)
 {
-    long int len = 0;
-    long int len2 = 0;
-    
-    /* n1 = -700;
-    char c = 'x', c2 = 'y', *c3 = "asbd";
-    char c0 = '\n';
-    char *s = "";*/
-    short int shrt = 8595;
-    unsigned int x = 145;
-    len2 = printf("%[] \n");
-    len = _printf("%[] \n");
-    /*_printf("%d\n", 1024);
-    _printf("%d\n", -1024);
-    _printf("%d\n", 0);*/
+    int len;
+    int len2;
 
-    printf("--------------------------------------------\n");
-    len = printf("o: %++++++d", x);
-     printf("\n");
-    len2 = _printf("m: %++++++d", x);
-    printf("\n");
-            printf("ori: %d\n", len); 
-        _printf("mine: %d\n", len2); 
-    printf("--------------------------------------------\n");
-    len = printf("oerror: %++++++");
-     printf("\n");
+    len = _printf("Let's try to printf a simple sentence.\n");
+    len2 = printf("Let's try to printf a simple sentence.\n");
 
-    len2 = _printf("merror: %++++++");
-    printf("\n");
-         printf("orig: %   ++#+   +d\n", 17); 
-        _printf("mine: %   ++#+   +d\n", 17); 
-    printf("--------------------------------------------\n");
-    len = printf("o: %++++++[]");
-     printf("\n");
+    _printf("m:%d\no:%d\n", len, len2);
+    printf("m:%d\no:%d\n", len, len2);
 
-    len2 = _printf("m: %++++++[]");
-    printf("\n");
+   len = _printf("empty Character:[%c]\n", ' ');
+   len2 = printf("empty Character:[%c]\n", ' ');
+    _printf("m:%d\no:%d\n", len, len2);
+    printf("m:%d\no:%d\n", len, len2);
+
+    len =_printf("Character:[%c]\n", 'H');
+    len2 =printf("Character:[%c]\n", 'H');
+    _printf("m:%d\no:%d\n", len, len2);
+    printf("m:%d\no:%d\n", len, len2);
 
 
-    x = 1;
-    while(x < 2)
-    {
-        printf("ori Hex: %#x\n", 18); 
-        _printf("mine Hex: %#x\n", 18); 
-      len =  printf("ori oct: %#o\n", 18); 
-       len2 =  _printf("mine oct: %#o\n", 18); 
-       printf("% i, %+u\n", -8, 7);
-       _printf("% i, %+u\n", -8, 7);
-      printf("%d, %d\n", len, len2);
-      printf("%ld\n", 1024); 
-    printf("%ld\n", -1024555555555555L); 
-      _printf("%ld\n", 1024L); 
-    _printf("%ld\n", -1024555555555555L); 
-    printf("shrt: %hd\n", shrt); 
-    printf("%hd\n", -1024555555555555L); 
-      _printf("shrt: %hd\n", shrt); 
-    _printf("%hd\n", -1024555555555555L); 
-        x++;
-    }
-    _printf("m: %b", 99);
+   len = _printf("Character:[%c%c]\n", 'H', 'I');
+    len2 = printf("Character:[%c%c]\n", 'H', 'I');
+
+    _printf("m:%d\no:%d\n", len, len2);
+    printf("m:%d\no:%d\n", len, len2);
+
+
+    len =_printf("Character:[%c%c%c]\n", 'H', 'I', '!');
+    len2 = printf("Character:[%c%c%c]\n", 'H', 'I', '!');
+    _printf("m:%d\no:%d\n", len, len2);
+    printf("m:%d\no:%d\n", len, len2);
+
+    len = _printf("Character:[%c %c %c]\n", 'H', 'I', '!');
+    len2 = printf("Character:[%c %c %c]\n", 'H', 'I', '!');
+    _printf("m:%d\no:%d\n", len, len2);
+    printf("m:%d\no:%d\n", len, len2);
+
+    len = _printf("Two c with Space:[%c %c]\n", 'H', 'I');
+    len2 = printf("Two c with Space:[%c %c]\n", 'H', 'I');
+
+     _printf("m:%d\no:%d\n", len, len2);
+    printf("m:%d\no:%d\n", len, len2);
+
+    len = _printf("empty String:[%s]\n", "");
+    len2 = printf("empty String:[%s]\n", "");
+
+     _printf("m:%d\no:%d\n", len, len2);
+    printf("m:%d\no:%d\n", len, len2);
+
+    len = _printf("Space String:[%s]\n", " ");
+    len2 = printf("Space String:[%s]\n", " ");
+    _printf("m:%d\no:%d\n", len, len2);
+    printf("m:%d\no:%d\n", len, len2);
+
+    len = _printf("String:[%s]\n", "I am a string !");
+    len2 = printf("String:[%s]\n", "I am a string !");
+    _printf("m:%d\no:%d\n", len, len2);
+    printf("m:%d\no:%d\n", len, len2);
+
+    len = _printf("String:[%s%s]\n", "I am a string !", "second string !");
+    len2 = printf("String:[%s%s]\n", "I am a string !", "second string !");
+    _printf("m:%d\no:%d\n", len, len2);
+    printf("m:%d\no:%d\n", len, len2);
+
+   len = _printf("String:[%s %s]\n", "I am a string !", "second string !");
+    len2 = printf("String:[%s %s]\n", "I am a string !", "second string !");
+    _printf("m:%d\no:%d\n", len, len2);
+    printf("m:%d\no:%d\n", len, len2);
+
     return (0);
 }
