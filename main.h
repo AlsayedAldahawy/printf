@@ -43,8 +43,8 @@ int printlongoct(va_list args);
 int printshrtunsi(va_list args);
 int printlongunsi(va_list args);
 int caseselector(va_list args, char sp, int *flg_indx, int *n, char flag[]);
-int flagselector(const char *format, int *flg_indx, char flag[], int *nochar);
-int lhflags(int *nochar, va_list args, const char *format);
+int flagselector(const char *, int *, char flag[], int *, va_list);
+int lhflags(int **nochar, va_list args, const char *format);
 void setvariables(int *skip, int *go_to);
 
 /*int flagspace(char const *format);*/

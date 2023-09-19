@@ -36,13 +36,14 @@ int caseselector(va_list args, char sp, int *flg_indx, int *n, char flag[])
 
 /**
  * flagselector - select the flag case according to the format character.
- * @format: format string
- * @nochar: number of characters.
- * @flg_indx: index of the flag array, passed by reference to be reset to 0.
+ * @f: format string
+ * @n: number of characters.
+ * @flg_i: index of the flag array, passed by reference to be reset to 0.
  * @flag: flag array contains the flags the occured.
+ * @args: variadic function arguments list.
  * Return: go_to: define which label should go to.
 */
-int flagselector(const char *format, int *flg_indx, char flag[], int *nochar)
+int flagselector(const char *f, int *flg_i, char flag[], int *n, va_list args)
 {
 	int x;
 	flags_t fgs[] = {
@@ -52,14 +53,13 @@ int flagselector(const char *format, int *flg_indx, char flag[], int *nochar)
 	};
 	int i = 0, go_to = 0;
 
-	for (i = 0; i < FLAGS; i++)
+	for (i = 0; i < 3; i++)
 	{
-
-		if ((*format == fgs[i].s) == 1)
+		if ((*f == fgs[i].s) == 1)
 		{
-			flag[*flg_indx] = *format;
-			(*flg_indx)++;
-			x = fgs[i].f(format);
+			flag[*flg_i] = *f;
+			(*flg_i)++;
+			x = fgs[i].f(f);
 			if (!x)
 			{
 				go_to = 1;
@@ -67,12 +67,21 @@ int flagselector(const char *format, int *flg_indx, char flag[], int *nochar)
 			}
 			else
 			{
-				*flg_indx = 0;
-				*nochar += 2;
+				*flg_i = 0;
+				*n += 2;
 				go_to = 2;
 				break;
 			}
 		}
+	}
+	if (lhflags(&n, args, f))
+	{
+		if (*(f + 2))
+		{
+			go_to = 3;
+		}
+		else
+		 go_to = 4;
 	}
 	return (go_to);
 }
@@ -84,7 +93,7 @@ int flagselector(const char *format, int *flg_indx, char flag[], int *nochar)
  * @args: va_list
  * Return: go_to: define which label should go to.
 */
-int lhflags(int *nochar, va_list args, const char *f)
+int lhflags(int **nochar, va_list args, const char *f)
 {
 	int c = 0;
 
