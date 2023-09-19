@@ -10,3 +10,6 @@
 
 3- func2.c
     this file contains functions used to handle the identifiers such as (%,c,s,i,d).
+
+4- main.h
+    header file.
