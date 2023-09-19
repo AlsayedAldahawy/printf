@@ -45,7 +45,10 @@ int intoct(unsigned int x)
 	int len = 0;
 
 	if (x == 0)
-		return (0);
+	{
+		len += _putchar('0');
+		return (1);
+	}
 	if (x / 8 == 0)
 	{
 		len += _putchar((x % 8) + '0');

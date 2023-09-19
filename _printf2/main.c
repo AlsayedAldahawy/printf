@@ -325,6 +325,30 @@ printf("%d\n%d\n", len, len2);
 printf("%-6d.\n", 1024);
 _printf("%-6d.\n", 1024);
 
+
+_printf("err: %o", 0);
+printf("\n");
+printf("%o", 0);
+printf("\n");
+printf("\n");
+
+_printf("%x", 0);
+printf("\n");
+printf("%x", 0);
+printf("\n");
+printf("\n");
+
+_printf("%X", 0);
+printf("\n");
+printf("%X", 0);
+printf("\n");
+printf("\n");
+
+_printf("%u", 0);
+printf("\n");
+printf("%u", 0);
+printf("\n");
+printf("\n");
 /*
 ///////////////////////////////////////////////
     _printf("m:%d\no:%d\n", len, len2);

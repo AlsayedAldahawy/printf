@@ -13,7 +13,7 @@ int caseOctal(va_list args, char flag[])
 	unsigned int x = va_arg(args, unsigned int);
 	int isFlag = 0;
 
-	if (flag_finder('#', flag))
+	if (flag_finder('#', flag) && x)
 	{
 		isFlag += _putchar('0');
 	}
