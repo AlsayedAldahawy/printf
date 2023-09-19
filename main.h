@@ -10,6 +10,7 @@
 #define CASES 13
 #define FLAGS 3
 
+
 int _printf(const char *format, ...);
 int _putchar(char c);
 int caseStr(va_list args, char flag[]);
@@ -32,6 +33,7 @@ int flag_finder(char f, char flag[]);
 void flag_eraser(char flag[]);
 int flaghash(char const *format);
 int flagplus(char const *format);
+int flagminus(char const *format, va_list args);
 int printlong(va_list args);
 int printshort(va_list args);
 int printlongHex(va_list args, int c);
