@@ -64,9 +64,9 @@ typedef struct specifiers
 
 /**
  * struct flags - used to define the function corresponding to
- * the specifier.
+ * the flags.
  *
- * @s: specifier character
+ * @s: flag character
  * @f: pointer to function related to the flag.
  *
  */
@@ -76,4 +76,17 @@ typedef struct flags
 	int (*f)();
 } flags_t;
 
+/**
+ * struct lhflags - used to define the function corresponding to
+ * the flags.
+ *
+ * @s: flag character
+ * @f: pointer to function related to the flag.
+ *
+ */
+typedef struct lhflags
+{
+	char s;
+	int (*f)();
+} lhflags_t;
 #endif

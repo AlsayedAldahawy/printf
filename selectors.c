@@ -102,35 +102,35 @@ int lhflags(int **nochar, va_list args, const char *f)
 	if ((*f == 'l' || *f == 'h') && ((*(f + 1)) == 'd' || (*(f + 1)) == 'i'))
 	{
 		if (*f == 'l')
-			*nochar += printlong(args);
+			**nochar += printlong(args);
 		else
-			*nochar += printshort(args);
+			**nochar += printshort(args);
 		return (1);
 	}
 	if (*f == 'l' && ((*(f + 1)) == 'x' || (*(f + 1)) == 'X'))
 	{
-		*nochar += printlongHex(args, c);
+		**nochar += printlongHex(args, c);
 		return (1);
 	}
 	if (*f == 'h' && ((*(f + 1)) == 'x' || (*(f + 1)) == 'X'))
 	{
-		*nochar += printshortHex(args, c);
+		**nochar += printshortHex(args, c);
 		return (1);
 	}
 	if ((*f == 'h' || *f == 'l') && ((*(f + 1)) == 'o'))
 	{
 		if (*f == 'h')
-			*nochar += printshortoct(args);
+			**nochar += printshortoct(args);
 		else
-			*nochar += printlongoct(args);
+			**nochar += printlongoct(args);
 		return (1);
 	}
 	if ((*f == 'h' || *f == 'l') && ((*(f + 1)) == 'u'))
 	{
 		if (*f == 'h')
-			*nochar += printshrtunsi(args);
+			**nochar += printshrtunsi(args);
 		else
-			*nochar += printlongunsi(args);
+			**nochar += printlongunsi(args);
 		return (1);
 	}
 	return (0);
