@@ -349,6 +349,17 @@ printf("\n");
 printf("%u", 0);
 printf("\n");
 printf("\n");
+
+_printf("%ld", 1024L);printf("\n");
+_printf("%ld", -1024L);printf("\n");
+printf("\n");
+printf("%ld", 1024L);printf("\n");
+printf("%ld", -1024L);printf("\n");;printf("\n");
+_printf("%hd", 1024L);printf("\n");
+_printf("%hd", -1024L);printf("\n");
+printf("\n");
+printf("%hd", 1024L);printf("\n");
+printf("%hd", -1024L);printf("\n");
 /*
 ///////////////////////////////////////////////
     _printf("m:%d\no:%d\n", len, len2);

@@ -36,8 +36,13 @@ FLAGLOOP:
 			}
 			if (lhflags(&nochar, args, format))
 			{
-				format += 2;
-				goto MAINLOOP;
+				if(*(format + 2))
+				{
+					format += 2;
+					goto MAINLOOP;
+				}
+				else
+					break;
 			}
 			(*format == '%') ? (nochar += _putchar(*(format))) :
 				((!skip)) ? (nochar +=  _putchar(*(--format))) : (nochar *= 1);
