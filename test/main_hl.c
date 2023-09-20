@@ -34,7 +34,11 @@ int main(void)
 
 
 	len = _printf("%ld", LONG_MIN);
+	        printf("\n");
+
 	len2 = printf("%ld", LONG_MIN);
+	        printf("\n");
+
 	fflush(stdout);
 	if (len != len2)
 	{
