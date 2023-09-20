@@ -12,9 +12,26 @@ int main(void)
 {
 	int len, len2;
 
-	len = _printf("m:%ld", LONG_MIN);
+	len = _printf("mlx:%lx", 4848485);
         printf("\n");
-	len2 = printf("o:%ld", LONG_MIN);
+	len2 = printf("olx:%lx", 4848485);
+	        printf("\n");
+
+	len = _printf("mLX:%lX", 4848485);
+        printf("\n");
+	len2 = printf("oLX:%lX", 4848485);
+	        printf("\n");
+
+	len = _printf("msx:%hx", 4848485);
+        printf("\n");
+	len2 = printf("osx:%hx", 4848485);
+	        printf("\n");
+
+	len = _printf("msX:%hX", 4848485);
+        printf("\n");
+	len2 = printf("osX:%hX", 4848485);
+	        printf("\n");
+
 	fflush(stdout);
 	if (len != len2)
 	{

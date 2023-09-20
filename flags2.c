@@ -7,33 +7,18 @@
  * Return: no of characters printed.
 */
 
-int printlongHex(va_list args, int c)
+int printlongHex(va_list args, char c)
 {
 	long int x = va_arg(args, int long);
 	int len = 0;
 
-	if (x / 16 == 0)
+	if (c == 'x')
 	{
-		if (x % 16 <= 9)
-		{
-			len += _putchar((x % 16) + '0' + c);
-		}
-		else
-		{
-			len += _putchar((x % 16) + 87 + c);
-		}
+		len += intohex(x);
 	}
-	else
+	else if (c == 'X')
 	{
-		len += intohex(x / 16);
-		if (x % 16 <= 9)
-		{
-			len += _putchar((x % 16) + '0' + c);
-		}
-		else
-		{
-			len += _putchar((x % 16) + 87 + c);
-		}
+		len += intoHEX(x);
 	}
 	return (len);
 }
@@ -45,33 +30,18 @@ int printlongHex(va_list args, int c)
  * Return: no of characters printed.
 */
 
-int printshortHex(va_list args, int c)
+int printshortHex(va_list args, char c)
 {
-	short int x = va_arg(args, int);
+	unsigned short int x = va_arg(args, int);
 	int len = 0;
 
-	if (x / 16 == 0)
+	if (c == 'x')
 	{
-		if (x % 16 <= 9)
-		{
-			len += _putchar((x % 16) + '0' + c);
-		}
-		else
-		{
-			len += _putchar((x % 16) + 87 + c);
-		}
+		len += intohex(x);
 	}
-	else
+	else if (c == 'X')
 	{
-		len += intohex(x / 16);
-		if (x % 16 <= 9)
-		{
-			len += _putchar((x % 16) + '0' + c);
-		}
-		else
-		{
-			len += _putchar((x % 16) + 87 + c);
-		}
+		len += intoHEX(x);
 	}
 	return (len);
 }

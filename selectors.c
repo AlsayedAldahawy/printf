@@ -95,10 +95,6 @@ int flagselector(const char *f, int *flg_i, char flag[], int *n, va_list args)
 */
 int lhflags(int **nochar, va_list args, const char *f)
 {
-	int c = 0;
-
-	if ((*(f + 1)) == 'X')
-		c = -32;
 	if ((*f == 'l' || *f == 'h') && ((*(f + 1)) == 'd' || (*(f + 1)) == 'i'))
 	{
 		if (*f == 'l')
@@ -109,12 +105,12 @@ int lhflags(int **nochar, va_list args, const char *f)
 	}
 	if (*f == 'l' && ((*(f + 1)) == 'x' || (*(f + 1)) == 'X'))
 	{
-		**nochar += printlongHex(args, c);
+		**nochar += printlongHex(args, *(f + 1));
 		return (1);
 	}
 	if (*f == 'h' && ((*(f + 1)) == 'x' || (*(f + 1)) == 'X'))
 	{
-		**nochar += printshortHex(args, c);
+		**nochar += printshortHex(args, *(f + 1));
 		return (1);
 	}
 	if ((*f == 'h' || *f == 'l') && ((*(f + 1)) == 'o'))
