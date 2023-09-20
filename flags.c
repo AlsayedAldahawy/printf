@@ -61,8 +61,9 @@ int flaghash(char const *format)
 			return (0);
 		}
 	}
-	nochar += write(1, &c, 1);
-	nochar += _putchar(*(format));
+	write(1, &c, 1);
+	write(1, format, 1);
+	nochar += 2;
 	return (nochar);
 }
 
