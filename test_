@@ -1,0 +1,23 @@
+    len = _printf("%lX.\n", INT_MAX);
+    len2 = printf("%lX.\n", INT_MAX);
+
+    _printf("%d\n", len, len2);
+    printf("%d\n", len, len2);
+
+    len = _printf("%hX.\n", INT_MAX);
+    len2 = printf("%hX.\n", INT_MAX);
+
+    _printf("%d\n", len, len2);
+    printf("%d\n", len, len2);
+
+    len = _printf("%lX.\n", 0);
+    len2 = printf("%lX.\n", 0);
+
+    _printf("%d\n", len, len2);
+    printf("%d\n", len, len2);
+
+    len = _printf("%hX.\n", 0);
+    len2 = printf("%hX.\n", 0);
+
+    _printf("%d\n", len, len2);
+    printf("%d\n", len, len2);
