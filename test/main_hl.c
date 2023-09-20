@@ -32,6 +32,17 @@ int main(void)
 	len2 = printf("osX:%ho", 4848485);
 	        printf("\n");
 
+
+	len = _printf("%ld", LONG_MIN);
+	len2 = printf("%ld", LONG_MIN);
+	fflush(stdout);
+	if (len != len2)
+	{
+		printf("Lengths differ.\n");
+		fflush(stdout);
+		return (1);
+	}
+
 	fflush(stdout);
 	if (len != len2)
 	{
