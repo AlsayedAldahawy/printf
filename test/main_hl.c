@@ -11,32 +11,32 @@
 int main(void)
 {
 	int len, len2;
-
-	len = _printf("mlx:%lo", 4848485);
+	long int test_v = LONG_MIN;
+	len = _printf("mlx:%lo", test_v);
         printf("\n");
-	len2 = printf("olx:%lo", 4848485);
+	len2 = printf("olx:%lo", test_v);
 	        printf("\n");
 
-	len = _printf("mLX:%lo", 4848485);
+	len = _printf("mLX:%lo", test_v);
         printf("\n");
-	len2 = printf("oLX:%lo", 4848485);
+	len2 = printf("oLX:%lo", test_v);
 	        printf("\n");
 
-	len = _printf("msx:%ho", 4848485);
+	len = _printf("msx:%ho", test_v);
         printf("\n");
-	len2 = printf("osx:%ho", 4848485);
+	len2 = printf("osx:%ho", test_v);
 	        printf("\n");
 
-	len = _printf("msX:%ho", 4848485);
+	len = _printf("msX:%ho", test_v);
         printf("\n");
-	len2 = printf("osX:%ho", 4848485);
+	len2 = printf("osX:%ho", test_v);
 	        printf("\n");
 
 
-	len = _printf("%ld", LONG_MIN);
+	len = _printf("%ld", test_v);
 	        printf("\n");
 
-	len2 = printf("%ld", LONG_MIN);
+	len2 = printf("%ld", test_v);
 	        printf("\n");
 
 	fflush(stdout);

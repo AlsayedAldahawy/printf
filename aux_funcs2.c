@@ -40,9 +40,9 @@ int intobin(unsigned int x)
  * Return: length of octal number.
  *
 */
-int intoct(unsigned int x)
+int intoct(unsigned long int x)
 {
-	int len = 0;
+	long int len = 0;
 
 	if (x == 0)
 	{

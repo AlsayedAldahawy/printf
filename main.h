@@ -19,7 +19,7 @@ int caseChar(va_list args, char flag[]);
 int intobin(unsigned int x);
 int caseBin(va_list args, char flag[]);
 int caseUnsigned(va_list args, char flag[]);
-int intoct(unsigned int x);
+int intoct(unsigned long int x);
 int caseOctal(va_list args, char flag[]);
 int casehexa(va_list args, char flag[]);
 int intohex(unsigned long int x);

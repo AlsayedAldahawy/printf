@@ -77,7 +77,7 @@ int printshortoct(va_list args)
 
 int printlongoct(va_list args)
 {
-	long int x = va_arg(args, long int);
+	unsigned long int x = va_arg(args, long int);
 	int len = 0;
 
 	if (x / 8 == 0)
