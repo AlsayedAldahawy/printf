@@ -48,6 +48,7 @@ int flaghash(char const *format)
 {
 	char fnext[9] = {'X', 'o', 'x', 'u', 'c', ' ', '+', '#', '\0'};
 	int i, nochar = 0;
+	char c = '%';
 
 	for (i = 0; i < 7; i++)
 	{
@@ -60,7 +61,7 @@ int flaghash(char const *format)
 			return (0);
 		}
 	}
-	nochar += _putchar('%');
+	nochar += write(1, &c, 1);
 	nochar += _putchar(*(format));
 	return (nochar);
 }
