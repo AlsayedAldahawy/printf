@@ -12,24 +12,24 @@ int main(void)
 {
 	int len, len2;
 
-	len = _printf("mlx:%lx", 4848485);
+	len = _printf("mlx:%lo", 4848485);
         printf("\n");
-	len2 = printf("olx:%lx", 4848485);
+	len2 = printf("olx:%lo", 4848485);
 	        printf("\n");
 
-	len = _printf("mLX:%lX", 4848485);
+	len = _printf("mLX:%lo", 4848485);
         printf("\n");
-	len2 = printf("oLX:%lX", 4848485);
+	len2 = printf("oLX:%lo", 4848485);
 	        printf("\n");
 
-	len = _printf("msx:%hx", 4848485);
+	len = _printf("msx:%ho", 4848485);
         printf("\n");
-	len2 = printf("osx:%hx", 4848485);
+	len2 = printf("osx:%ho", 4848485);
 	        printf("\n");
 
-	len = _printf("msX:%hX", 4848485);
+	len = _printf("msX:%ho", 4848485);
         printf("\n");
-	len2 = printf("osX:%hX", 4848485);
+	len2 = printf("osX:%ho", 4848485);
 	        printf("\n");
 
 	fflush(stdout);

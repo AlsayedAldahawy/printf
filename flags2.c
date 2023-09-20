@@ -54,7 +54,7 @@ int printshortHex(va_list args, char c)
 
 int printshortoct(va_list args)
 {
-	short int x = va_arg(args, int);
+	unsigned short int x = va_arg(args, int);
 	int len = 0;
 
 	if (x / 8 == 0)
