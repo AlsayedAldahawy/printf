@@ -47,9 +47,7 @@ int flagselector(const char *f, int *flg_i, char flag[], int *n, va_list args)
 {
 	int x;
 	flags_t fgs[] = {
-	{'#', flaghash},
-	{'+', flagplus},
-	{' ', flagplus},
+	{'#', flaghash}, {'+', flagplus}, {' ', flagplus},
 	};
 	int i = 0, go_to = 0;
 
@@ -77,9 +75,7 @@ int flagselector(const char *f, int *flg_i, char flag[], int *n, va_list args)
 	if (lhflags(&n, args, f))
 	{
 		if (*(f + 2))
-		{
 			go_to = 3;
-		}
 		else
 		 go_to = 4;
 	}
@@ -88,7 +84,6 @@ int flagselector(const char *f, int *flg_i, char flag[], int *n, va_list args)
 		*n += _putchar('%');
 		go_to = 2;
 	}
-	
 	return (go_to);
 }
 
