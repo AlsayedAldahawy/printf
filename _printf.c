@@ -10,7 +10,7 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	char flag[40] = "0000000000000000000000000000000000000000";
-	int flg_indx = 0, nochar = 0, skip = 0, go_to;
+	int flg_indx = 0, nochar = 0, skip = 0, go_to = 0;
 
 	if (!format)
 		return (-1);
@@ -39,7 +39,8 @@ FLAGLOOP:
 			else if (go_to == 4)
 				break;
 			(*format == '%') ? (nochar += _putchar(*(format))) :
-				((!skip)) ? (nochar +=  _putchar(*(--format))) : (nochar *= 1);
+				((!skip)) ? (((go_to != 5)) ? (nochar +=  _putchar(*(--format))) :
+				(nochar +=  _putchar('%'))) : (nochar *= 1);
 		}
 		else
 			nochar +=  _putchar(*format);

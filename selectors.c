@@ -45,11 +45,8 @@ int caseselector(va_list args, char sp, int *flg_indx, int *n, char flag[])
 */
 int flagselector(const char *f, int *flg_i, char flag[], int *n, va_list args)
 {
-	int x;
-	flags_t fgs[] = {
-	{'#', flaghash}, {'+', flagplus}, {' ', flagplus},
-	};
-	int i = 0, go_to = 0;
+	int x, i = 0, go_to = 0;
+	flags_t fgs[] = {{'#', flaghash}, {'+', flagplus}, {' ', flagplus}};
 
 	for (i = 0; i < 3; i++)
 	{
@@ -78,6 +75,9 @@ int flagselector(const char *f, int *flg_i, char flag[], int *n, va_list args)
 			go_to = 3;
 		else
 		 go_to = 4;
+	} else if (*(f + 1) == '\n')
+	{
+		go_to = 5;
 	}
 	return (go_to);
 }
