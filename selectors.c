@@ -83,6 +83,12 @@ int flagselector(const char *f, int *flg_i, char flag[], int *n, va_list args)
 		else
 		 go_to = 4;
 	}
+	else
+	{
+		*n += _putchar('%');
+		go_to = 2;
+	}
+	
 	return (go_to);
 }
 

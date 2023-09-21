@@ -92,30 +92,17 @@ int printlong(va_list args)
 */
 int printshort(va_list args)
 {
-	short int i;
-	unsigned int nOfChar = 0;
-	int digit;
-	int start_digit = 0;
-	short int num = va_arg(args, int);
+	short int x = va_arg(args, int);
+	unsigned short y;
+	int len = 0;
 
-	if (num < 0)
+	if (x < 0)
 	{
-		nOfChar += _putchar('-');
-		num *= -1;
+		len += _putchar('-');
+		x *= -1;
 	}
-
-	for (i = 10000; i >= 1 ; i = i / 10)
-	{
-
-		if ((num / i == 0) && (start_digit == 0) && (i != 1))
-			continue;
-
-		digit = (num / i) % 10;
-		_putchar(digit + '0');
-		nOfChar++;
-		start_digit = 1;
-	}
-	return (nOfChar);
+	y = x;
+	return (_short(y) + len);
 }
 
 /**

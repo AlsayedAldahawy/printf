@@ -61,3 +61,26 @@ int _long(unsigned long int x)
 	}
 	return (len);
 }
+
+/**
+ * _short - handles short integers.
+ * @x: short number to be printed.
+ * Return: length of printed number.
+ *
+*/
+int _short(unsigned short int x)
+{
+	int len = 0;
+	long int d = 10;
+
+	if (x / 10 == 0)
+	{
+		len += _putchar((x % d) + '0');
+	}
+	else
+	{
+		len += _long(x / d);
+		len += _putchar((x % d) + '0');
+	}
+	return (len);
+}
