@@ -1,21 +1,5 @@
 #include "main.h"
 
-int _long( unsigned long int x)
-{
-	int len = 0;
-	long int d = 10;
-
-	if (x / 10 == 0)
-	{
-		len += _putchar((x % d) + '0');
-	}
-	else
-	{
-		len += _long(x / d);
-		len += _putchar((x % d) + '0');
-	}
-	return (len);
-}
 /**
  * flagplus - handles the '+' & ' ' flags of integer .
  * @format: format string.
@@ -91,6 +75,7 @@ int printlong(va_list args)
 	long int x = va_arg(args, long int);
 	unsigned long y;
 	int len = 0;
+
 	if (x < 0)
 	{
 		len += _putchar('-');

@@ -46,6 +46,7 @@ int caseselector(va_list args, char sp, int *flg_indx, int *n, char flag[]);
 int flagselector(const char *, int *, char flag[], int *, va_list);
 int lhflags(int **nochar, va_list args, const char *format);
 void setvariables(int *skip, int *go_to);
+int _long(unsigned long int x);
 
 /*int flagspace(char const *format);*/
 /**

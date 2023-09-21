@@ -39,3 +39,25 @@ void flag_eraser(char flag[])
 	}
 }
 
+/**
+ * _long - handles long integers.
+ * @x: long number to be printed.
+ * Return: length of printed number.
+ *
+*/
+int _long(unsigned long int x)
+{
+	int len = 0;
+	long int d = 10;
+
+	if (x / 10 == 0)
+	{
+		len += _putchar((x % d) + '0');
+	}
+	else
+	{
+		len += _long(x / d);
+		len += _putchar((x % d) + '0');
+	}
+	return (len);
+}

@@ -56,12 +56,14 @@ int casehexa(va_list args, char flag[])
 int caseHEXA(va_list args, char flag[])
 {
 	unsigned long int x = va_arg(args, unsigned int);
+
 	int isFlag = 0;
 
 	if (flag_finder('#', flag) && x)
 	{
 		isFlag += _putchar('0');
 		isFlag += _putchar('x');
+
 	}
 	flag_eraser(flag);
 	return (intoHEX(x) + isFlag);
