@@ -11,41 +11,12 @@
 int main(void)
 {
 	int len, len2;
-	long int test_v = LONG_MIN;
-	len = _printf("mlx:%lo", test_v);
-        printf("\n");
-	len2 = printf("olx:%lo", test_v);
-	        printf("\n");
 
-	len = _printf("mLX:%lo", test_v);
-        printf("\n");
-	len2 = printf("oLX:%lo", test_v);
-	        printf("\n");
+	len = _printf("%lx", ULONG_MAX);
+		        printf("\n");
 
-	len = _printf("msx:%ho", test_v);
-        printf("\n");
-	len2 = printf("osx:%ho", test_v);
-	        printf("\n");
-
-	len = _printf("msX:%ho", test_v);
-        printf("\n");
-	len2 = printf("osX:%ho", test_v);
-	        printf("\n");
-
-
-	len = _printf("%ld", test_v);
-	        printf("\n");
-
-	len2 = printf("%ld", test_v);
-	        printf("\n");
-
-	fflush(stdout);
-	if (len != len2)
-	{
-		printf("Lengths differ.\n");
-		fflush(stdout);
-		return (1);
-	}
+	len2 = printf("%lx", ULONG_MAX);
+		        printf("\n");
 
 	fflush(stdout);
 	if (len != len2)

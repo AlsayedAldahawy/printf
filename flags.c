@@ -49,7 +49,7 @@ int flaghash(char const *format)
 	char fnext[9] = {'X', 'o', 'x', 'u', 'c', ' ', '+', '#', '\0'};
 	int i, nochar = 0;
 
-	for (i = 0; i < 7; i++)
+	for (i = 0; i < 9; i++)
 	{
 		if (*(format + 1) == fnext[i])
 		{

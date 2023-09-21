@@ -100,21 +100,7 @@ int printlongoct(va_list args)
 */
 int printlongunsi(va_list args)
 {
-	unsigned long int num = va_arg(args, unsigned long int);
-	unsigned long int i, nOfChar = 0;
-	int digit;
-	int start_digit = 0;
+	unsigned long int x = va_arg(args, unsigned long int);
 
-	for (i = 1000000000000000000; i >= 1 ; i = i / 10)
-	{
-
-		if ((num / i == 0) && (start_digit == 0) && (i != 1))
-			continue;
-
-		digit = (num / i) % 10;
-		_putchar(digit + '0');
-		nOfChar++;
-		start_digit = 1;
-	}
-	return (nOfChar);
+	return (_long(x));
 }
