@@ -79,7 +79,7 @@ int flagselector(const char *f, int *flg_i, char flag[], int *n, va_list args)
 		else
 		 go_to = 4;
 	}
-	else
+	else if (*(f + 1) == '\n')
 	{
 		*n += _putchar('%');
 		go_to = 2;
