@@ -62,7 +62,7 @@ int caseHEXA(va_list args, char flag[])
 	if (flag_finder('#', flag) && x)
 	{
 		isFlag += _putchar('0');
-		isFlag += _putchar('x');
+		isFlag += _putchar('X');
 
 	}
 	flag_eraser(flag);

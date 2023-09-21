@@ -115,7 +115,7 @@ int intoHEX(unsigned long int x)
 		}
 		else
 		{
-			len += _putchar((x % 16) + 87);
+			len += _putchar((x % 16) + 55);
 		}
 	}
 	else
@@ -127,7 +127,7 @@ int intoHEX(unsigned long int x)
 		}
 		else
 		{
-			len += _putchar((x % 16) + 87);
+			len += _putchar((x % 16) + 55);
 		}
 	}
 	return (len);
