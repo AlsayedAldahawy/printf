@@ -11,16 +11,24 @@ int printlongHex(va_list args, char c)
 {
 	long int x = va_arg(args, int long);
 	int len = 0;
+	int buff_index = 0, i;
+	char buff[BUFSIZ];
 
 	if (c == 'x')
 	{
-		len += intohex(x);
+		len += intohex(x, &buff_index, buff);
+		i = len;
 	}
 	else if (c == 'X')
 	{
-		len += intoHEX(x);
+		len += intoHEX(x, &buff_index, buff);
+		i = len;
 	}
-	return (len);
+	for (i = 0; i < len; i++)
+	{
+		_putchar(buff[i]);
+	}
+	return (i);
 }
 
 /**
@@ -34,14 +42,22 @@ int printshortHex(va_list args, char c)
 {
 	unsigned short int x = va_arg(args, int);
 	int len = 0;
+	int buff_index = 0, i;
+	char buff[BUFSIZ];
 
 	if (c == 'x')
 	{
-		len += intohex(x);
+		len += intohex(x, &buff_index, buff);
+		i = len;
 	}
 	else if (c == 'X')
 	{
-		len += intoHEX(x);
+		len += intoHEX(x, &buff_index, buff);
+		i = len;
+	}
+	for (i = 0; i < len; i++)
+	{
+		_putchar(buff[i]);
 	}
 	return (len);
 }
@@ -55,16 +71,15 @@ int printshortHex(va_list args, char c)
 int printshortoct(va_list args)
 {
 	unsigned short int x = va_arg(args, int);
-	int len = 0;
+	int buff_index = 0, len = 0, i;
+	char buff[BUFSIZ];
 
-	if (x / 8 == 0)
+	len += intoct(x, &buff_index, buff);
+	i = len;
+
+	for (i = 0; i < len; i++)
 	{
-		len += _putchar((x % 8) + '0');
-	}
-	else
-	{
-		len += intoct(x / 8);
-		len += _putchar((x % 8) + '0');
+		_putchar(buff[i]);
 	}
 	return (len);
 }
@@ -78,16 +93,15 @@ int printshortoct(va_list args)
 int printlongoct(va_list args)
 {
 	unsigned long int x = va_arg(args, long int);
-	int len = 0;
+	int buff_index = 0, len = 0, i;
+	char buff[BUFSIZ];
 
-	if (x / 8 == 0)
+	len += intoct(x, &buff_index, buff);
+	i = len;
+
+	for (i = 0; i < len; i++)
 	{
-		len += _putchar((x % 8) + '0');
-	}
-	else
-	{
-		len += intoct(x / 8);
-		len += _putchar((x % 8) + '0');
+		_putchar(buff[i]);
 	}
 	return (len);
 }

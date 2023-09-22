@@ -12,10 +12,12 @@ int main(void)
 {
 	int len, len2;
 
-	len = _printf("%*d", 2, 55555555);
+	len = _printf("%X", 55555555);
 	printf("\n");
-	len2 = printf("%*d", 2, 55555555);
+	len2 = printf("%X", 55555555);
 	printf("\n");
+
+	printf("%d     %d\n", len, len2);
 	fflush(stdout);
 
 	if (len != len2)

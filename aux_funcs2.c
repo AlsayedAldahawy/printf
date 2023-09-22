@@ -37,26 +37,25 @@ int intobin(unsigned int x)
 /**
  * intoct - converts an unsigned int to octal and prints it.
  * @x: int to be converted and printed.
+ * @buff: buffer holds the octal value.
+ * @buff_index: buffer index used to access the buffer.
  * Return: length of octal number.
  *
 */
-int intoct(unsigned long int x)
+int intoct(unsigned long int x, int *buff_index, char buff[])
 {
 	long int len = 0;
 
-	if (x == 0)
-	{
-		len += _putchar('0');
-		return (1);
-	}
 	if (x / 8 == 0)
 	{
-		len += _putchar((x % 8) + '0');
+		buff[(*buff_index)++] = (x % 8) + '0';
+		len++;
 	}
 	else
 	{
-		len += intoct(x / 8);
-		len += _putchar((x % 8) + '0');
+		len += intoct(x / 8, buff_index, buff);
+		buff[(*buff_index)++] = (x % 8) + '0';
+		len++;
 	}
 	return (len);
 }
@@ -64,10 +63,12 @@ int intoct(unsigned long int x)
 /**
  * intohex - converts an unsigned int to hexadecimal and prints it.
  * @x: int to be converted and printed.
+ * @buff: buffer holds the octal value.
+ * @buff_index: buffer index used to access the buffer.
  * Return: length of hexadecimal number.
  *
 */
-int intohex(unsigned long int x)
+int intohex(unsigned long int x, int *buff_index, char buff[])
 {
 	int len = 0;
 
@@ -75,23 +76,27 @@ int intohex(unsigned long int x)
 	{
 		if (x % 16 <= 9)
 		{
-			len += _putchar((x % 16) + '0');
+			buff[(*buff_index)++] = (x % 16) + '0';
+			len++;
 		}
 		else
 		{
-			len += _putchar((x % 16) + 87);
+			buff[(*buff_index)++] = (x % 16) + 87;
+			len++;
 		}
 	}
 	else
 	{
-		len += intohex(x / 16);
+		len += intohex(x / 16, buff_index, buff);
 		if (x % 16 <= 9)
 		{
-			len += _putchar((x % 16) + '0');
+			buff[(*buff_index)++] = (x % 16) + '0';
+			len++;
 		}
 		else
 		{
-			len += _putchar((x % 16) + 87);
+			buff[(*buff_index)++] = (x % 16) + 87;
+			len++;
 		}
 	}
 	return (len);
@@ -100,10 +105,12 @@ int intohex(unsigned long int x)
 /**
  * intoHEX - converts an unsigned int to HEXADECIMAL and prints it.
  * @x: int to be converted and printed.
+ * @buff: buffer holds the octal value.
+ * @buff_index: buffer index used to access the buffer.
  * Return: length of HEXADECIMAL number.
  *
 */
-int intoHEX(unsigned long int x)
+int intoHEX(unsigned long int x, int *buff_index, char buff[])
 {
 	int len = 0;
 
@@ -111,23 +118,27 @@ int intoHEX(unsigned long int x)
 	{
 		if (x % 16 <= 9)
 		{
-			len += _putchar((x % 16) + '0');
+			buff[(*buff_index)++] = (x % 16) + '0';
+			len++;
 		}
 		else
 		{
-			len += _putchar((x % 16) + 55);
+			buff[(*buff_index)++] = (x % 16) + 55;
+			len++;
 		}
 	}
 	else
 	{
-		len += intoHEX(x / 16);
+		len += intoHEX(x / 16, buff_index, buff);
 		if (x % 16 <= 9)
 		{
-			len += _putchar((x % 16) + '0');
+			buff[(*buff_index)++] = (x % 16) + '0';
+			len++;
 		}
 		else
 		{
-			len += _putchar((x % 16) + 55);
+			buff[(*buff_index)++] = (x % 16) + 55;
+			len++;
 		}
 	}
 	return (len);

@@ -12,16 +12,30 @@
 int caseOctal(va_list args, char flag[], __attribute__ ((unused)) int **weight)
 {
 	unsigned int x = va_arg(args, unsigned int);
-	int isFlag = 0;
+	int buff_index = 0, len = 0, i = 0, j;
+	char buff[BUFSIZ];
 
 	if (flag_finder('#', flag) && x)
 	{
-		isFlag += _putchar('0');
+		buff[buff_index++] = '0';
+		len++;
 	}
-
 	flag_eraser(flag);
 
-	return (intoct(x) + isFlag);
+	i += intoct(x, &buff_index, buff);
+	len += i;
+	buff[buff_index] = 0;
+	while (**weight > len)
+	{
+		_putchar(' ');
+		len++;
+	}
+
+	for (j = 0; buff[j]; j++)
+	{
+		_putchar(buff[j]);
+	}
+	return (len);
 }
 
 /**
@@ -35,17 +49,31 @@ int caseOctal(va_list args, char flag[], __attribute__ ((unused)) int **weight)
 int casehexa(va_list args, char flag[], __attribute__ ((unused)) int **weight)
 {
 	unsigned long int x = va_arg(args, unsigned int);
-
-	int isFlag = 0;
+	int buff_index = 0, len = 0, i = 0, j;
+	char buff[BUFSIZ];
 
 	if (flag_finder('#', flag) && x)
 	{
-		isFlag += _putchar('0');
-		isFlag += _putchar('x');
-
+		buff[buff_index++] = '0';
+		buff[buff_index++] = 'x';
+		len += 2;
 	}
 	flag_eraser(flag);
-	return (intohex(x) + isFlag);
+
+	i += intohex(x, &buff_index, buff);
+	len += i;
+	buff[buff_index] = 0;
+	while (**weight > len)
+	{
+		_putchar(' ');
+		len++;
+	}
+
+	for (j = 0; buff[j]; j++)
+	{
+		_putchar(buff[j]);
+	}
+	return (len);
 }
 
 /**
@@ -59,16 +87,31 @@ int casehexa(va_list args, char flag[], __attribute__ ((unused)) int **weight)
 int caseHEXA(va_list args, char flag[], __attribute__ ((unused)) int **weight)
 {
 	unsigned long int x = va_arg(args, unsigned int);
-
-	int isFlag = 0;
+	int buff_index = 0, len = 0, i = 0, j;
+	char buff[BUFSIZ];
 
 	if (flag_finder('#', flag) && x)
 	{
-		isFlag += _putchar('0');
-		isFlag += _putchar('X');
+		buff[buff_index++] = '0';
+		buff[buff_index++] = 'X';
+		len += 2;
 	}
 	flag_eraser(flag);
-	return (intoHEX(x) + isFlag);
+
+	i += intoHEX(x, &buff_index, buff);
+	len += i;
+	buff[buff_index] = 0;
+	while (**weight > len)
+	{
+		_putchar(' ');
+		len++;
+	}
+
+	for (j = 0; buff[j]; j++)
+	{
+		_putchar(buff[j]);
+	}
+	return (len);
 }
 
 /**
@@ -86,6 +129,8 @@ int caseaddr(va_list args, __attribute__ ((unused)) char flag[],
 	unsigned int len = 0;
 	char *s = "(nil)";
 	unsigned long int ptr;
+	int buff_index = 0, i = 0, j;
+	char buff[BUFSIZ];
 
 	if (x == NULL)
 	{
@@ -97,10 +142,25 @@ int caseaddr(va_list args, __attribute__ ((unused)) char flag[],
 	}
 	ptr = (unsigned long int) x;
 
-	len += _putchar('0');
-	len += _putchar('x');
+	buff[buff_index++] = '0';
+	buff[buff_index++] = 'x';
+	len += 2;
 
-	return (intohex(ptr) + len);
+	len += intohex(ptr, &buff_index, buff);
+	buff[buff_index++] = 0;
+	i = len;
+	while (**weight > i)
+	{
+		_putchar(' ');
+		i++;
+	}
+	j = 0;
+	while (buff[j])
+	{
+		_putchar(buff[j]);
+		i++;
+	}
+	return (i + j);
 }
 
 /**
@@ -111,37 +171,44 @@ int caseaddr(va_list args, __attribute__ ((unused)) char flag[],
  * Return: length of printed address number.
  *
 */
-int caseSTR(va_list args, __attribute__ ((unused)) char flag[],
-	__attribute__ ((unused)) int **weight)
+int caseSTR(va_list args, __attribute__ ((unused)) char flag[], int **weight)
 {
 	char *s = va_arg(args, char *);
-	int i = 0, len = 0;
 	char *str = s;
+	int buff_index = 0, i = 0, len = 0;
+	char buff[BUFSIZ];
 
 	if (!str)
-	{
 		str = "(null)";
-	}
-
 	while (str[i])
 	{
 		if (((s[i] > 0 && s[i] < 32)) || s[i] >= 127)
 		{
-			len += _putchar(92);
-			len += _putchar('x');
+			buff[buff_index++] = 92;
+			buff[buff_index++] = 'x';
 			if (s[i] <= 15)
 			{
-				len += _putchar('0');
+				buff[buff_index++] = '0';
 			}
-
-			len += intoHEX(s[i]);
+			buff_index += intoHEX(s[i], &buff_index, buff);
 		}
 		else
-		{
-			write(1, &str[i], 1);
-			len++;
-		}
+			buff[buff_index++] = str[i];
 		i++;
 	}
+	buff[buff_index++] = 0;
+	i = buff_index;
+	while (**weight > i)
+	{
+		_putchar(' ');
+		i++;
+		len++;
+	}
+	for (i = 0; buff[i]; i++)
+	{
+		_putchar(buff[i]);
+		len++;
+	}
+	**weight = 0;
 	return (len);
 }
