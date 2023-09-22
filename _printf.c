@@ -4,30 +4,36 @@
 /**
  * widthflag - handles width flag.
  * @f: format string
- * @weight: weight flag value.
+ * @w: pointer to width flag value.
  * Return: length of printed string.
  *
 */
 
-int widthflag(const char *f, int *weight)
+int widthflag(const char *f, int *w, va_list args)
 {
-	int curr_i;
+	int i;
 	int width = 0;
 
-	for (curr_i = 0; f[curr_i]; curr_i++)
+	for (i = 0; f[i]; i++)
 	{
-		if (f[curr_i] >= '0' && f[curr_i] <= '9')
+		if (f[i] >= '0' && f[i] <= '9')
 		{
 			width *= 10;
-			width += f[curr_i] - '0';
+			width += f[i] - '0';
+		}
+		else if (f[i] == '*')
+		{
+			i++;
+			width = va_arg(args, int);
+			break;
 		}
 		else
 			break;
 	}
 
-	*weight = width;
+	*w = width;
 
-	return (curr_i);
+	return (i);
 }
 
 /**
@@ -53,7 +59,7 @@ FLAGLOOP:
 			if (*(++format) == '\0')
 				return (-1);
 			setvariables(&skip, &go_to);
-			format += widthflag(format, &weight);
+			format += widthflag(format, &weight, args);
 			skip = caseselector(args, *format, &flg_indx, &nochar, flag, &weight);
 			go_to = flagselector(format, &flg_indx, flag, &nochar, args, &skip);
 			if (go_to == 1)
