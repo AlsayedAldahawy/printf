@@ -38,10 +38,7 @@ FLAGLOOP:
 			else if (go_to == 4)
 				break;
 			else if (go_to == 5)
-			{
-				nochar += _putchar(*(format - 1));
 				skip = 1;
-			}
 			(*format == '%') ? (nochar += _putchar(*(format))) :
 				((!skip)) ? (nochar +=  _putchar(*(--format))) : (nochar *= 1);
 		}

@@ -75,8 +75,10 @@ int flagselector(const char *f, int *flg_i, char flag[], int *n, va_list args)
 			go_to = 3;
 		else
 		 go_to = 4;
-	} else if ((*(f - 1) == '%') && (*f == 'l' || *f == 'h') && (*(f + 1) == '\n'))
+	} else if ((*(f - 1) == '%') && (*f == 'l' || *f == 'h')
+	&& (*(f + 1) == '\n'))
 	{
+		*n += _putchar('%');
 		go_to = 5;
 	}
 	return (go_to);
