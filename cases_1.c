@@ -42,6 +42,7 @@ int caseInt(va_list args, char flag[], int **w)
 	int n = va_arg(args, int), start_digit = 0;
 	char buff[BUFSIZ];
 	long int num = n;
+
 	if (num < 0)
 	{
 		buff[k++] = '-';
