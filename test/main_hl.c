@@ -12,9 +12,9 @@ int main(void)
 {
 	int len, len2;
 
-	len = _printf("%X", 55555555);
+	len = _printf("%S", "\x01\x02\x03\x04\x05\x06\x07");
 	printf("\n");
-	len2 = printf("%X", 55555555);
+	len2 = printf("\\x01\\x02\\x03\\x04\\x05\\x06\\x07");
 	printf("\n");
 
 	printf("%d     %d\n", len, len2);

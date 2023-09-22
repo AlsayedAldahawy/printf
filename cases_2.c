@@ -126,12 +126,12 @@ int caseaddr(va_list args, __attribute__ ((unused)) char flag[],
 	__attribute__ ((unused)) int **weight)
 {
 	void *x = va_arg(args, void*);
-	unsigned int len = 0;
 	char *s = "(nil)";
 	unsigned long int ptr;
-	int buff_index = 0, i = 0, j;
+	int buff_index = 0, len = 0;
 	char buff[BUFSIZ];
 
+	**weight = 0;
 	if (x == NULL)
 	{
 		for (len = 0; s[len]; len++)
@@ -141,26 +141,17 @@ int caseaddr(va_list args, __attribute__ ((unused)) char flag[],
 		return (len);
 	}
 	ptr = (unsigned long int) x;
-
 	buff[buff_index++] = '0';
 	buff[buff_index++] = 'x';
-	len += 2;
 
-	len += intohex(ptr, &buff_index, buff);
+	intohex(ptr, &buff_index, buff);
 	buff[buff_index++] = 0;
-	i = len;
-	while (**weight > i)
+	while (buff[len])
 	{
-		_putchar(' ');
-		i++;
+		_putchar(buff[len]);
+		len++;
 	}
-	j = 0;
-	while (buff[j])
-	{
-		_putchar(buff[j]);
-		i++;
-	}
-	return (i + j);
+	return (len);
 }
 
 /**
@@ -171,44 +162,41 @@ int caseaddr(va_list args, __attribute__ ((unused)) char flag[],
  * Return: length of printed address number.
  *
 */
-int caseSTR(va_list args, __attribute__ ((unused)) char flag[], int **weight)
+int caseSTR(va_list args, __attribute__ ((unused)) char flag[],
+	__attribute__ ((unused)) int **weight)
 {
 	char *s = va_arg(args, char *);
 	char *str = s;
-	int buff_index = 0, i = 0, len = 0;
+	int buff_index = 0, i = 0, len = 0, j;
 	char buff[BUFSIZ];
 
+	**weight = 0;
 	if (!str)
 		str = "(null)";
 	while (str[i])
 	{
+		buff_index = 0;
 		if (((s[i] > 0 && s[i] < 32)) || s[i] >= 127)
 		{
-			buff[buff_index++] = 92;
-			buff[buff_index++] = 'x';
+			len += _putchar(92);
+			len += _putchar('x');
 			if (s[i] <= 15)
 			{
-				buff[buff_index++] = '0';
+				len += _putchar('0');
 			}
 			buff_index += intoHEX(s[i], &buff_index, buff);
+			buff[buff_index++] = 0;
+			for (j = 0; buff[j]; j++)
+			{
+				_putchar(buff[j]);
+				len++;
+			}
+			buff_index = 0;
 		}
 		else
-			buff[buff_index++] = str[i];
+			len += _putchar(str[i]);
 		i++;
 	}
-	buff[buff_index++] = 0;
-	i = buff_index;
-	while (**weight > i)
-	{
-		_putchar(' ');
-		i++;
-		len++;
-	}
-	for (i = 0; buff[i]; i++)
-	{
-		_putchar(buff[i]);
-		len++;
-	}
-	**weight = 0;
+
 	return (len);
 }
