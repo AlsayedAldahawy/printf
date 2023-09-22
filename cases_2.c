@@ -4,7 +4,7 @@
  * caseOctal - prints a octal number to stdout.
  * @args: list of variadic function arguments.
  * @flag: flags
- * @weight: weight flag value.
+ * @width: width flag value.
  * @per: percision flag.
  * Return: length of printed octal number.
  *
@@ -49,7 +49,7 @@ int caseOctal(va_list args, char flag[], int **width, int **per)
  * casehexa - prints a hexadecimal number to stdout.
  * @args: list of variadic function arguments.
  * @flag: flags
- * @weight: weight flag value.
+ * @width: width flag value.
  * @per: percision flag.
  * Return: length of printed hexadecimal number.
  *
@@ -94,7 +94,7 @@ int casehexa(va_list args, char flag[], int **width, int **per)
  * caseHEXA - prints a HEXADECIMAL number to stdout.
  * @args: list of variadic function arguments.
  * @flag: flags
- * @weight: weight flag value.
+ * @width: width flag value.
  * @per: percision flag.
  * Return: length of printed HEXADECIMAL number.
  *
@@ -139,7 +139,7 @@ int caseHEXA(va_list args, char flag[], int **width, int **per)
  * caseaddr - prints a ptr address number to stdout.
  * @args: list of variadic function arguments.
  * @flag: flags
- * @weight: weight flag value.
+ * @width: width flag value.
  * @per: percision flag.
  * Return: length of printed address number.
  *
@@ -179,7 +179,7 @@ int caseaddr(va_list args, __attribute__ ((unused)) char flag[],
  * caseSTR - prints the non printable characters as a hexadecimal value.
  * @args: list of variadic function arguments.
  * @flag: flags
- * @weight: weight flag value.
+ * @width: width flag value.
  * @per: percision flag.
  * Return: length of printed address number.
  *
