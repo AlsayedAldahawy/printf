@@ -90,12 +90,18 @@ int caseInt(va_list args, char flag[], int **w)
  * Return: 1.
  *
 */
-int caseChar(va_list args, __attribute__ ((unused)) char flag[],
-	__attribute__ ((unused)) int **width)
+int caseChar(va_list args, __attribute__ ((unused)) char flag[], int **width)
 {
 	char c = va_arg(args, int);
+	int n = 0;
 
-	return (_putchar(c));
+	while (**width > 1)
+	{
+		n += _putchar(' ');
+		(**width)--;
+	}
+	**width = 0;
+	return (_putchar(c) + n);
 }
 
 /**
