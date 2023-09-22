@@ -185,10 +185,11 @@ int caseSTR(va_list args, __attribute__ ((unused)) char flag[],
 				len += _putchar('0');
 			}
 			buff_index += intoHEX(s[i], &buff_index, buff);
-			buff[buff_index++] = 0;
+			buff[buff_index] = 0;
 			for (j = 0; buff[j]; j++)
 			{
 				_putchar(buff[j]);
+				buff[j] = 0;
 				len++;
 			}
 			buff_index = 0;
