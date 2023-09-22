@@ -32,59 +32,40 @@ int caseStr(va_list args, __attribute__ ((unused)) char flag[],
  * caseInt - prints a number to stdout.
  * @args: list of variadic function arguments.
  * @flag: flags
- * @weight: weight flag value.
+ * @w: weight flag value.
  * Return: length of printed int.
  *
 */
 int caseInt(va_list args, char flag[], int **w)
 {
-	int i, nOfChar = 0;
-	int digit, weight = **w, k = 0, j;
-	int num = va_arg(args, int);
-	int start_digit = 0;
-	char buff[20];
+	int i, nOfChar = 0, digit, weight = **w, k = 0, j;
+	int num = va_arg(args, int), start_digit = 0;
+	char buff[BUFSIZ];
 
 	if (num < 0)
 	{
-		buff[k] = '-';
-		k++;
+		buff[k++] = '-';
 		num *= -1;
 	}
 	else if (flag_finder('+', flag))
-	{
-		buff[k] = '+';
-		k++;
-	}
+		buff[k++] = '+';
 	else if (flag_finder(' ', flag))
-	{
-		buff[k] = ' ';
-		k++;
-	}
-
+		buff[k++] = ' ';
 	flag_eraser(flag);
-
 	for (i = 1000000000; i >= 1 ; i = i / 10)
 	{
-
 		if ((num / i == 0) && (start_digit == 0) && (i != 1))
 			continue;
-
 		digit = (num / i) % 10;
-		buff[k] = (digit + '0');
-		k++;
+		buff[k++] = (digit + '0');
 		start_digit = 1;
 	}
 	i = k;
 	j = i;
-	while (weight > i)
-	{
+	while (weight > i++)
 		nOfChar += _putchar(' ');
-		i++;
-	}
 	for (i = 0; i < j; i++)
-	{
 		nOfChar += _putchar(buff[i]);
-	}
 	weight = 0;
 	return (nOfChar);
 }
@@ -134,31 +115,23 @@ int caseUnsigned(va_list args, __attribute__ ((unused)) char flag[], int **w)
 {
 	unsigned int num = va_arg(args, unsigned int);
 	int i, nOfChar = 0, j, k = 0;
-	int weight = **w, digit;
-	int start_digit = 0;
-	int buff[BUFSIZ];
+	int weight = **w, digit, start_digit = 0;
+	char buff[BUFSIZ];
 
 	for (i = 1000000000; i >= 1 ; i = i / 10)
 	{
-
 		if ((num / i == 0) && (start_digit == 0) && (i != 1))
 			continue;
 		digit = (num / i) % 10;
-		buff[k] = (digit + '0');
-		k++;
+		buff[k++] = (digit + '0');
 		start_digit = 1;
 	}
 	i = k;
 	j = i;
-	while (weight > i)
-	{
+	while (weight > i++)
 		nOfChar += _putchar(' ');
-		i++;
-	}
 	for (i = 0; i < j; i++)
-	{
 		nOfChar += _putchar(buff[i]);
-	}
 	weight = 0;
 	return (nOfChar);
 }
