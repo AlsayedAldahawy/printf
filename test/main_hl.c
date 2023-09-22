@@ -12,15 +12,12 @@ int main(void)
 {
 	int len, len2;
 
-	len = _printf("%5u", INT_MAX);
+	len = _printf("%d", INT_MIN);
 	printf("\n");
-	len2 = printf("%5u", INT_MAX);
-	printf("\n");
-	len = _printf("%5d", INT_MAX);
-	printf("\n");
-	len2 = printf("%5d", INT_MAX);
+	len2 = printf("%d", INT_MIN);
 	printf("\n");
 	fflush(stdout);
+
 	if (len != len2)
 	{
 		printf("Lengths differ.\n");

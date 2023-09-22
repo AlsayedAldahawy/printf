@@ -39,9 +39,9 @@ int caseStr(va_list args, __attribute__ ((unused)) char flag[],
 int caseInt(va_list args, char flag[], int **w)
 {
 	int i, nOfChar = 0, digit, weight = **w, k = 0, j;
-	int num = va_arg(args, int), start_digit = 0;
+	int n = va_arg(args, int), start_digit = 0;
 	char buff[BUFSIZ];
-
+	long int num = n;
 	if (num < 0)
 	{
 		buff[k++] = '-';
