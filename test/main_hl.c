@@ -12,22 +12,17 @@ int main(void)
 {
 	int len, len2;
 
-	len = _printf("%lX - %lX = %lX\n", ULONG_MAX, 2048UL, ULONG_MAX - 2048UL);		printf("\n");
-
-	len2 = printf("%lX - %lX = %lX\n", ULONG_MAX, 2048UL, ULONG_MAX - 2048UL);
-		printf("\n");
-
-	printf("%d : %d \n", len, len2);
-
+	len = _printf("%5u", 402);
+	printf("\n");
+	len2 = printf("%5u", 402);
+	printf("\n");
 	fflush(stdout);
-	len = _printf("%l\n");
-
-	len2 = printf("%l\n");
-		printf("\n");
-
-	printf("%d : %d \n", len, len2);
-
-	fflush(stdout);
+	if (len != len2)
+	{
+		printf("Lengths differ.\n");
+		fflush(stdout);
+		return (1);
+	}
 
 	return (0);
 }

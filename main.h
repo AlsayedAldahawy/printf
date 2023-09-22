@@ -13,22 +13,22 @@
 
 int _printf(const char *format, ...);
 int _putchar(char c);
-int caseStr(va_list args, char flag[]);
-int caseInt(va_list args, char flag[]);
-int caseChar(va_list args, char flag[]);
+int caseStr(va_list args, char flag[], int **weight);
+int caseInt(va_list args, char flag[], int **weight);
+int caseChar(va_list args, char flag[], int **weight);
 int intobin(unsigned int x);
-int caseBin(va_list args, char flag[]);
-int caseUnsigned(va_list args, char flag[]);
+int caseBin(va_list args, char flag[], int **weight);
+int caseUnsigned(va_list args, char flag[], int **weight);
 int intoct(unsigned long int x);
-int caseOctal(va_list args, char flag[]);
-int casehexa(va_list args, char flag[]);
+int caseOctal(va_list args, char flag[], int **weight);
+int casehexa(va_list args, char flag[], int **weight);
 int intohex(unsigned long int x);
-int caseHEXA(va_list args, char flag[]);
+int caseHEXA(va_list args, char flag[], int **weight);
 int intoHEX(unsigned long int x);
-int caseSTR(va_list args, char flag[]);
-int caseaddr(va_list args, char flag[]);
-int caseRev(va_list args, char flag[]);
-int caseROT(va_list args, char flag[]);
+int caseSTR(va_list args, char flag[], int **weight);
+int caseaddr(va_list args, char flag[], int **weight);
+int caseRev(va_list args, char flag[], int **weight);
+int caseROT(va_list args, char flag[], int **weight);
 int flag_finder(char f, char flag[]);
 void flag_eraser(char flag[]);
 int flaghash(char const *format);
@@ -42,8 +42,9 @@ int printshortoct(va_list args);
 int printlongoct(va_list args);
 int printshrtunsi(va_list args);
 int printlongunsi(va_list args);
-int caseselector(va_list args, char sp, int *flg_indx, int *n, char flag[]);
-int flagselector(const char *, int *, char flag[], int *, va_list);
+int caseselector(va_list args, char sp, int *flg_indx, int *n,
+	char flag[], int *weight);
+int flagselector(const char *, int *, char flag[], int *, va_list, int *skip);
 int lhflags(int **nochar, va_list args, const char *format);
 void setvariables(int *skip, int *go_to);
 int _long(unsigned long int x);
@@ -61,7 +62,7 @@ int _short(unsigned short int x);
 typedef struct specifiers
 {
 	char s;
-	int (*f)(va_list, char []);
+	int (*f)(va_list, char [], int **);
 } specifier_t;
 
 /**

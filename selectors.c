@@ -7,9 +7,11 @@
  * @flg_indx: index of the flag array, passed by reference to be reset to 0.
  * @n: number of character, passed by reference to be incremented.
  * @flag: flag array contains the flags the occured.
+ * @weight: weight flag value.
  * Return: skip: a variable used to skip printing the specifier characters.
 */
-int caseselector(va_list args, char sp, int *flg_indx, int *n, char flag[])
+int caseselector(va_list args, char sp, int *flg_indx, int *n,
+	char flag[], int *weight)
 {
 	int i = 0, skip = 0;
 	specifier_t spec[] = {
@@ -27,7 +29,7 @@ int caseselector(va_list args, char sp, int *flg_indx, int *n, char flag[])
 		if (sp == spec[i].s)
 		{
 			*flg_indx = 0;
-			*n += spec[i].f(args, flag);
+			*n += spec[i].f(args, flag, &weight);
 			skip = 1;
 		}
 	}
@@ -41,9 +43,11 @@ int caseselector(va_list args, char sp, int *flg_indx, int *n, char flag[])
  * @flg_i: index of the flag array, passed by reference to be reset to 0.
  * @flag: flag array contains the flags the occured.
  * @args: variadic function arguments list.
+ * @skip: pointer to skip variable.
  * Return: go_to: define which label should go to.
 */
-int flagselector(const char *f, int *flg_i, char flag[], int *n, va_list args)
+int flagselector(const char *f, int *flg_i, char flag[],
+	int *n, va_list args, int *skip)
 {
 	int x, i = 0, go_to = 0;
 	flags_t fgs[] = {{'#', flaghash}, {'+', flagplus}, {' ', flagplus}};
@@ -80,6 +84,7 @@ int flagselector(const char *f, int *flg_i, char flag[], int *n, va_list args)
 	{
 		*n += _putchar('%');
 		go_to = 5;
+		*skip = 1;
 	}
 	return (go_to);
 }

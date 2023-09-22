@@ -4,11 +4,12 @@
  * caseOctal - prints a octal number to stdout.
  * @args: list of variadic function arguments.
  * @flag: flags
+ * @weight: weight flag value.
  * Return: length of printed octal number.
  *
 */
 
-int caseOctal(va_list args, char flag[])
+int caseOctal(va_list args, char flag[], __attribute__ ((unused)) int **weight)
 {
 	unsigned int x = va_arg(args, unsigned int);
 	int isFlag = 0;
@@ -27,10 +28,11 @@ int caseOctal(va_list args, char flag[])
  * casehexa - prints a hexadecimal number to stdout.
  * @args: list of variadic function arguments.
  * @flag: flags
+ * @weight: weight flag value.
  * Return: length of printed hexadecimal number.
  *
 */
-int casehexa(va_list args, char flag[])
+int casehexa(va_list args, char flag[], __attribute__ ((unused)) int **weight)
 {
 	unsigned long int x = va_arg(args, unsigned int);
 
@@ -50,10 +52,11 @@ int casehexa(va_list args, char flag[])
  * caseHEXA - prints a HEXADECIMAL number to stdout.
  * @args: list of variadic function arguments.
  * @flag: flags
+ * @weight: weight flag value.
  * Return: length of printed HEXADECIMAL number.
  *
 */
-int caseHEXA(va_list args, char flag[])
+int caseHEXA(va_list args, char flag[], __attribute__ ((unused)) int **weight)
 {
 	unsigned long int x = va_arg(args, unsigned int);
 
@@ -63,7 +66,6 @@ int caseHEXA(va_list args, char flag[])
 	{
 		isFlag += _putchar('0');
 		isFlag += _putchar('X');
-
 	}
 	flag_eraser(flag);
 	return (intoHEX(x) + isFlag);
@@ -73,10 +75,12 @@ int caseHEXA(va_list args, char flag[])
  * caseaddr - prints a ptr address number to stdout.
  * @args: list of variadic function arguments.
  * @flag: flags
+ * @weight: weight flag value.
  * Return: length of printed address number.
  *
 */
-int caseaddr(va_list args, __attribute__ ((unused)) char flag[])
+int caseaddr(va_list args, __attribute__ ((unused)) char flag[],
+	__attribute__ ((unused)) int **weight)
 {
 	void *x = va_arg(args, void*);
 	unsigned int len = 0;
@@ -103,10 +107,12 @@ int caseaddr(va_list args, __attribute__ ((unused)) char flag[])
  * caseSTR - prints the non printable characters as a hexadecimal value.
  * @args: list of variadic function arguments.
  * @flag: flags
+ * @weight: weight flag value.
  * Return: length of printed address number.
  *
 */
-int caseSTR(va_list args, __attribute__ ((unused)) char flag[])
+int caseSTR(va_list args, __attribute__ ((unused)) char flag[],
+	__attribute__ ((unused)) int **weight)
 {
 	char *s = va_arg(args, char *);
 	int i = 0, len = 0;
