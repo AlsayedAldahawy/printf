@@ -21,8 +21,7 @@ MAINLOOP:
 		if (*format == '%')
 		{
 FLAGLOOP:
-			format++;
-			if (*format == '\0')
+			if (*(++format) == '\0')
 				return (-1);
 			setvariables(&skip, &go_to);
 			skip = caseselector(args, *format, &flg_indx, &nochar, flag);
