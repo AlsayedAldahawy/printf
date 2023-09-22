@@ -36,28 +36,29 @@ int caseStr(va_list args, __attribute__ ((unused)) char flag[],
  * Return: length of printed int.
  *
 */
-int caseInt(va_list args, char flag[], __attribute__ ((unused)) int **weight)
+int caseInt(va_list args, char flag[], int **w)
 {
-	unsigned int i, nOfChar = 0;
-	int digit;
+	int i, nOfChar = 0;
+	int digit, weight = **w, k = 0, j;
 	int num = va_arg(args, int);
 	int start_digit = 0;
+	char buff[20];
 
 	if (num < 0)
 	{
-		_putchar('-');
-		nOfChar++;
+		buff[k] = '-';
+		k++;
 		num *= -1;
 	}
 	else if (flag_finder('+', flag))
 	{
-		_putchar('+');
-		nOfChar++;
+		buff[k] = '+';
+		k++;
 	}
 	else if (flag_finder(' ', flag))
 	{
-		_putchar(' ');
-		nOfChar++;
+		buff[k] = ' ';
+		k++;
 	}
 
 	flag_eraser(flag);
@@ -69,10 +70,22 @@ int caseInt(va_list args, char flag[], __attribute__ ((unused)) int **weight)
 			continue;
 
 		digit = (num / i) % 10;
-		_putchar(digit + '0');
-		nOfChar++;
+		buff[k] = (digit + '0');
+		k++;
 		start_digit = 1;
 	}
+	i = k;
+	j = i;
+	while (weight > i)
+	{
+		nOfChar += _putchar(' ');
+		i++;
+	}
+	for (i = 0; i < j; i++)
+	{
+		nOfChar += _putchar(buff[i]);
+	}
+	weight = 0;
 	return (nOfChar);
 }
 

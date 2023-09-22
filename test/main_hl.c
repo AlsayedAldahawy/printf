@@ -12,9 +12,13 @@ int main(void)
 {
 	int len, len2;
 
-	len = _printf("%5u", 402);
+	len = _printf("%5u", INT_MAX);
 	printf("\n");
-	len2 = printf("%5u", 402);
+	len2 = printf("%5u", INT_MAX);
+	printf("\n");
+	len = _printf("%5d", INT_MAX);
+	printf("\n");
+	len2 = printf("%5d", INT_MAX);
 	printf("\n");
 	fflush(stdout);
 	if (len != len2)
