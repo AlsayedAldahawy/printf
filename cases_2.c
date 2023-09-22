@@ -5,16 +5,19 @@
  * @args: list of variadic function arguments.
  * @flag: flags
  * @weight: weight flag value.
+ * @per: percision flag.
  * Return: length of printed octal number.
  *
 */
 
-int caseOctal(va_list args, char flag[], __attribute__ ((unused)) int **weight)
+int caseOctal(va_list args, char flag[], int **weight, int **per)
 {
 	unsigned int x = va_arg(args, unsigned int);
 	int buff_index = 0, len = 0, i = 0, j;
-	char buff[BUFSIZ];
+	char buff[BUFSIZ], per_c = ' ';
 
+	if (**per == 1)
+		per_c = '0';
 	if (flag_finder('#', flag) && x)
 	{
 		buff[buff_index++] = '0';
@@ -27,7 +30,7 @@ int caseOctal(va_list args, char flag[], __attribute__ ((unused)) int **weight)
 	buff[buff_index] = 0;
 	while (**weight > len)
 	{
-		_putchar(' ');
+		_putchar(per_c);
 		len++;
 	}
 
@@ -43,15 +46,18 @@ int caseOctal(va_list args, char flag[], __attribute__ ((unused)) int **weight)
  * @args: list of variadic function arguments.
  * @flag: flags
  * @weight: weight flag value.
+ * @per: percision flag.
  * Return: length of printed hexadecimal number.
  *
 */
-int casehexa(va_list args, char flag[], __attribute__ ((unused)) int **weight)
+int casehexa(va_list args, char flag[], int **weight, int **per)
 {
 	unsigned long int x = va_arg(args, unsigned int);
 	int buff_index = 0, len = 0, i = 0, j;
-	char buff[BUFSIZ];
+	char buff[BUFSIZ], per_c = ' ';
 
+	if (**per == 1)
+		per_c = '0';
 	if (flag_finder('#', flag) && x)
 	{
 		buff[buff_index++] = '0';
@@ -65,7 +71,7 @@ int casehexa(va_list args, char flag[], __attribute__ ((unused)) int **weight)
 	buff[buff_index] = 0;
 	while (**weight > len)
 	{
-		_putchar(' ');
+		_putchar(per_c);
 		len++;
 	}
 
@@ -81,15 +87,18 @@ int casehexa(va_list args, char flag[], __attribute__ ((unused)) int **weight)
  * @args: list of variadic function arguments.
  * @flag: flags
  * @weight: weight flag value.
+ * @per: percision flag.
  * Return: length of printed HEXADECIMAL number.
  *
 */
-int caseHEXA(va_list args, char flag[], __attribute__ ((unused)) int **weight)
+int caseHEXA(va_list args, char flag[], int **weight, int **per)
 {
 	unsigned long int x = va_arg(args, unsigned int);
 	int buff_index = 0, len = 0, i = 0, j;
-	char buff[BUFSIZ];
+	char buff[BUFSIZ], per_c = ' ';
 
+	if (**per == 1)
+		per_c = '0';
 	if (flag_finder('#', flag) && x)
 	{
 		buff[buff_index++] = '0';
@@ -103,7 +112,7 @@ int caseHEXA(va_list args, char flag[], __attribute__ ((unused)) int **weight)
 	buff[buff_index] = 0;
 	while (**weight > len)
 	{
-		_putchar(' ');
+		_putchar(per_c);
 		len++;
 	}
 
@@ -119,11 +128,12 @@ int caseHEXA(va_list args, char flag[], __attribute__ ((unused)) int **weight)
  * @args: list of variadic function arguments.
  * @flag: flags
  * @weight: weight flag value.
+ * @per: percision flag.
  * Return: length of printed address number.
  *
 */
 int caseaddr(va_list args, __attribute__ ((unused)) char flag[],
-	__attribute__ ((unused)) int **weight)
+	__attribute__ ((unused)) int **weight, __attribute__ ((unused)) int **per)
 {
 	void *x = va_arg(args, void*);
 	char *s = "(nil)";
@@ -131,7 +141,6 @@ int caseaddr(va_list args, __attribute__ ((unused)) char flag[],
 	int buff_index = 0, len = 0;
 	char buff[BUFSIZ];
 
-	**weight = 0;
 	if (x == NULL)
 	{
 		for (len = 0; s[len]; len++)
@@ -159,18 +168,18 @@ int caseaddr(va_list args, __attribute__ ((unused)) char flag[],
  * @args: list of variadic function arguments.
  * @flag: flags
  * @weight: weight flag value.
+ * @per: percision flag.
  * Return: length of printed address number.
  *
 */
 int caseSTR(va_list args, __attribute__ ((unused)) char flag[],
-	__attribute__ ((unused)) int **weight)
+	__attribute__ ((unused)) int **weight, __attribute__ ((unused)) int **per)
 {
 	char *s = va_arg(args, char *);
 	char *str = s;
 	int buff_index = 0, i = 0, len = 0, j;
 	char buff[BUFSIZ];
 
-	**weight = 0;
 	if (!str)
 		str = "(null)";
 	while (str[i])

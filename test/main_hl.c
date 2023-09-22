@@ -12,9 +12,9 @@ int main(void)
 {
 	int len, len2;
 
-	len = _printf("Could you print some non-prntable characters?\n%S\nThanks!\n", "Sure:\x1F\x7F\n");
+	len = _printf("%.15d", 55555555);
 	printf("\n");
-	len2 = printf("Could you print some non-prntable characters?\nSure:\\x1F\\x7F\\x0A\nThanks!\n");
+	len2 = printf("%.15d", 55555555);
 	printf("\n");
 
 	printf("%d     %d\n", len, len2);

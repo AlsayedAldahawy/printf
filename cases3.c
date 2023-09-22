@@ -5,11 +5,12 @@
  * @args: list of variadic function arguments.
  * @flag: flags
  * @weight: weight flag value.
+ * @per: percision flag.
  * Return: length of printed string.
  *
 */
 int caseRev(va_list args, __attribute__ ((unused)) char flag[],
-	__attribute__ ((unused)) int **weight)
+	__attribute__ ((unused)) int **weight, __attribute__ ((unused)) int **per)
 {
 	char *str = va_arg(args, char *);
 	int len = 0, j = 0;
@@ -30,11 +31,12 @@ int caseRev(va_list args, __attribute__ ((unused)) char flag[],
  * @args: list of variadic function arguments.
  * @flag: flags
  * @weight: weight flag value.
+ * @per: percision flag.
  * Return: length of printed string.
  *
 */
 int caseROT(va_list args, __attribute__ ((unused)) char flag[],
-	__attribute__ ((unused)) int **weight)
+	__attribute__ ((unused)) int **weight, __attribute__ ((unused)) int **per)
 {
 	char *str = va_arg(args, char *);
 	int len = 0, j = 0, skip = 0;

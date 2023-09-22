@@ -5,17 +5,22 @@
  * widthflag - handles width flag.
  * @f: format string
  * @w: pointer to width flag value.
+ * @per: percision flag.
  * @args: arguments list.
  * Return: length of printed string.
  *
 */
 
-int widthflag(const char *f, int *w, va_list args)
+int widthflag(const char *f, int *w, int *per, va_list args)
 {
-	int i;
-	int width = 0;
+	int i = 0, width = 0;
+	*per = 0;
 
-	for (i = 0; f[i]; i++)
+	if (f[i] == '.')
+	{
+		*per = 1;
+	}
+	for (i = *per; f[i]; i++)
 	{
 		if (f[i] >= '0' && f[i] <= '9')
 		{
@@ -46,7 +51,7 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	char flag[40] = "0000000000000000000000000000000000000000";
-	int flg_indx = 0, nochar = 0, skip = 0, go_to, weight = 0;
+	int flg_indx = 0, nochar = 0, skip = 0, go_to, weight = 0, per;
 
 	if (!format)
 		return (-1);
@@ -60,8 +65,8 @@ FLAGLOOP:
 			if (*(++format) == '\0')
 				return (-1);
 			setvariables(&skip, &go_to);
-			format += widthflag(format, &weight, args);
-			skip = caseselector(args, *format, &flg_indx, &nochar, flag, &weight);
+			format += widthflag(format, &weight, &per, args);
+			skip = caseselector(args, *format, &flg_indx, &nochar, flag, &weight, &per);
 			go_to = flagselector(format, &flg_indx, flag, &nochar, args, &skip);
 			if (go_to == 1)
 				goto FLAGLOOP;
