@@ -12,9 +12,9 @@ int main(void)
 {
 	int len, len2;
 
-	len = _printf("%d", INT_MIN);
+	len = _printf("%*s", 6, "shshg");
 	printf("\n");
-	len2 = printf("%d", INT_MIN);
+	len2 = printf("%*s", 6, "shshg");
 	printf("\n");
 	fflush(stdout);
 

@@ -5,6 +5,7 @@
  * widthflag - handles width flag.
  * @f: format string
  * @w: pointer to width flag value.
+ * @args: arguments list.
  * Return: length of printed string.
  *
 */
