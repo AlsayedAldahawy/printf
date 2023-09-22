@@ -22,7 +22,11 @@ int caseStr(va_list args, __attribute__ ((unused)) char flag[],
 		str = "(null)";
 	}
 	if (**per == 1)
+	{
 		per_c = '0';
+		if (n == 0 && **width == 0)
+			return (0);
+	}
 	while (str[i])
 	{
 		buff[i] = str[i];
@@ -59,10 +63,14 @@ int caseInt(va_list args, char flag[], int **w, int **per)
 	long int num = n;
 
 	if (**per == 1)
+	{
 		per_c = '0';
+		if (n == 0 && **w == 0)
+			return (0);
+	}
 	if (num < 0)
 	{
-		buff[k++] = '-';
+		nOfChar += _putchar('-');
 		num *= -1;
 	}
 	else if (flag_finder('+', flag))
@@ -104,7 +112,11 @@ int caseChar(va_list args, __attribute__ ((unused)) char flag[],
 	int n = 0;
 
 	if (**per == 1)
+	{
 		per_c = '0';
+		if (c == 0 && **width == 0)
+			return (0);
+	}
 	while (**width > 1)
 	{
 		n += _putchar(per_c);
@@ -149,6 +161,12 @@ int caseUnsigned(va_list args, __attribute__ ((unused)) char flag[],
 	int width = **w, digit, start_digit = 0;
 	char buff[BUFSIZ], per_c = ' ';
 
+	if (**per == 1)
+	{
+		per_c = '0';
+		if (num == 0 && **w == 0)
+			return (0);
+	}
 	for (i = 1000000000; i >= 1 ; i = i / 10)
 	{
 		if ((num / i == 0) && (start_digit == 0) && (i != 1))
@@ -159,8 +177,6 @@ int caseUnsigned(va_list args, __attribute__ ((unused)) char flag[],
 	}
 	i = k;
 	j = i;
-	if (**per == 1)
-		per_c = '0';
 	while (width > i++)
 		nOfChar += _putchar(per_c);
 	for (i = 0; i < j; i++)

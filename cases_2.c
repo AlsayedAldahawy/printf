@@ -10,14 +10,18 @@
  *
 */
 
-int caseOctal(va_list args, char flag[], int **weight, int **per)
+int caseOctal(va_list args, char flag[], int **width, int **per)
 {
 	unsigned int x = va_arg(args, unsigned int);
 	int buff_index = 0, len = 0, i = 0, j;
 	char buff[BUFSIZ], per_c = ' ';
 
 	if (**per == 1)
+	{
 		per_c = '0';
+		if (x == 0 && **width == 0)
+			return (0);
+	}
 	if (flag_finder('#', flag) && x)
 	{
 		buff[buff_index++] = '0';
@@ -28,7 +32,7 @@ int caseOctal(va_list args, char flag[], int **weight, int **per)
 	i += intoct(x, &buff_index, buff);
 	len += i;
 	buff[buff_index] = 0;
-	while (**weight > len)
+	while (**width > len)
 	{
 		_putchar(per_c);
 		len++;
@@ -50,14 +54,18 @@ int caseOctal(va_list args, char flag[], int **weight, int **per)
  * Return: length of printed hexadecimal number.
  *
 */
-int casehexa(va_list args, char flag[], int **weight, int **per)
+int casehexa(va_list args, char flag[], int **width, int **per)
 {
 	unsigned long int x = va_arg(args, unsigned int);
 	int buff_index = 0, len = 0, i = 0, j;
 	char buff[BUFSIZ], per_c = ' ';
 
 	if (**per == 1)
+	{
 		per_c = '0';
+		if (x == 0 && **width == 0)
+			return (0);
+	}
 	if (flag_finder('#', flag) && x)
 	{
 		buff[buff_index++] = '0';
@@ -69,7 +77,7 @@ int casehexa(va_list args, char flag[], int **weight, int **per)
 	i += intohex(x, &buff_index, buff);
 	len += i;
 	buff[buff_index] = 0;
-	while (**weight > len)
+	while (**width > len)
 	{
 		_putchar(per_c);
 		len++;
@@ -91,14 +99,18 @@ int casehexa(va_list args, char flag[], int **weight, int **per)
  * Return: length of printed HEXADECIMAL number.
  *
 */
-int caseHEXA(va_list args, char flag[], int **weight, int **per)
+int caseHEXA(va_list args, char flag[], int **width, int **per)
 {
 	unsigned long int x = va_arg(args, unsigned int);
 	int buff_index = 0, len = 0, i = 0, j;
 	char buff[BUFSIZ], per_c = ' ';
 
 	if (**per == 1)
+	{
 		per_c = '0';
+		if (x == 0 && **width == 0)
+			return (0);
+	}
 	if (flag_finder('#', flag) && x)
 	{
 		buff[buff_index++] = '0';
@@ -110,7 +122,7 @@ int caseHEXA(va_list args, char flag[], int **weight, int **per)
 	i += intoHEX(x, &buff_index, buff);
 	len += i;
 	buff[buff_index] = 0;
-	while (**weight > len)
+	while (**width > len)
 	{
 		_putchar(per_c);
 		len++;
@@ -133,7 +145,7 @@ int caseHEXA(va_list args, char flag[], int **weight, int **per)
  *
 */
 int caseaddr(va_list args, __attribute__ ((unused)) char flag[],
-	__attribute__ ((unused)) int **weight, __attribute__ ((unused)) int **per)
+	__attribute__ ((unused)) int **width, __attribute__ ((unused)) int **per)
 {
 	void *x = va_arg(args, void*);
 	char *s = "(nil)";
@@ -173,7 +185,7 @@ int caseaddr(va_list args, __attribute__ ((unused)) char flag[],
  *
 */
 int caseSTR(va_list args, __attribute__ ((unused)) char flag[],
-	__attribute__ ((unused)) int **weight, __attribute__ ((unused)) int **per)
+	__attribute__ ((unused)) int **width, __attribute__ ((unused)) int **per)
 {
 	char *s = va_arg(args, char *);
 	char *str = s;

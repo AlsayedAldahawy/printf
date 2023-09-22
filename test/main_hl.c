@@ -12,9 +12,9 @@ int main(void)
 {
 	int len, len2;
 
-	len = _printf("%.15d", 55555555);
+	len = _printf("%.u", 0);
 	printf("\n");
-	len2 = printf("%.15d", 55555555);
+	len2 = printf("%.u", 0);
 	printf("\n");
 
 	printf("%d     %d\n", len, len2);
