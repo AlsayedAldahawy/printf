@@ -6,11 +6,12 @@
  * @flag: flags
  * @width: width flag value.
  * @per: percision flag.
+ * @neg: '-' flag.
  * Return: length of printed string.
  *
 */
 int caseStr(va_list args, __attribute__ ((unused)) char flag[],
-	int **width, int **per)
+	int **width, int **per, __attribute__ ((unused)) int **neg)
 {
 	char *s = va_arg(args, char *);
 	int i = 0, n = 0, j;
@@ -51,17 +52,18 @@ int caseStr(va_list args, __attribute__ ((unused)) char flag[],
  * @flag: flags
  * @w: width flag value.
  * @per: percision flag.
+ * @neg: '-' flag.
  * Return: length of printed int.
  *
 */
-int caseInt(va_list args, char flag[], int **w, int **per)
+int caseInt(va_list args, char flag[], int **w, int **per, int **neg)
 {
 	int i, nOfChar = 0, digit, width = **w, k = 0, j;
 	int n = va_arg(args, int), start_digit = 0;
 	char buff[BUFSIZ], per_c = ' ';
 	long int num = n, per_i = 0;
 
-	if (**per == 1)
+	if (**per || **neg)
 	{
 		per_c = '0';
 		if (n == 0 && **w == 0)
@@ -69,7 +71,7 @@ int caseInt(va_list args, char flag[], int **w, int **per)
 	}
 	if (num < 0)
 	{
-		(**per) ? (nOfChar += _putchar('-')), per_i++ : (buff[k++] = '-');
+		(**per || **neg) ? (nOfChar += _putchar('-')), per_i++ : (buff[k++] = '-');
 		num *= -1;
 	}
 	else if (flag_finder('+', flag))
@@ -88,10 +90,12 @@ int caseInt(va_list args, char flag[], int **w, int **per)
 	buff[k] = 0;
 	i = k;
 	j = i;
-	while (width > (i++ + per_i))
+	while (width > ((i++)) && !**neg)
 		nOfChar += _putchar(per_c);
 	for (i = 0; i < j; i++)
 		nOfChar += _putchar(buff[i]);
+	while (width > (j++) + per_i && **neg && !**per)
+		nOfChar += _putchar(' ');
 	width = 0;
 	return (nOfChar);
 }
@@ -102,11 +106,12 @@ int caseInt(va_list args, char flag[], int **w, int **per)
  * @flag: flags
  * @width: width flag value.
  * @per: percision flag.
+ * @neg: '-' flag.
  * Return: 1.
  *
 */
 int caseChar(va_list args, __attribute__ ((unused)) char flag[],
-	int **width, int **per)
+	int **width, int **per, __attribute__ ((unused)) int **neg)
 {
 	char c = va_arg(args, int), per_c = ' ';
 	int n = 0;
@@ -132,12 +137,14 @@ int caseChar(va_list args, __attribute__ ((unused)) char flag[],
  * @flag: flags
  * @width: width flag value.
  * @per: percision flag.
+ * @neg: '-' flag.
  * Return: length of printed binary number.
  *
 */
 
 int caseBin(va_list args, __attribute__ ((unused)) char flag[],
-	__attribute__ ((unused)) int **width, __attribute__ ((unused)) int **per)
+	__attribute__ ((unused)) int **width, __attribute__ ((unused)) int **per,
+	__attribute__ ((unused)) int **neg)
 {
 	unsigned int x = va_arg(args, unsigned int);
 
@@ -150,11 +157,12 @@ int caseBin(va_list args, __attribute__ ((unused)) char flag[],
  * @flag: flags
  * @w: width flag value.
  * @per: percision flag.
+ * @neg: '-' flag.
  * Return: length of printed unsigned int.
  *
 */
 int caseUnsigned(va_list args, __attribute__ ((unused)) char flag[],
-	int **w, int **per)
+	int **w, int **per, __attribute__ ((unused)) int **neg)
 {
 	unsigned int num = va_arg(args, unsigned int);
 	int i, nOfChar = 0, j, k = 0;

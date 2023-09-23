@@ -9,10 +9,11 @@
  * @flag: flag array contains the flags the occured.
  * @weight: weight flag value.
  * @per: percision flag.
+ * @neg: '-' flag.
  * Return: skip: a variable used to skip printing the specifier characters.
 */
 int caseselector(va_list args, char sp, int *flg_indx, int *n,
-	char flag[], int *weight, int *per)
+	char flag[], int *weight, int *per, int *neg)
 {
 	int i = 0, skip = 0;
 	specifier_t spec[] = {
@@ -30,7 +31,7 @@ int caseselector(va_list args, char sp, int *flg_indx, int *n,
 		if (sp == spec[i].s)
 		{
 			*flg_indx = 0;
-			*n += spec[i].f(args, flag, &weight, &per);
+			*n += spec[i].f(args, flag, &weight, &per, &neg);
 			skip = 1;
 		}
 	}

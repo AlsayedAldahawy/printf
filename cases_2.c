@@ -6,11 +6,13 @@
  * @flag: flags
  * @width: width flag value.
  * @per: percision flag.
+ * @neg: '-' flag.
  * Return: length of printed octal number.
  *
 */
 
-int caseOctal(va_list args, char flag[], int **width, int **per)
+int caseOctal(va_list args, char flag[], int **width, int **per,
+	__attribute__ ((unused)) int **neg)
 {
 	unsigned int x = va_arg(args, unsigned int);
 	int buff_index = 0, len = 0, i = 0, j;
@@ -51,10 +53,12 @@ int caseOctal(va_list args, char flag[], int **width, int **per)
  * @flag: flags
  * @width: width flag value.
  * @per: percision flag.
+ * @neg: '-' flag.
  * Return: length of printed hexadecimal number.
  *
 */
-int casehexa(va_list args, char flag[], int **width, int **per)
+int casehexa(va_list args, char flag[], int **width, int **per,
+	__attribute__ ((unused)) int **neg)
 {
 	unsigned long int x = va_arg(args, unsigned int);
 	int buff_index = 0, len = 0, i = 0, j;
@@ -96,10 +100,12 @@ int casehexa(va_list args, char flag[], int **width, int **per)
  * @flag: flags
  * @width: width flag value.
  * @per: percision flag.
+ * @neg: '-' flag.
  * Return: length of printed HEXADECIMAL number.
  *
 */
-int caseHEXA(va_list args, char flag[], int **width, int **per)
+int caseHEXA(va_list args, char flag[], int **width, int **per,
+	__attribute__ ((unused)) int **neg)
 {
 	unsigned long int x = va_arg(args, unsigned int);
 	int buff_index = 0, len = 0, i = 0, j;
@@ -141,11 +147,13 @@ int caseHEXA(va_list args, char flag[], int **width, int **per)
  * @flag: flags
  * @width: width flag value.
  * @per: percision flag.
+ * @neg: '-' flag.
  * Return: length of printed address number.
  *
 */
 int caseaddr(va_list args, __attribute__ ((unused)) char flag[],
-	__attribute__ ((unused)) int **width, __attribute__ ((unused)) int **per)
+	__attribute__ ((unused)) int **width, __attribute__ ((unused)) int **per,
+	__attribute__ ((unused)) int **neg)
 {
 	void *x = va_arg(args, void*);
 	char *s = "(nil)";
@@ -181,11 +189,13 @@ int caseaddr(va_list args, __attribute__ ((unused)) char flag[],
  * @flag: flags
  * @width: width flag value.
  * @per: percision flag.
+ * @neg: '-' flag.
  * Return: length of printed address number.
  *
 */
 int caseSTR(va_list args, __attribute__ ((unused)) char flag[],
-	__attribute__ ((unused)) int **width, __attribute__ ((unused)) int **per)
+	__attribute__ ((unused)) int **width, __attribute__ ((unused)) int **per,
+	__attribute__ ((unused)) int **neg)
 {
 	char *s = va_arg(args, char *);
 	char *str = s;

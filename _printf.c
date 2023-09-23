@@ -6,21 +6,27 @@
  * @f: format string
  * @w: pointer to width flag value.
  * @per: percision flag.
+ * @neg: '-' flag.
  * @args: arguments list.
  * Return: length of printed string.
  *
 */
 
-int widthflag(const char *f, int *w, int *per, va_list args)
+int widthflag(const char *f, int *w, int *per, int *neg, va_list args)
 {
-	int i = 0, width = 0;
-	*per = 0;
+	int i = 0, width = 0, flag_plus;
+	*per = 0, *neg = 0;
 
 	if (f[i] == '.' || f[i] == '0')
 	{
 		*per = 1;
 	}
-	for (i = *per; f[i]; i++)
+	else if (f[i] == '-')
+	{
+		*neg = 1;
+	}
+	flag_plus = *per + *neg;
+	for (i = flag_plus; f[i]; i++)
 	{
 		if (f[i] >= '0' && f[i] <= '9')
 		{
@@ -51,7 +57,7 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	char flag[40] = "0000000000000000000000000000000000000000";
-	int flg_indx = 0, nochar = 0, skip = 0, go_to, weight = 0, per;
+	int flg_indx = 0, nochar = 0, skip = 0, go_to, weight = 0, per, neg;
 
 	if (!format)
 		return (-1);
@@ -65,8 +71,9 @@ FLAGLOOP:
 			if (*(++format) == '\0')
 				return (-1);
 			setvariables(&skip, &go_to);
-			format += widthflag(format, &weight, &per, args);
-			skip = caseselector(args, *format, &flg_indx, &nochar, flag, &weight, &per);
+			format += widthflag(format, &weight, &per, &neg, args);
+			skip = caseselector(args, *format, &flg_indx, &nochar, flag,
+				&weight, &per, &neg);
 			go_to = flagselector(format, &flg_indx, flag, &nochar, args, &skip);
 			if (go_to == 1)
 				goto FLAGLOOP;
