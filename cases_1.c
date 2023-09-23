@@ -14,7 +14,7 @@ int caseStr(va_list args, __attribute__ ((unused)) char flag[],
 {
 	char *s = va_arg(args, char *);
 	int i = 0, n = 0, j;
-	char *str = s, per_c = ' ';
+	char *str = s;
 	char buff[BUFSIZ];
 
 	if (!str)
@@ -32,10 +32,10 @@ int caseStr(va_list args, __attribute__ ((unused)) char flag[],
 		i++;
 	}
 	buff[i] = 0;
-	(**per) ? (j = **width--) : (j = i);
+	(**per) ? (j = **width) : (j = i);
 	while (**width > i && !**per)
 	{
-		n += _putchar(per_c);
+		n += _putchar(' ');
 		i++;
 	}
 	for (i = 0; buff[i] && i < j; i++)

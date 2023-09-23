@@ -12,9 +12,16 @@ int main(void)
 {
 	int len, len2;
 
-	len = _printf("%.6s", "kjjlkgh");
+	len = _printf("%s", 0, NULL);
 	printf("\n");
-	len2 = printf("%.6s", "kjjlkgh");
+	len2 = printf("%s", 0, NULL);
+	printf("\n");
+
+	printf("%d     %d\n", len, len2);
+
+	len = _printf("%.*X", 0, 0);
+	printf("\n");
+	len2 = printf("%.*X", 0, 0);
 	printf("\n");
 
 	printf("%d     %d\n", len, len2);
