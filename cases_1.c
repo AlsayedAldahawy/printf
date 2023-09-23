@@ -59,7 +59,7 @@ int caseInt(va_list args, char flag[], int **w, int **per)
 	int i, nOfChar = 0, digit, width = **w, k = 0, j;
 	int n = va_arg(args, int), start_digit = 0;
 	char buff[BUFSIZ], per_c = ' ';
-	long int num = n;
+	long int num = n, per_i = 0;
 
 	if (**per == 1)
 	{
@@ -69,7 +69,7 @@ int caseInt(va_list args, char flag[], int **w, int **per)
 	}
 	if (num < 0)
 	{
-		(**per) ? (nOfChar += _putchar('-')) : (buff[k++] = '-');
+		(**per) ? (nOfChar += _putchar('-')), per_i++ : (buff[k++] = '-');
 		num *= -1;
 	}
 	else if (flag_finder('+', flag))
@@ -85,9 +85,10 @@ int caseInt(va_list args, char flag[], int **w, int **per)
 		buff[k++] = (digit + '0');
 		start_digit = 1;
 	}
+	buff[k] = 0;
 	i = k;
 	j = i;
-	while (width > i++)
+	while (width > (i++ + per_i))
 		nOfChar += _putchar(per_c);
 	for (i = 0; i < j; i++)
 		nOfChar += _putchar(buff[i]);
