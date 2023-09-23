@@ -16,7 +16,7 @@ int widthflag(const char *f, int *w, int *per, va_list args)
 	int i = 0, width = 0;
 	*per = 0;
 
-	if (f[i] == '.')
+	if (f[i] == '.' || f[i] == '0')
 	{
 		*per = 1;
 	}

@@ -12,9 +12,9 @@ int main(void)
 {
 	int len, len2;
 
-	len = _printf("%s", 0, NULL);
+	len = _printf("%06d", 402);
 	printf("\n");
-	len2 = printf("%s", 0, NULL);
+	len2 = printf("%06d", 402);
 	printf("\n");
 
 	printf("%d     %d\n", len, len2);
