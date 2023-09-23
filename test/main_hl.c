@@ -12,9 +12,9 @@ int main(void)
 {
 	int len, len2;
 
-	len = _printf("%6d", -1024);
+	len = _printf("In the middle %.*s of a sentence.\n", 6, "Best!");
 	printf("\n");
-	len2 = printf("%6d", -1024);
+	len2 = printf("In the middle %.*s of a sentence.\n", 6, "Best!");
 	printf("\n");
 
 	printf("%d     %d\n", len, len2);

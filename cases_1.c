@@ -23,7 +23,6 @@ int caseStr(va_list args, __attribute__ ((unused)) char flag[],
 	}
 	if (**per == 1)
 	{
-		per_c = '0';
 		if (n == 0 && **width == 0)
 			return (0);
 	}
@@ -33,7 +32,7 @@ int caseStr(va_list args, __attribute__ ((unused)) char flag[],
 		i++;
 	}
 	j = i;
-	while (**width > i)
+	while (**width > i && !**per)
 	{
 		n += _putchar(per_c);
 		i++;
