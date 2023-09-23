@@ -31,7 +31,7 @@ int caseStr(va_list args, __attribute__ ((unused)) char flag[],
 		buff[i] = str[i];
 		i++;
 	}
-	buff[i++] = 0;
+	buff[i] = 0;
 	(**per) ? (j = **width) : (j = i);
 	while (**width > i && !**per)
 	{
