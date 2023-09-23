@@ -12,9 +12,9 @@ int main(void)
 {
 	int len, len2;
 
-	len = _printf("%.*X", 0, 0);
+	len = _printf("%.6s", "kjjlkgh");
 	printf("\n");
-	len2 = printf("%.*X", 0, 0);
+	len2 = printf("%.6s", "kjjlkgh");
 	printf("\n");
 
 	printf("%d     %d\n", len, len2);
