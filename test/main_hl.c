@@ -12,13 +12,28 @@ int main(void)
 {
 	int len, len2;
 
-	len = _printf("%d", -1024);
+	len = _printf("%08d", 1024);
 	printf("\n");
-	len2 = printf("%d", -1024);
+	len2 = printf("%08d", 1024);
 		printf("\n");
+	printf("%d     %d\n", len, len2);
 
-	
+	len = _printf("%.8d", 1024);
+	printf("\n");
+	len2 = printf("%.8d", 1024);
+		printf("\n");
+	printf("%d     %d\n", len, len2);
 
+	len = _printf("%08d", -1024);
+	printf("\n");
+	len2 = printf("%08d", -1024);
+		printf("\n");
+	printf("%d     %d\n", len, len2);
+
+	len = _printf("%.8d", -1024);
+	printf("\n");
+	len2 = printf("%.8d", -1024);
+		printf("\n");
 	printf("%d     %d\n", len, len2);
 	fflush(stdout);
 

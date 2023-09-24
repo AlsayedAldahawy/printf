@@ -72,7 +72,7 @@ int caseInt(va_list args, char flag[], int **width, int **per, int **neg)
 	{
 		(**per || **neg) ? (nOfChar += _putchar('-')) : (buff[k++] = '-');
 		num *= -1;
-		(**per) ? (per_n = 1) : (per_n = 0);
+		(**per == 1) ? (per_n = 1) : (per_n = 0);
 	}
 
 	else if (flag_finder('+', flag))

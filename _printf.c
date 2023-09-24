@@ -14,18 +14,24 @@
 
 int widthflag(const char *f, int *w, int *per, int *neg, va_list args)
 {
-	int i = 0, width = 0, flag_plus;
+	int i = 0, width = 0, flag_plus, x = 0;
 	*per = 0, *neg = 0;
 
-	if (f[i] == '.' || f[i] == '0')
+	if (f[i] == '.')
 	{
 		*per = 1;
+		x = 1;
+	}
+	else if (f[i] == '0')
+	{
+		*per = 2;
+		x = 1;
 	}
 	else if (f[i] == '-')
 	{
 		*neg = 1;
 	}
-	flag_plus = *per + *neg;
+	flag_plus = x + *neg;
 	for (i = flag_plus; f[i]; i++)
 	{
 		if (f[i] >= '0' && f[i] <= '9')
