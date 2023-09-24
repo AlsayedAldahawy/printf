@@ -66,7 +66,6 @@ int casehexa(va_list args, char flag[], int **width, int **per,
 	{
 		buff[buff_index++] = '0';
 		buff[buff_index++] = 'x';
-		len += 2;
 	}
 	flag_eraser(flag);
 
@@ -105,7 +104,6 @@ int caseHEXA(va_list args, char flag[], int **width, int **per,
 	{
 		buff[buff_index++] = '0';
 		buff[buff_index++] = 'X';
-		len += 2;
 	}
 	flag_eraser(flag);
 

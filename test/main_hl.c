@@ -12,27 +12,27 @@ int main(void)
 {
 	int len, len2;
 
-	len = _printf("%08d", 1024);
+	len = _printf("%#X", -UINT_MAX);
 	printf("\n");
-	len2 = printf("%08d", 1024);
+	len2 = printf("%#X", -UINT_MAX);
 		printf("\n");
 	printf("%d     %d\n", len, len2);
 
-	len = _printf("%.8d", 1024);
+	len = _printf("%.8x", 1024);
 	printf("\n");
-	len2 = printf("%.8d", 1024);
+	len2 = printf("%.8x", 1024);
 		printf("\n");
 	printf("%d     %d\n", len, len2);
 
-	len = _printf("%08d", -1024);
+	len = _printf("%08x", -1024);
 	printf("\n");
-	len2 = printf("%08d", -1024);
+	len2 = printf("%08x", -1024);
 		printf("\n");
 	printf("%d     %d\n", len, len2);
 
-	len = _printf("%.8d", -1024);
+	len = _printf("%.8x", -1024);
 	printf("\n");
-	len2 = printf("%.8d", -1024);
+	len2 = printf("%.8x", -1024);
 		printf("\n");
 	printf("%d     %d\n", len, len2);
 	fflush(stdout);
