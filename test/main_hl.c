@@ -12,8 +12,15 @@ int main(void)
 {
 	int len, len2;
 
-	len = _printf("m:%-6s%-6c", "Best", '\n');
-	len2 = printf("o:%-6s%-6c", "Best", '\n');
+	len = _printf("m:%.6s", "Hi!\n");
+	len2 = printf("o:%.6s", "Hi!\n");
+printf("%d    %d\n", len, len2);
+	len = _printf("m:%06s", "Hi!\n");
+	len2 = printf("o:%06s", "Hi!\n");
+	printf("%d    %d\n", len, len2);
+
+	len = _printf("m:%-6s", "Hi!\n");
+	len2 = printf("o:%-6s", "Hi!\n");
 	printf("%d    %d\n", len, len2);
 	fflush(stdout);
 	if (len != len2)

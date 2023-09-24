@@ -22,6 +22,16 @@ int caseStr(va_list args, __attribute__ ((unused)) char flag[],
 	{
 		str = "(null)";
 	}
+	if (**per == 1)
+	{
+		**per = 0;
+		**width = 0;
+	}
+	else if (**per == 2)
+	{
+		**per = 0;
+	}
+
 	if (**per || **neg)
 	{
 		if (**width == 0)
