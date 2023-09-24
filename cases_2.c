@@ -177,6 +177,10 @@ int caseSTR(va_list args, __attribute__ ((unused)) char flag[],
 	int buff_index = 0, i = 0, len = 0, j;
 	char buff[BUFSIZ];
 
+	for (j = 0; j < BUFSIZ; j++)
+	{
+		buff[j] = 0;
+	}
 	if (!str)
 		str = "(null)";
 	while (str[i])

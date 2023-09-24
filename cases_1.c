@@ -14,7 +14,7 @@ int caseStr(va_list args, __attribute__ ((unused)) char flag[],
 	int **width, int **per, __attribute__ ((unused)) int **neg)
 {
 	char *s = va_arg(args, char *);
-	int i = 0, n = 0, j;
+	int k = 0, nOfChar = 0, i = 0;
 	char *str = s;
 	char buff[BUFSIZ];
 
@@ -22,28 +22,22 @@ int caseStr(va_list args, __attribute__ ((unused)) char flag[],
 	{
 		str = "(null)";
 	}
-	if (**per == 1)
+	if (**per || **neg)
 	{
-		if (n == 0 && **width == 0)
+		if (**width == 0)
 			return (0);
 	}
-	while (str[i])
+	while (str[k])
 	{
-		buff[i] = str[i];
-		i++;
+		buff[k] = str[k];
+		k++;
 	}
-	buff[i] = 0;
-	(**per) ? (j = **width) : (j = i);
-	while (**width > i && !**per)
-	{
-		n += _putchar(' ');
-		i++;
-	}
-	for (i = 0; buff[i] && i < j; i++)
-	{
-		n += _putchar(buff[i]);
-	}
-	return (n);
+	buff[k] = 0;
+	nOfChar += per_neg_handler(**per, **neg, **width, nOfChar + k, 0);
+	for (i = 0; buff[i]; i++)
+		_putchar(buff[i]);
+	nOfChar += per_neg_handler(**per, **neg, **width, nOfChar + k, 1);
+	return (k + nOfChar);
 }
 
 /**

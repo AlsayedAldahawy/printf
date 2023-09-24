@@ -12,37 +12,26 @@ int main(void)
 {
 	int len, len2;
 
-	len = _printf("%#o", UINT_MAX);
-	printf("\n");
-	len2 = printf("%#o", UINT_MAX);
-		printf("\n");
-	printf("%d     %d\n", len, len2);
-
-	len = _printf("%.8x", 1024);
-	printf("\n");
-	len2 = printf("%.8x", 1024);
-		printf("\n");
-	printf("%d     %d\n", len, len2);
-
-	len = _printf("%08x", -1024);
-	printf("\n");
-	len2 = printf("%08x", -1024);
-		printf("\n");
-	printf("%d     %d\n", len, len2);
-
-	len = _printf("%.8x", -1024);
-	printf("\n");
-	len2 = printf("%.8x", -1024);
-		printf("\n");
-	printf("%d     %d\n", len, len2);
+	len = _printf("m:%-6s%-6c", "Best", '\n');
+	len2 = printf("o:%-6s%-6c", "Best", '\n');
+	printf("%d    %d\n", len, len2);
 	fflush(stdout);
-
 	if (len != len2)
 	{
 		printf("Lengths differ.\n");
 		fflush(stdout);
 		return (1);
 	}
+	len = _printf("m:%-16s%-1c", "Best", '\n');
+	len2 = printf("o:%-16s%-1c", "Best", '\n');
+		printf("%d    %d", len, len2);
 
+	fflush(stdout);
+	if (len != len2)
+	{
+		printf("Lengths differ.\n");
+		fflush(stdout);
+		return (1);
+	}
 	return (0);
 }
