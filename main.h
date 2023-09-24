@@ -13,7 +13,7 @@
 
 int _printf(const char *format, ...);
 int _putchar(char c);
-int caseStr(va_list args, char flag[], int **weight, int **per, int **neg);
+int caseStr(va_list args, char flag[], int **width, int **per, int **neg);
 int caseInt(va_list args, char flag[], int **weight, int **per, int **neg);
 int caseChar(va_list args, char flag[], int **weight, int **per, int **neg);
 int intobin(unsigned int x);
@@ -50,6 +50,7 @@ int lhflags(int **nochar, va_list args, const char *format);
 void setvariables(int *skip, int *go_to);
 int _long(unsigned long int x);
 int _short(unsigned short int x);
+int per_neg_handler(int per, int neg, int width, int i, int selector);
 
 /*int flagspace(char const *format);*/
 /**

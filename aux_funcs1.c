@@ -84,3 +84,48 @@ int _short(unsigned short int x)
 	}
 	return (len);
 }
+
+/**
+ * per_neg_handler - function that handles width, percision and '-' flag
+ * for different data types.
+ * @per: variable represents if the '.' flag is present.
+ * @neg: variable represents if the '-' flag is present.
+ * @width: variable represents width flag value.
+ * @i: number of characters of the passed variadic argument.
+ * @selector: mode selector, select between '.' and '-' mode.
+ * Return: length of printed string.
+ *
+*/
+int per_neg_handler(int per, int neg, int width, int i, int selector)
+{
+	int n = 0;
+
+	if (width > i)
+	{
+		if (per && !neg && !selector)
+		{
+			while (width > i)
+			{
+				n += _putchar('0');
+				(i)++;
+			}
+		}
+		else if (neg && selector)
+		{
+			while (width > i)
+			{
+				n += _putchar(' ');
+				(i)++;
+			}
+		}
+		else
+		{
+			while (width > i && !per && !neg && !selector)
+			{
+				n += _putchar(' ');
+				(i)++;
+			}
+		}
+	}
+	return (n);
+}

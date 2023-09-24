@@ -14,37 +14,30 @@
 int caseOctal(va_list args, char flag[], int **width, int **per,
 	__attribute__ ((unused)) int **neg)
 {
-	unsigned int x = va_arg(args, unsigned int);
-	int buff_index = 0, len = 0, i = 0, j;
-	char buff[BUFSIZ], per_c = ' ';
+	unsigned long int x = va_arg(args, unsigned int);
+	int buff_index = 0, len = 0, i = 0;
+	char buff[BUFSIZ];
 
-	if (**per == 1)
+	if (**per || **neg)
 	{
-		per_c = '0';
 		if (x == 0 && **width == 0)
 			return (0);
 	}
 	if (flag_finder('#', flag) && x)
 	{
 		buff[buff_index++] = '0';
-		len++;
+		buff[buff_index++] = 'x';
+		len += 2;
 	}
 	flag_eraser(flag);
 
-	i += intoct(x, &buff_index, buff);
-	len += i;
+	intoct(x, &buff_index, buff);
 	buff[buff_index] = 0;
-	while (**width > len)
-	{
-		_putchar(per_c);
-		len++;
-	}
-
-	for (j = 0; buff[j]; j++)
-	{
-		_putchar(buff[j]);
-	}
-	return (len);
+	len += per_neg_handler(**per, **neg, **width, len + buff_index, 0);
+	for (i = 0; buff[i]; i++)
+		_putchar(buff[i]);
+	len += per_neg_handler(**per, **neg, **width, len + buff_index, 1);
+	return (buff_index + len);
 }
 
 /**
@@ -61,12 +54,11 @@ int casehexa(va_list args, char flag[], int **width, int **per,
 	__attribute__ ((unused)) int **neg)
 {
 	unsigned long int x = va_arg(args, unsigned int);
-	int buff_index = 0, len = 0, i = 0, j;
-	char buff[BUFSIZ], per_c = ' ';
+	int buff_index = 0, len = 0, i = 0;
+	char buff[BUFSIZ];
 
-	if (**per == 1)
+	if (**per || **neg)
 	{
-		per_c = '0';
 		if (x == 0 && **width == 0)
 			return (0);
 	}
@@ -78,20 +70,13 @@ int casehexa(va_list args, char flag[], int **width, int **per,
 	}
 	flag_eraser(flag);
 
-	i += intohex(x, &buff_index, buff);
-	len += i;
+	intohex(x, &buff_index, buff);
 	buff[buff_index] = 0;
-	while (**width > len)
-	{
-		_putchar(per_c);
-		len++;
-	}
-
-	for (j = 0; buff[j]; j++)
-	{
-		_putchar(buff[j]);
-	}
-	return (len);
+	len += per_neg_handler(**per, **neg, **width, len + buff_index, 0);
+	for (i = 0; buff[i]; i++)
+		_putchar(buff[i]);
+	len += per_neg_handler(**per, **neg, **width, len + buff_index, 1);
+	return (buff_index + len);
 }
 
 /**
@@ -108,12 +93,11 @@ int caseHEXA(va_list args, char flag[], int **width, int **per,
 	__attribute__ ((unused)) int **neg)
 {
 	unsigned long int x = va_arg(args, unsigned int);
-	int buff_index = 0, len = 0, i = 0, j;
-	char buff[BUFSIZ], per_c = ' ';
+	int buff_index = 0, len = 0, i = 0;
+	char buff[BUFSIZ];
 
-	if (**per == 1)
+	if (**per || **neg)
 	{
-		per_c = '0';
 		if (x == 0 && **width == 0)
 			return (0);
 	}
@@ -125,20 +109,13 @@ int caseHEXA(va_list args, char flag[], int **width, int **per,
 	}
 	flag_eraser(flag);
 
-	i += intoHEX(x, &buff_index, buff);
-	len += i;
+	intoHEX(x, &buff_index, buff);
 	buff[buff_index] = 0;
-	while (**width > len)
-	{
-		_putchar(per_c);
-		len++;
-	}
-
-	for (j = 0; buff[j]; j++)
-	{
-		_putchar(buff[j]);
-	}
-	return (len);
+	len += per_neg_handler(**per, **neg, **width, len + buff_index, 0);
+	for (i = 0; buff[i]; i++)
+		_putchar(buff[i]);
+	len += per_neg_handler(**per, **neg, **width, len + buff_index, 1);
+	return (buff_index + len);
 }
 
 /**
@@ -158,7 +135,7 @@ int caseaddr(va_list args, __attribute__ ((unused)) char flag[],
 	void *x = va_arg(args, void*);
 	char *s = "(nil)";
 	unsigned long int ptr;
-	int buff_index = 0, len = 0;
+	int buff_index = 0, len = 0, i = 0;
 	char buff[BUFSIZ];
 
 	if (x == NULL)
@@ -170,17 +147,19 @@ int caseaddr(va_list args, __attribute__ ((unused)) char flag[],
 		return (len);
 	}
 	ptr = (unsigned long int) x;
-	buff[buff_index++] = '0';
-	buff[buff_index++] = 'x';
-
 	intohex(ptr, &buff_index, buff);
-	buff[buff_index++] = 0;
-	while (buff[len])
-	{
-		_putchar(buff[len]);
-		len++;
-	}
-	return (len);
+	buff[buff_index] = 0;
+
+	(**per) ? (_putchar('0'), _putchar('x')) : (i = 2);
+	len += per_neg_handler(**per, **neg, **width, len + buff_index + i, 0);
+	(!**per) ? (_putchar('0'), _putchar('x')) : (len = len);
+
+	for (buff_index = 0; buff[buff_index]; buff_index++)
+		_putchar(buff[buff_index]);
+
+	len += per_neg_handler(**per, **neg, **width, len + buff_index + i, 1);
+
+	return (buff_index + len + 2);
 }
 
 /**

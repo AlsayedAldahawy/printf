@@ -50,35 +50,37 @@ int caseStr(va_list args, __attribute__ ((unused)) char flag[],
  * caseInt - prints a number to stdout.
  * @args: list of variadic function arguments.
  * @flag: flags
- * @w: width flag value.
+ * @width: width flag value.
  * @per: percision flag.
  * @neg: '-' flag.
  * Return: length of printed int.
  *
 */
-int caseInt(va_list args, char flag[], int **w, int **per, int **neg)
+int caseInt(va_list args, char flag[], int **width, int **per, int **neg)
 {
-	int i, nOfChar = 0, digit, width = **w, k = 0, j;
-	int n = va_arg(args, int), start_digit = 0;
-	char buff[BUFSIZ], per_c = ' ';
-	long int num = n, per_i = 0;
+	int i, nOfChar = 0, digit, k = 0;
+	int n = va_arg(args, int), start_digit = 0, per_n = 0;
+	char buff[BUFSIZ];
+	long int num = n;
 
 	if (**per || **neg)
 	{
-		per_c = '0';
-		if (n == 0 && **w == 0)
+		if (n == 0 && **width == 0)
 			return (0);
 	}
-	if (num < 0)
+	if (num < 0 && **width)
 	{
-		(**per || **neg) ? (nOfChar += _putchar('-')), per_i++ : (buff[k++] = '-');
+		(**per || **neg) ? (nOfChar += _putchar('-')) : (buff[k++] = '-');
 		num *= -1;
+		(**per) ? (per_n = 1) : (per_n = 0);
 	}
+
 	else if (flag_finder('+', flag))
 		buff[k++] = '+';
 	else if (flag_finder(' ', flag))
 		buff[k++] = ' ';
 	flag_eraser(flag);
+
 	for (i = 1000000000; i >= 1 ; i = i / 10)
 	{
 		if ((num / i == 0) && (start_digit == 0) && (i != 1))
@@ -88,16 +90,11 @@ int caseInt(va_list args, char flag[], int **w, int **per, int **neg)
 		start_digit = 1;
 	}
 	buff[k] = 0;
-	i = k;
-	j = i;
-	while (width > ((i++)) && !**neg)
-		nOfChar += _putchar(per_c);
-	for (i = 0; i < j; i++)
-		nOfChar += _putchar(buff[i]);
-	while (width > (j++) + per_i && **neg && !**per)
-		nOfChar += _putchar(' ');
-	width = 0;
-	return (nOfChar);
+	nOfChar += per_neg_handler(**per, **neg, **width, nOfChar + k - per_n, 0);
+	for (i = 0; buff[i]; i++)
+		_putchar(buff[i]);
+	nOfChar += per_neg_handler(**per, **neg, **width, nOfChar + k, 1);
+	return (k + nOfChar);
 }
 
 /**
@@ -155,24 +152,23 @@ int caseBin(va_list args, __attribute__ ((unused)) char flag[],
  * caseUnsigned - prints an unsigned number to stdout.
  * @args: list of variadic function arguments.
  * @flag: flags
- * @w: width flag value.
+ * @width: width flag value.
  * @per: percision flag.
  * @neg: '-' flag.
  * Return: length of printed unsigned int.
  *
 */
 int caseUnsigned(va_list args, __attribute__ ((unused)) char flag[],
-	int **w, int **per, __attribute__ ((unused)) int **neg)
+	int **width, int **per, __attribute__ ((unused)) int **neg)
 {
 	unsigned int num = va_arg(args, unsigned int);
-	int i, nOfChar = 0, j, k = 0;
-	int width = **w, digit, start_digit = 0;
-	char buff[BUFSIZ], per_c = ' ';
+	int i, nOfChar = 0, k = 0;
+	int digit, start_digit = 0;
+	char buff[BUFSIZ];
 
-	if (**per == 1)
+	if (**per || **neg)
 	{
-		per_c = '0';
-		if (num == 0 && **w == 0)
+		if (num == 0 && **width == 0)
 			return (0);
 	}
 	for (i = 1000000000; i >= 1 ; i = i / 10)
@@ -183,12 +179,10 @@ int caseUnsigned(va_list args, __attribute__ ((unused)) char flag[],
 		buff[k++] = (digit + '0');
 		start_digit = 1;
 	}
-	i = k;
-	j = i;
-	while (width > i++)
-		nOfChar += _putchar(per_c);
-	for (i = 0; i < j; i++)
-		nOfChar += _putchar(buff[i]);
-	width = 0;
-	return (nOfChar);
+	buff[k] = 0;
+	nOfChar += per_neg_handler(**per, **neg, **width, nOfChar + k, 0);
+	for (i = 0; buff[i]; i++)
+		_putchar(buff[i]);
+	nOfChar += per_neg_handler(**per, **neg, **width, nOfChar + k, 1);
+	return (k + nOfChar);
 }
