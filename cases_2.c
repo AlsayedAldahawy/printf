@@ -26,8 +26,6 @@ int caseOctal(va_list args, char flag[], int **width, int **per,
 	if (flag_finder('#', flag) && x)
 	{
 		buff[buff_index++] = '0';
-		buff[buff_index++] = 'x';
-		len += 2;
 	}
 	flag_eraser(flag);
 

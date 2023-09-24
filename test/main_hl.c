@@ -12,9 +12,9 @@ int main(void)
 {
 	int len, len2;
 
-	len = _printf("%#X", -UINT_MAX);
+	len = _printf("%#o", UINT_MAX);
 	printf("\n");
-	len2 = printf("%#X", -UINT_MAX);
+	len2 = printf("%#o", UINT_MAX);
 		printf("\n");
 	printf("%d     %d\n", len, len2);
 
