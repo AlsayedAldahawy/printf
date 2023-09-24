@@ -12,50 +12,12 @@ int main(void)
 {
 	int len, len2;
 
-	len = _printf("per + :%011o", 1024);
+	len = _printf("%d", -1024);
 	printf("\n");
-	len2 = printf("per + :%011o", 1024);
-	printf("\n");
-	printf("%d     %d\n", len, len2);
+	len2 = printf("%d", -1024);
+		printf("\n");
 
-	len = _printf("per - :%.11o", 1024);
-	printf("\n");
-	len2 = printf("per - :%.11o", 1024);
-	printf("\n");
-	printf("%d     %d\n", len, len2);
-
-	len = _printf("neg + :%-11p", 1024);
-	printf("\n");
-	len2 = printf("neg + :%-11p", 1024);
-	printf("\n");
-	printf("%d     %d\n", len, len2);
-
-	len = _printf("neg - :%-15o", -1024);
-	printf("\n");
-	len2 = printf("neg - :%-15o", -1024);
-	printf("\n");
-	printf("%d     %d\n", len, len2);
-
-	len = _printf("width - :%o", -1024);
-	printf("\n");
-	len2 = printf("width - :%o", -1024);
-	printf("\n");
-	printf("%d     %d\n", len, len2);
-	len = _printf("width + :%o", 1024);
-	printf("\n");
-	len2 = printf("width + :%o", 1024);
-	printf("\n");
-	printf("%d     %d\n", len, len2);
-
-		len = _printf("ptr + :%o", 1024);
-	printf("\n");
-	len2 = printf("ptr + :%o", 1024);
-	printf("\n");
-	printf("%d     %d\n", len, len2);
-		len = _printf("ptr + :%o", -1024);
-	printf("\n");
-	len2 = printf("ptr + :%o", -1024);
-	printf("\n");
+	
 
 	printf("%d     %d\n", len, len2);
 	fflush(stdout);

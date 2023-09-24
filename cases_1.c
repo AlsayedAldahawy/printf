@@ -68,7 +68,7 @@ int caseInt(va_list args, char flag[], int **width, int **per, int **neg)
 		if (n == 0 && **width == 0)
 			return (0);
 	}
-	if (num < 0 && **width)
+	if (num < 0)
 	{
 		(**per || **neg) ? (nOfChar += _putchar('-')) : (buff[k++] = '-');
 		num *= -1;
