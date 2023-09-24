@@ -19,24 +19,19 @@ int caseStr(va_list args, __attribute__ ((unused)) char flag[],
 	char buff[BUFSIZ];
 
 	if (!str)
-	{
 		str = "(null)";
-	}
+
+	if (**per && !**width)
+		return (0);
+
 	if (**per == 1)
 	{
 		**per = 0;
 		**width = 0;
 	}
 	else if (**per == 2)
-	{
 		**per = 0;
-	}
 
-	if (**per || **neg)
-	{
-		if (**width == 0)
-			return (0);
-	}
 	while (str[k])
 	{
 		buff[k] = str[k];
