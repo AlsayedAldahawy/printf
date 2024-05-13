@@ -13,5 +13,3 @@
 
 4- main.h
     header file.
-
-/////////// recovery pint commit //////
